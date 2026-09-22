@@ -263,3 +263,135 @@
   .turkluxx-lifestyle > small { margin-top: 2vh; }
   .turkluxx-sales-hero::after { content: ''; position: absolute; inset: 0 0 var(--turkluxx-strip); z-index: -2; background: url('assets/istanbul-family-hero.png') center / cover no-repeat; }
 }
+
+/* Adapt the approved hero below its existing 1200px desktop breakpoint. */
+@media (width < 1200px) {
+  .turkluxx-intro { display: none; }
+  .turkluxx-sales-hero {
+    --turkluxx-gold: #d8b66a;
+    --turkluxx-cream: #fffdf7;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'header header' 'citizenship heading' 'citizenship view' 'lifestyle climate' 'secondary secondary' 'benefits benefits';
+    align-items: start;
+    gap: 28px;
+    position: relative;
+    isolation: isolate;
+    padding: 24px 24px 0;
+    color: var(--turkluxx-cream);
+    font-family: 'Manrope', sans-serif;
+    background: #071e34;
+  }
+  .turkluxx-sales-hero, .turkluxx-sales-hero * { box-sizing: border-box; min-width: 0; }
+  .turkluxx-sales-hero::before {
+    content: ''; position: absolute; inset: 0 0 auto; height: 850px; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, #071e3470, transparent 40%, #071e3440 65%, #071e34 100%), url('assets/istanbul-family-hero.png') 78% top / auto 850px no-repeat;
+  }
+  .turkluxx-sales-header { grid-area: header; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 18px; }
+  .turkluxx-sales-logo { justify-self: start; display: flex; flex-direction: column; color: var(--turkluxx-gold); text-decoration: none; }
+  .turkluxx-sales-logo > span { font-size: 44px; font-weight: 700; line-height: 1.1; letter-spacing: -2px; background: linear-gradient(175deg, #fff1bf 12%, #d8b66a 50%, #b78a40 79%, #f3d992); background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 1px #071e3480); }
+  .turkluxx-sales-logo small { margin-top: 6px; color: #fffdf7; text-align: center; font-size: 7px; letter-spacing: 2.5px; line-height: 1.8; }
+  .turkluxx-sales-nav { grid-row: 2; grid-column: 1 / -1; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; }
+  .turkluxx-sales-nav a { display: flex; align-items: center; justify-content: center; min-height: 44px; color: #fffdf7; font-size: 14px; font-weight: 500; text-decoration: none; text-shadow: 0 2px 5px #071e34; }
+  .turkluxx-sales-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .turkluxx-sales-language { position: relative; display: flex; align-items: center; width: 108px; height: 48px; padding-left: 9px; border: 1px solid #fffdf780; border-radius: 28px 3px 3px 28px; background: #071e3460; }
+  .turkluxx-sales-language img { width: 32px; height: 32px; flex: 0 0 32px; aspect-ratio: 1; border: 1px solid #fffdf7; border-radius: 50%; }
+  .turkluxx-sales-language select { appearance: none; width: 100%; height: 100%; padding: 0 24px 0 8px; border: 0; color: #fffdf7; background: transparent; font: 500 15px 'Manrope', sans-serif; cursor: pointer; }
+  .turkluxx-sales-language option { color: #071e34; }
+  .turkluxx-sales-language svg { position: absolute; right: 9px; width: 13px; fill: none; stroke: currentColor; stroke-width: 2; pointer-events: none; }
+  .turkluxx-call { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 68px; padding: 10px 20px; border: 2px solid #f3d992; border-radius: 70px; color: #061723; background: linear-gradient(115deg, #d8b66a, #f6dfa0 44%, #d8b66a 90%); box-shadow: inset 0 0 0 2px #fffdf72b, 0 4px 16px #071e3450; font-size: 20px; text-decoration: none; }
+  .turkluxx-call > span { display: flex; flex-direction: column; text-align: center; font-weight: 700; line-height: 1.25; }
+  .turkluxx-call strong { font-weight: 700; }
+  .turkluxx-phone-icon { flex: 0 0 38px; width: 38px; height: 38px; fill: currentColor; }
+  .turkluxx-call-top { font-size: 17px; min-height: 62px; }
+  .turkluxx-call-bottom { grid-area: secondary; justify-self: center; width: min(100%, 390px); }
+  .turkluxx-call:hover { filter: brightness(1.08); }
+  .turkluxx-sales-heading { grid-area: heading; text-align: center; text-shadow: 0 2px 10px #071e3460; padding-block: 12px; }
+  .turkluxx-sales-heading h1 { margin: 0; font: 600 clamp(42px, 5.8vw, 68px)/.95 'Cormorant Garamond', Georgia, serif; letter-spacing: -.035em; }
+  .turkluxx-sales-heading h1 span { display: block; white-space: nowrap; }
+  .turkluxx-sales-heading h1 span:first-child { color: #f3d992; margin-bottom: .08em; }
+  .turkluxx-sales-heading p { margin: 18px 0 0; font-size: 14px; font-weight: 500; letter-spacing: .2em; line-height: 1.6; }
+  .turkluxx-ornament { display: flex; align-items: center; justify-content: center; gap: 9px; width: 55%; margin: 12px auto 0; color: #f3d992; font-size: 27px; line-height: 1; }
+  .turkluxx-ornament::before, .turkluxx-ornament::after { content: ''; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, #d8b66a); }
+  .turkluxx-ornament::after { transform: rotate(180deg); }
+  .turkluxx-citizenship { grid-area: citizenship; padding: 22px; color: #111c20; border: 2px solid #d8b66a; border-radius: 22px; background: linear-gradient(115deg, #f9eac0, #f3d992 60%, #e3bb6d); box-shadow: inset 0 0 0 2px #fffdf740, 0 8px 22px #071e3428; }
+  .turkluxx-citizenship-top { display: grid; grid-template-columns: minmax(90px, .8fr) minmax(0, 1.2fr); align-items: center; gap: 18px; }
+  .turkluxx-passport { display: block; width: 100%; max-width: 132px; height: auto; border-radius: 5px; transform: rotate(-7deg); box-shadow: 0 6px 8px #4c2b243b; }
+  .turkluxx-citizenship h2 { margin: 0; font: 600 clamp(25px, 3.1vw, 34px)/1 'Cormorant Garamond', Georgia, serif; letter-spacing: -.04em; }
+  .turkluxx-citizenship h2 small { display: block; margin-top: 4px; font-size: .76em; white-space: nowrap; }
+  .turkluxx-citizenship-top p { margin: 12px 0 0; font-size: 15px; line-height: 1.4; }
+  .turkluxx-citizenship-benefits { margin: 22px 0 12px; padding: 0; list-style: none; font-size: 16px; line-height: 1.5; }
+  .turkluxx-citizenship-benefits li { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+  .turkluxx-citizenship-benefits li::before { content: '\2713'; flex: 0 0 18px; font-size: 1.3em; font-weight: 700; line-height: 1; }
+  .turkluxx-learn { display: flex; align-items: center; gap: 24px; min-height: 44px; margin-left: 28px; color: #111c20; font-size: 19px; font-weight: 600; text-underline-offset: 4px; }
+  .turkluxx-learn span { font-size: 30px; line-height: 1; }
+  .turkluxx-lifestyle { grid-area: lifestyle; padding: 14px 0 4px; text-align: center; text-shadow: 0 2px 9px #001b21, 0 0 20px #001b21; }
+  .turkluxx-lifestyle > p { margin: 0; color: #f8e8ba; font: 400 58px/1 'Oooh Baby', cursive; }
+  .turkluxx-lifestyle > p span { display: block; }
+  .turkluxx-lifestyle > small { display: block; margin-top: 18px; font-size: 13px; letter-spacing: .1em; line-height: 1.6; }
+  .turkluxx-climate { grid-area: climate; align-self: center; display: flex; align-items: flex-start; justify-content: center; gap: 18px; padding: 22px; border: 2px solid #d8b66a; border-radius: 20px; background: #031c24df; box-shadow: inset 0 0 15px #f3d9920d; }
+  .turkluxx-climate svg { flex: 0 0 48px; width: 48px; height: 48px; fill: #f3d992; stroke: #d8b66a; stroke-width: 2; stroke-linecap: round; }
+  .turkluxx-climate p { margin: 0; font-size: 14px; line-height: 1.5; }
+  .turkluxx-climate p + p { margin-top: 12px; }
+  .turkluxx-benefits { grid-area: benefits; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 12px; margin: 0 -24px; padding: 28px 24px; list-style: none; border-top: 1px solid #d8b66a; background: #021c25ed; }
+  .turkluxx-benefit { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; text-align: center; font-size: 13px; line-height: 1.5; }
+  .turkluxx-benefit:last-child { grid-column: span 2; }
+  .turkluxx-benefit svg { flex: 0 0 44px; width: 44px; height: 44px; fill: none; stroke: #d8b66a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .turkluxx-sales-hero :focus-visible { outline: 3px solid #fffdf7; outline-offset: 4px; }
+  .turkluxx-citizenship :focus-visible { outline-color: #071e34; }
+}
+
+@media (max-width: 767px) {
+  .turkluxx-sales-hero {
+    grid-template-areas: 'logo language' 'nav nav' 'heading heading' 'primary primary' 'view view' 'citizenship citizenship' 'lifestyle lifestyle' 'secondary secondary' 'climate climate' 'benefits benefits';
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    padding: 20px 20px 0;
+  }
+  .turkluxx-sales-hero::before {
+    height: 650px;
+    background: linear-gradient(180deg, #071e3455, #071e3430 45%, transparent 65%, #071e34 100%), url('assets/istanbul-family-hero.png') 82% top / auto 620px no-repeat;
+  }
+  /* This short scenic row keeps the family and villa visible between the CTA and card. */
+  .turkluxx-sales-hero::after { content: ''; grid-area: view; min-height: 145px; }
+  .turkluxx-sales-header { display: contents; }
+  .turkluxx-sales-logo { grid-area: logo; }
+  .turkluxx-sales-logo > span { font-size: 38px; }
+  .turkluxx-sales-logo small { font-size: 6px; letter-spacing: 2px; }
+  .turkluxx-sales-language { grid-area: language; align-self: start; margin-top: 2px; }
+  /* A compact two-row menu keeps all four existing links available without extra JS. */
+  .turkluxx-sales-nav { grid-area: nav; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; border-block: 1px solid #f3d99240; background: #071e3440; border-radius: 8px; }
+  .turkluxx-sales-nav a { font-size: 14px; min-height: 44px; }
+  .turkluxx-sales-heading { padding: 4px 0 0; }
+  .turkluxx-sales-heading h1 { font-size: clamp(38px, 10.5vw, 72px); line-height: .95; }
+  .turkluxx-sales-heading p { margin-top: 16px; font-size: clamp(12px, 3.2vw, 15px); letter-spacing: .19em; line-height: 1.6; }
+  .turkluxx-ornament { margin-top: 10px; font-size: 24px; }
+  .turkluxx-call-top { grid-area: primary; justify-self: center; width: min(100%, 390px); font-size: 20px; min-height: 72px; }
+  .turkluxx-citizenship { width: 100%; max-width: 480px; justify-self: center; padding: 22px; }
+  .turkluxx-citizenship-top { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 18px; }
+  .turkluxx-citizenship h2 { font-size: clamp(26px, 6.9vw, 34px); }
+  .turkluxx-citizenship-top p { font-size: 15px; }
+  .turkluxx-lifestyle { padding: 14px 0; }
+  .turkluxx-lifestyle > p { font-size: clamp(52px, 14vw, 70px); }
+  .turkluxx-lifestyle > small { font-size: 12px; letter-spacing: .11em; }
+  .turkluxx-call-bottom { min-height: 72px; }
+  .turkluxx-climate { justify-self: center; width: 100%; max-width: 480px; padding: 24px 18px; }
+  .turkluxx-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 14px; margin: 4px -20px 0; padding: 28px 20px; }
+  .turkluxx-benefit { font-size: 12px; }
+}
+
+@media (max-width: 359px) {
+  .turkluxx-sales-hero { padding-inline: 16px; }
+  .turkluxx-sales-logo > span { font-size: 34px; }
+  .turkluxx-sales-language { width: 100px; }
+  .turkluxx-citizenship { padding: 18px; }
+  .turkluxx-citizenship-top { gap: 14px; }
+  .turkluxx-citizenship h2 { font-size: 24px; }
+  .turkluxx-call { padding-inline: 14px; font-size: 18px; }
+  .turkluxx-climate { gap: 12px; padding-inline: 14px; }
+  .turkluxx-climate svg { flex-basis: 40px; width: 40px; height: 40px; }
+  .turkluxx-climate p { font-size: 13px; }
+  .turkluxx-benefits { grid-template-columns: minmax(0, 1fr); margin-inline: -16px; padding-inline: 16px; }
+  .turkluxx-benefit { font-size: 13px; }
+  .turkluxx-benefit:last-child { grid-column: auto; }
+}
