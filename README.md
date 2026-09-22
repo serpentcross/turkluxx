@@ -1,15 +1,25 @@
-# TurkLuxx desktop header and hero
+# TurkLuxx desktop hero
 
-Open `index.html` in a browser. Plain semantic HTML and vanilla CSS; Google Fonts supplies Manrope and Cormorant Garamond. The desktop hero is 740px including its overlaid header. No sections below the hero are included. Narrow screens have basic wrapping only, pending mobile design.
+Open `index.html`, or run `python -m http.server 8765` and visit http://localhost:8765.
 
-For Tilda, upload the image and stylesheet and update their URLs. Copy the `.turkluxx-intro` markup into an HTML block and include the font links. All custom classes and CSS variables are prefixed; styles are scoped to avoid affecting other Tilda blocks.
+The reference-led hero uses semantic HTML and vanilla CSS. All custom classes use the `turkluxx-` prefix. At widths of 1200px and above, the complete hero and seven-item benefits strip occupy one viewport. The prior narrow-screen layout and sections below the hero are retained; no tablet/mobile redesign was performed.
 
-Integration pending: replace the proposed `/properties`, `/why-turkluxx`, `/karaarslan-group`, and `/contact` destinations with published page URLs. These pages are outside the current scope. English is the only configured language. Watch Video is deliberately disabled until a video and playback behavior are supplied.
+Includes a gold wordmark, circular UK flag, citizenship card and passport, lifestyle message, climate card, and two telephone links to `tel:+18184347266`. Google Fonts provides Manrope, Cormorant Garamond and Oooh Baby (only for the lifestyle phrase).
 
-## Image
+Integration pending: connect the proposed navigation routes and `/contact?interest=citizenship` to published pages. English is the only configured language.
 
-`assets/turkluxx-villa.png` is an AI-generated concept image, created with the built-in imagegen tool, not photography of a verified listing.
+## Assets
 
-Generation prompt:
+- `assets/istanbul-family-hero.png`: AI-generated illustrative Istanbul villa scene, without website text or controls.
+- `assets/turkish-passport.png`: AI-generated illustrative passport cover.
+- `assets/uk-flag.svg`: circular vector flag.
 
-Use case: photorealistic-natural. Asset type: wide luxury property website hero background, 2:1 landscape composition. Create a high quality editorial architectural photograph of a premium contemporary Turkish Mediterranean coastal villa. Cream travertine stone architecture, warm brown timber slats, shaded glass doors, olive vegetation, deep natural blue swimming pool, subtle sea glimpse. Warm natural afternoon sunlight, restrained natural saturation, authentic surface texture, quiet sophisticated atmosphere. Composition essential: villa occupies RIGHT half, pool bottom right; LEFT 42 percent mostly quiet pale warm cream plaster boundary wall with subtle natural sun shadows and open pale terrace, usable as negative space for dark blue headline. Upper 18 percent quiet pale warm sky for dark navigation. Architecture clearly visible, realistic architectural photography, no artificial blue color grade, no people, no text, no graphics, no logos, no watermarks. Landscape 2:1.
+Both raster assets were created with the built-in imagegen tool. Prompts are in `assets/image-prompts.md`. They are concept imagery, not photographs of a verified property. Existing assets remain in use by the prior layout and lower sections.
+
+## Verification
+
+Checked in headless Chrome at 1366x768, 1440x900 and 1920x1080. Hero height equals viewport height, the benefits strip ends at the viewport bottom, the flag is 36x36px, and the page has no horizontal overflow. Google Fonts loaded successfully. A 1440x900 preview is saved in `hero-desktop-preview.png`.
+
+## Tilda
+
+Upload the stylesheet and assets, update their URLs, include the font link and copy the `.turkluxx-sales-hero` section into an HTML block. The new styles are scoped to the desktop hero.

@@ -175,3 +175,91 @@
   .turkluxx-project-cta:hover { background: #172154; }
   .turkluxx-desktop-sections a:focus-visible { outline: 2px solid #212c6c; outline-offset: 5px; }
 }
+
+/* Reference-led desktop hero. Existing tablet/mobile rules are untouched. */
+.turkluxx-sales-hero { display: none; }
+@media (min-width: 1200px) {
+  .turkluxx-intro { display: none; }
+  .turkluxx-sales-hero {
+    --turkluxx-gold: #d8b66a;
+    --turkluxx-cream: #fffdf7;
+    --turkluxx-edge: 2.1vw;
+    --turkluxx-strip: clamp(94px, 12vh, 130px);
+    display: block;
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    height: 100vh;
+    color: var(--turkluxx-cream);
+    font-family: 'Manrope', sans-serif;
+    background: #071e34 url('assets/istanbul-family-hero.png') center / cover no-repeat;
+  }
+  .turkluxx-sales-hero, .turkluxx-sales-hero * { box-sizing: border-box; }
+  .turkluxx-sales-hero::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, rgb(7 30 52 / 45%), transparent 42%), linear-gradient(0deg, rgb(1 20 26 / 70%), transparent 35%);
+  }
+  .turkluxx-sales-header { display: flex; align-items: center; gap: 1.3vw; padding: 2.4vh var(--turkluxx-edge) 0; }
+  .turkluxx-sales-logo { flex-shrink: 0; display: flex; flex-direction: column; text-decoration: none; color: var(--turkluxx-gold); }
+  .turkluxx-sales-logo > span { font-size: clamp(52px, 4.15vw, 60px); line-height: 1.05; font-weight: 700; letter-spacing: -2.5px; background: linear-gradient(175deg, #fff1bf 12%, #d8b66a 50%, #b78a40 79%, #f3d992); background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 1px #071e3480); }
+  .turkluxx-sales-logo small { margin-top: 9px; color: #fffdf7; text-align: center; font-size: 8px; letter-spacing: 3.7px; line-height: 1.8; }
+  .turkluxx-sales-nav { display: flex; justify-content: center; gap: clamp(20px, 2.5vw, 46px); flex: 1; align-self: flex-start; padding-top: 24px; }
+  .turkluxx-sales-nav a { color: #fffdf7; font-size: clamp(13px, 1.1vw, 17px); font-weight: 500; text-decoration: none; white-space: nowrap; text-shadow: 0 2px 5px #071e34; }
+  .turkluxx-sales-nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .turkluxx-sales-language { position: relative; display: flex; align-items: center; flex-shrink: 0; width: 116px; height: 54px; padding-left: 10px; border: 1px solid #fffdf780; border-radius: 30px 3px 3px 30px; background: #071e3440; align-self: flex-start; margin-top: 7px; }
+  .turkluxx-sales-language img { width: 36px; height: 36px; aspect-ratio: 1; flex: 0 0 36px; border-radius: 50%; border: 1px solid #fffdf7; }
+  .turkluxx-sales-language select { appearance: none; width: 100%; height: 100%; padding: 0 23px 0 10px; border: 0; background: transparent; color: #fffdf7; font: 500 16px 'Manrope', sans-serif; cursor: pointer; }
+  .turkluxx-sales-language option { color: #071e34; }
+  .turkluxx-sales-language svg { position: absolute; right: 10px; width: 14px; fill: none; stroke: currentColor; stroke-width: 2; pointer-events: none; }
+  .turkluxx-call { display: flex; align-items: center; justify-content: center; gap: 12px; border: 2px solid #f3d992; border-radius: 70px; background: linear-gradient(115deg, #d8b66a, #f6dfa0 44%, #d8b66a 90%); box-shadow: inset 0 0 0 2px #fffdf72b, 0 4px 16px #071e3450; color: #061723; text-decoration: none; white-space: nowrap; }
+  .turkluxx-call > span { display: flex; flex-direction: column; text-align: center; line-height: 1.2; }
+  .turkluxx-call strong { font-weight: 700; }
+  .turkluxx-call > span > span { font-weight: 700; }
+  .turkluxx-phone-icon { flex-shrink: 0; width: 39px; height: 39px; fill: currentColor; }
+  .turkluxx-call-top { align-self: flex-start; min-height: 66px; padding: 8px 21px; font-size: clamp(16px, 1.35vw, 21px); }
+  .turkluxx-call:hover { filter: brightness(1.08); }
+  .turkluxx-sales-heading { position: absolute; top: 14.3vh; left: 28%; width: 51%; text-align: center; text-shadow: 0 2px 10px #071e3460; }
+  .turkluxx-sales-heading h1 { margin: 0; font: 600 clamp(64px, min(7.3vw, 10.4vh), 126px)/.83 'Cormorant Garamond', Georgia, serif; letter-spacing: -.035em; }
+  .turkluxx-sales-heading h1 span { display: block; white-space: nowrap; }
+  .turkluxx-sales-heading h1 span:first-child { color: #f3d992; margin-bottom: .08em; }
+  .turkluxx-sales-heading p { margin: 1.7vh 0 0; font-size: clamp(15px, min(1.55vw, 2.5vh), 25px); letter-spacing: .32em; line-height: 1.5; font-weight: 500; }
+  .turkluxx-ornament { display: flex; align-items: center; justify-content: center; gap: 9px; width: 45%; margin: 1vh auto 0; color: #f3d992; font-size: 27px; line-height: 1; }
+  .turkluxx-ornament::before, .turkluxx-ornament::after { content: ''; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, #d8b66a); }
+  .turkluxx-ornament::after { transform: rotate(180deg); }
+  .turkluxx-citizenship { position: absolute; left: var(--turkluxx-edge); top: 24vh; width: 29.3%; max-width: 490px; padding: clamp(17px, 2vh, 24px) 1.5vw; color: #111c20; border: 2px solid #d8b66a; border-radius: 22px; background: linear-gradient(115deg, #f9eac0, #f3d992 60%, #e3bb6d); box-shadow: inset 0 0 0 2px #fffdf740, 0 8px 22px #071e3428; }
+  .turkluxx-citizenship-top { display: grid; grid-template-columns: 39% 1fr; align-items: center; gap: 1.3vw; }
+  .turkluxx-passport { display: block; width: 100%; height: clamp(132px, 20vh, 222px); object-fit: contain; border-radius: 5px; transform: rotate(-7deg); box-shadow: 0 6px 8px #4c2b243b; }
+  .turkluxx-citizenship h2 { margin: 0; font: 600 clamp(24px, min(2.4vw, 3.6vh), 38px)/.95 'Cormorant Garamond', Georgia, serif; letter-spacing: -.04em; }
+  .turkluxx-citizenship h2 small { display: block; margin-top: 4px; font-size: .77em; white-space: nowrap; }
+  .turkluxx-citizenship-top p { margin: 10px 0 0; font-size: clamp(14px, min(1.45vw, 2.3vh), 22px); line-height: 1.3; }
+  .turkluxx-citizenship-benefits { list-style: none; padding: 0; margin: 1.7vh 0; font-size: clamp(14px, min(1.4vw, 2.2vh), 21px); line-height: 1.55; }
+  .turkluxx-citizenship-benefits li { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+  .turkluxx-citizenship-benefits li::before { content: '\2713'; font-size: 1.3em; font-weight: 700; line-height: 1; }
+  .turkluxx-learn { display: flex; align-items: center; gap: 25px; margin-left: 30px; color: #111c20; font-size: clamp(17px, 1.5vw, 23px); font-weight: 600; text-underline-offset: 4px; }
+  .turkluxx-learn span { font-size: 30px; line-height: 1; }
+  .turkluxx-lifestyle { position: absolute; left: 3.4vw; bottom: calc(var(--turkluxx-strip) + 5.8vh); width: 30%; text-shadow: 0 2px 9px #001b21, 0 0 20px #001b21; }
+  .turkluxx-lifestyle > p { margin: 0; color: #f8e8ba; font: 400 clamp(45px, min(5.4vw, 7.5vh), 88px)/.92 'Oooh Baby', cursive; transform: rotate(-7deg); }
+  .turkluxx-lifestyle > p span { display: block; margin-left: 4px; white-space: nowrap; }
+  .turkluxx-lifestyle > small { display: block; margin-top: 2.8vh; font-size: clamp(13px, 1.22vw, 20px); letter-spacing: .12em; line-height: 1.5; text-align: center; }
+  .turkluxx-call-bottom { position: absolute; bottom: calc(var(--turkluxx-strip) + 1.2vh); left: 50%; transform: translateX(-50%); min-width: 33%; min-height: 9vh; padding: 9px 30px; font-size: clamp(21px, min(2.4vw, 3.3vh), 36px); }
+  .turkluxx-call-bottom .turkluxx-phone-icon { width: 54px; height: 54px; }
+  .turkluxx-climate { position: absolute; right: var(--turkluxx-edge); bottom: calc(var(--turkluxx-strip) + 2vh); display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 2px solid #d8b66a; border-radius: 20px; background: #031c24df; box-shadow: inset 0 0 15px #f3d9920d; }
+  .turkluxx-climate svg { width: clamp(42px, 4.2vw, 65px); height: auto; fill: #f3d992; stroke: #d8b66a; stroke-width: 2; stroke-linecap: round; }
+  .turkluxx-climate p { margin: 0; font-size: clamp(12px, 1.02vw, 16px); line-height: 1.4; }
+  .turkluxx-climate p + p { margin-top: 8px; }
+  .turkluxx-benefits { position: absolute; inset: auto 0 0; display: grid; grid-template-columns: repeat(6, 1fr) 1.4fr; height: var(--turkluxx-strip); padding: 12px 1vw; margin: 0; list-style: none; border-top: 1px solid #d8b66a; background: #021c25ed; }
+  .turkluxx-benefit { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-align: center; font-size: clamp(11px, 1vw, 16px); line-height: 1.3; }
+  .turkluxx-benefit + .turkluxx-benefit::before { content: ''; position: absolute; left: 0; top: 8%; bottom: 8%; width: 1px; background: linear-gradient(transparent, #d8b66ab0, transparent); }
+  .turkluxx-benefit svg { width: clamp(32px, 4.8vh, 56px); height: clamp(32px, 4.8vh, 56px); fill: none; stroke: #d8b66a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .turkluxx-sales-hero :focus-visible { outline: 3px solid #fffdf7; outline-offset: 5px; }
+}
+/* Keep the left-hand messages separate on shorter desktop viewports. */
+@media (min-width: 1200px) {
+  .turkluxx-citizenship { top: 22vh; padding-block: 1.6vh; }
+  .turkluxx-passport { height: clamp(125px, 17vh, 195px); }
+  .turkluxx-citizenship-benefits { margin-block: 1.2vh; line-height: 1.4; }
+  .turkluxx-lifestyle { bottom: calc(var(--turkluxx-strip) + 3vh); }
+  .turkluxx-lifestyle > p { font-size: clamp(44px, min(5.1vw, 6.4vh), 78px); }
+  .turkluxx-lifestyle > small { margin-top: 2vh; }
+  .turkluxx-sales-hero::after { content: ''; position: absolute; inset: 0 0 var(--turkluxx-strip); z-index: -2; background: url('assets/istanbul-family-hero.png') center / cover no-repeat; }
+}
