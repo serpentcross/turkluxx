@@ -417,3 +417,11 @@
 }
 
 .turkluxx-developer-heading-gold { color: #d8b66a; }
+.turkluxx-developer .turkluxx-section-copy { container-type: inline-size; }
+.turkluxx-developer .turkluxx-section-heading { width: 100%; font-size: clamp(32px, 8.5cqw, 50px); line-height: 1.08; text-align: center; text-wrap: balance; }
+.turkluxx-developer-heading-line { display: block; }
+.turkluxx-call-top strong { letter-spacing: -.02em; }
+.turkluxx-call-bottom strong { font-size: .75em; line-height: 1.6; }
+@media (width < 1200px) {
+  .turkluxx-call-bottom strong { line-height: 1.6666667; }
+}
