@@ -395,3 +395,25 @@
   .turkluxx-benefit { font-size: 13px; }
   .turkluxx-benefit:last-child { grid-column: auto; }
 }
+/* Karaarslan and TurkLuxx partnership composition. */
+.turkluxx-developer { min-height: 0; padding: 40px clamp(24px, 5vw, 96px); background: #fff; color: #212c6c; font-family: 'Manrope', sans-serif; }
+.turkluxx-developer, .turkluxx-developer * { box-sizing: border-box; }
+.turkluxx-developer .turkluxx-section-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr) minmax(0, 1.2fr); align-items: center; gap: 40px; width: 100%; max-width: 1440px; margin-inline: auto; }
+.turkluxx-developer-identity { display: flex; justify-content: center; align-items: center; }
+.turkluxx-developer .turkluxx-developer-logo { display: block; width: 440px; max-width: 100%; height: auto; }
+.turkluxx-developer-brand { justify-self: center; width: 100%; max-width: 370px; container-type: inline-size; text-align: center; }
+.turkluxx-developer-brand > span { font-size: clamp(30px, 22cqw, 88px); line-height: 1.05; font-weight: 700; letter-spacing: -2px; background: linear-gradient(175deg, #fff1bf 12%, #d8b66a 50%, #b78a40 79%, #f3d992); background-clip: text; -webkit-text-fill-color: transparent; }
+@media (width < 1200px) {
+  .turkluxx-desktop-sections { display: block; }
+  .turkluxx-project { display: none; }
+  .turkluxx-developer .turkluxx-section-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 740px; }
+  .turkluxx-developer .turkluxx-section-heading { margin: 0 0 16px; font: 500 48px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: -1px; }
+  .turkluxx-developer .turkluxx-section-body { margin: 0; font-size: 17px; font-weight: 500; line-height: 1.65; }
+  .turkluxx-developer-statement { margin: 20px 0 18px; font-size: 19px; font-weight: 600; line-height: 1.5; }
+  .turkluxx-developer .turkluxx-section-link { display: inline-flex; align-items: center; gap: 14px; color: #212c6c; font-size: 14px; font-weight: 500; line-height: 1.5; text-decoration: none; text-underline-offset: 5px; }
+  .turkluxx-developer .turkluxx-section-link:hover { text-decoration: underline; }
+  .turkluxx-developer a:focus-visible { outline: 2px solid #212c6c; outline-offset: 5px; }
+  .turkluxx-developer-brand > span { font-size: min(76px, 22cqw); }
+}
+
+.turkluxx-developer-heading-gold { color: #d8b66a; }
