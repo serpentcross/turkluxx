@@ -144,6 +144,24 @@
 /* New sections are desktop-only until the smaller-screen design is commissioned. */
 .turkluxx-desktop-sections { display: none; }
 
+/* Services content supplied for the desktop homepage. */
+.turkluxx-services { display: none; }
+@media (min-width: 1200px) {
+  .turkluxx-services { display: block; padding: 64px clamp(32px, 5vw, 96px); background: #fffdf7; color: #212c6c; font-family: 'Manrope', sans-serif; }
+  .turkluxx-services, .turkluxx-services * { box-sizing: border-box; }
+  .turkluxx-services-inner { width: 100%; max-width: 1440px; margin-inline: auto; }
+  .turkluxx-services-label { margin: 0 0 16px; font-size: 12px; line-height: 1.5; font-weight: 600; letter-spacing: .18em; }
+  .turkluxx-services h2 { margin: 0 0 40px; font: 500 clamp(48px, 3.6vw, 64px)/1.08 'Cormorant Garamond', Georgia, serif; letter-spacing: -.02em; }
+  .turkluxx-services-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+  .turkluxx-services-steps li { padding-inline: 28px; }
+  .turkluxx-services-steps li:first-child { padding-left: 0; }
+  .turkluxx-services-steps li:last-child { padding-right: 0; }
+  .turkluxx-services-steps li + li { border-left: 1px solid rgb(216 182 106 / 45%); }
+  .turkluxx-services-number { display: block; margin-bottom: 10px; color: #9b793b; font-size: 13px; line-height: 1.5; letter-spacing: .1em; }
+  .turkluxx-services h3 { margin: 0 0 10px; font: 600 30px/1.15 'Cormorant Garamond', Georgia, serif; }
+  .turkluxx-services-steps p { max-width: 32ch; margin: 0; font-size: 16px; line-height: 1.65; }
+}
+
 @media (min-width: 1200px) {
   .turkluxx-desktop-sections {
     display: block;
@@ -407,7 +425,6 @@
 .turkluxx-developer-brand > span { font-size: clamp(30px, 22cqw, 88px); line-height: 1.05; font-weight: 700; letter-spacing: -2px; background: linear-gradient(175deg, #fff1bf 12%, #d8b66a 50%, #b78a40 79%, #f3d992); background-clip: text; -webkit-text-fill-color: transparent; }
 @media (width < 1200px) {
   .turkluxx-desktop-sections { display: block; }
-  .turkluxx-project { display: none; }
   .turkluxx-developer .turkluxx-section-layout { grid-template-areas: 'identity brand' 'content content'; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 24px; max-width: 740px; }
   .turkluxx-developer .turkluxx-section-heading { margin: 0 0 16px; font: 500 48px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: -1px; }
   .turkluxx-developer .turkluxx-section-body { margin: 0; font-size: 17px; font-weight: 500; line-height: 1.65; }
@@ -551,5 +568,134 @@
     /* TurkLuxx — дальше вправо */
     .turkluxx-developer-brand {
         transform: translateX(120px);
+    }
+}
+
+@media (max-width: 1199px) {
+    .turkluxx-developer-brand {
+        transform: scale(1.2);
+        transform-origin: center;
+    }
+}
+
+/* Property components: explicit desktop columns and image-first narrow screens. */
+.turkluxx-project { display: block; min-height: 0; padding: 0; color: #212c6c; background: #f7f5f1; font-family: 'Manrope', sans-serif; }
+.turkluxx-project, .turkluxx-project * { box-sizing: border-box; min-width: 0; }
+.turkluxx-project .turkluxx-section-layout { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'image' 'content'; align-items: stretch; gap: 0; width: 100%; max-width: 1440px; margin-inline: auto; }
+.turkluxx-project-media { grid-area: image; position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 240px; overflow: hidden; }
+.turkluxx-project .turkluxx-project-image { display: block; position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 74% center; }
+.turkluxx-project .turkluxx-section-copy { grid-area: content; align-self: center; width: 100%; max-width: none; padding: 24px; }
+.turkluxx-project .turkluxx-section-label { margin: 0 0 12px; font-size: 12px; font-weight: 500; line-height: 1.5; letter-spacing: .16em; text-transform: uppercase; }
+.turkluxx-project .turkluxx-project-heading { margin: 0 0 14px; font: 500 clamp(40px, 10vw, 54px)/1.05 'Cormorant Garamond', Georgia, serif; letter-spacing: -.02em; }
+.turkluxx-project .turkluxx-project-subheading { margin: 0 0 20px; font-size: 23px; font-weight: 500; line-height: 1.35; }
+.turkluxx-project .turkluxx-section-body { max-width: 66ch; margin: 0; font-size: 17px; line-height: 1.65; }
+.turkluxx-project .turkluxx-project-highlight { max-width: 66ch; margin: 18px 0 12px; font-size: 17px; font-weight: 600; line-height: 1.65; }
+.turkluxx-project .turkluxx-project-statement { margin: 0 0 24px; font-size: 17px; line-height: 1.65; }
+.turkluxx-project .turkluxx-project-cta { display: inline-flex; align-items: center; justify-content: center; width: auto; max-width: 100%; min-height: 56px; height: auto; padding: 14px 22px; border: 1px solid #212c6c; border-radius: 0; color: #fff; background: #212c6c; font-size: 16px; font-weight: 600; line-height: 1.5; text-align: center; text-decoration: none; }
+.turkluxx-project .turkluxx-project-cta:hover { background: #172154; }
+.turkluxx-project a:focus-visible { outline: 2px solid #212c6c; outline-offset: 5px; }
+@media (min-width: 1200px) {
+  .turkluxx-project { padding: 48px clamp(32px, 5vw, 96px); }
+  .turkluxx-project .turkluxx-section-layout { grid-template-areas: 'image content'; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); min-height: 540px; }
+  .turkluxx-project--reverse .turkluxx-section-layout { grid-template-areas: 'content image'; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  .turkluxx-project-media { aspect-ratio: auto; max-height: none; }
+  .turkluxx-project .turkluxx-section-copy { padding: 32px 0 32px clamp(40px, 4vw, 64px); }
+  .turkluxx-project--reverse .turkluxx-section-copy { padding: 32px clamp(40px, 4vw, 64px) 32px 0; }
+  .turkluxx-project .turkluxx-project-heading { font-size: clamp(72px, 5.4vw, 88px); }
+  .turkluxx-project .turkluxx-project-subheading { margin-bottom: 24px; font-size: 30px; }
+  .turkluxx-project .turkluxx-section-body,
+  .turkluxx-project .turkluxx-project-highlight,
+  .turkluxx-project .turkluxx-project-statement { font-size: 19px; }
+  .turkluxx-project .turkluxx-project-cta { font-size: 17px; padding-inline: 26px; }
+}
+
+@media (min-width: 1200px) {
+    .turkluxx-project {
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .turkluxx-project .turkluxx-section-layout {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .turkluxx-project--reverse .turkluxx-section-copy {
+        grid-column: 1;
+        grid-row: 1;
+
+        width: 760px;
+        max-width: calc(100% - 48px);
+
+        justify-self: end;
+
+        padding: 0 48px 0 0;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        /* ВОТ ЭТО ГЛАВНОЕ */
+        text-align: right;
+    }
+
+    .turkluxx-project--reverse .turkluxx-section-copy > * {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .turkluxx-project--reverse .turkluxx-project-cta {
+        width: auto;
+        align-self: flex-end;
+    }
+
+    .turkluxx-project--reverse .turkluxx-project-media {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}@media (min-width: 1200px) {
+
+    .turkluxx-project--reverse .turkluxx-section-copy {
+        grid-column: 1;
+        grid-row: 1;
+
+        width: 760px;
+        max-width: calc(100% - 48px);
+
+        justify-self: end;
+
+        padding: 0 48px 0 0;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        /* ВОТ ЭТО ГЛАВНОЕ */
+        text-align: right;
+    }
+
+    .turkluxx-project--reverse .turkluxx-section-copy > * {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .turkluxx-project--reverse .turkluxx-project-cta {
+        width: auto;
+        align-self: flex-end;
+    }
+
+    .turkluxx-project--reverse .turkluxx-project-media {
+        grid-column: 2;
+        grid-row: 1;
     }
 }
