@@ -332,17 +332,17 @@
 
 @media (max-width: 767px) {
   .turkluxx-sales-hero {
-    grid-template-areas: 'logo language' 'nav nav' 'heading heading' 'primary primary' 'view view' 'citizenship citizenship' 'secondary secondary' 'climate climate' 'benefits benefits';
+    grid-template-areas: 'logo language' 'nav nav' 'heading heading' 'primary primary' 'citizenship citizenship' 'secondary secondary' 'climate climate' 'benefits benefits';
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 20px;
     padding: 20px 20px 0;
   }
   .turkluxx-sales-hero::before {
     height: 650px;
-    background: linear-gradient(180deg, #071e342b, transparent 35%, transparent 65%, #071e34 100%), url('assets/istanbul-family-hero.png') 82% top / auto 620px no-repeat;
+    background: linear-gradient(180deg, rgb(7 30 52 / 18%), transparent 30%, transparent 590px, #071e34 620px), url('assets/istanbul-family-hero.png') 82% top / auto 620px no-repeat;
   }
-  /* This short scenic row keeps the family and villa visible between the CTA and card. */
-  .turkluxx-sales-hero::after { content: ''; grid-area: view; min-height: 145px; }
+  /* Use the same grid gap above and below the citizenship card. */
+  .turkluxx-sales-hero::after { content: none; }
   .turkluxx-sales-header { display: contents; }
   .turkluxx-sales-logo { grid-area: logo; }
   .turkluxx-sales-logo > span { font-size: 38px; }
@@ -352,11 +352,11 @@
   .turkluxx-sales-nav { grid-area: nav; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; border-block: 1px solid #f3d99240; background: #071e3440; border-radius: 8px; }
   .turkluxx-sales-nav a { font-size: 14px; min-height: 44px; }
   .turkluxx-sales-heading { padding: 4px 0 0; }
-  .turkluxx-sales-heading h1 { font-size: clamp(38px, 10.5vw, 72px); line-height: .95; }
+  .turkluxx-sales-heading h1 { padding: 12px 16px; border-radius: 8px; background: rgba(7, 30, 52, .25); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); font-size: clamp(35.34px, 9.765vw, 66.96px); line-height: .95; }
   .turkluxx-sales-heading p { margin-top: 16px; font-size: clamp(12px, 3.2vw, 15px); letter-spacing: .19em; line-height: 1.6; }
   .turkluxx-ornament { margin-top: 10px; font-size: 24px; }
-  .turkluxx-call-top { grid-area: primary; justify-self: center; width: min(100%, 390px); font-size: 20px; min-height: 72px; }
-  .turkluxx-citizenship { width: 100%; max-width: 480px; justify-self: center; padding: 22px; }
+  .turkluxx-call-top { grid-area: primary; margin-top: 154px; justify-self: center; width: min(100%, 390px); font-size: 20px; min-height: 72px; }
+  .turkluxx-citizenship { width: 100%; max-width: 480px; justify-self: center; margin-top: 0; padding: 22px; }
   .turkluxx-citizenship-top { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 18px; }
   .turkluxx-citizenship h2 { font-size: clamp(26px, 6.9vw, 34px); }
   .turkluxx-citizenship-top p { font-size: 15px; }
