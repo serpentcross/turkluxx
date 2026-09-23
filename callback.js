@@ -1,13 +1,15 @@
 (() => {
   const dialog = document.querySelector('#turkluxx-callback');
-  const trigger = document.querySelector('.turkluxx-callback-trigger');
+  const triggers = document.querySelectorAll('.turkluxx-callback-trigger');
+  let trigger;
   const form = dialog.querySelector('form');
   const status = dialog.querySelector('[role="status"]');
   let scrollY = 0;
   let bodyStyle;
   let closing = false;
 
-  trigger.addEventListener('click', () => {
+  triggers.forEach(button => button.addEventListener('click', () => {
+    trigger = button;
     scrollY = window.scrollY;
     bodyStyle = document.body.getAttribute('style');
     Object.assign(document.body.style, {
@@ -15,7 +17,7 @@
     });
     status.textContent = '';
     dialog.showModal();
-  });
+  }));
 
   function close() {
     if (closing || !dialog.open) return;

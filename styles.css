@@ -458,3 +458,29 @@
   .turkluxx-callback[open], .turkluxx-callback::backdrop { animation: none; }
   .turkluxx-callback-trigger { transition: none; }
 }
+
+/* The primary mobile CTA retains the approved space below the hero text. */
+.turkluxx-mobile-primary-ctas { display: contents; }
+.turkluxx-mobile-callback-trigger { display: none; }
+.turkluxx-lower-callback-icon { display: none; }
+@media (max-width: 767px) {
+  .turkluxx-lower-callback-icon { display: block; flex: 0 0 24px; width: 24px; height: 24px; margin-right: 12px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .turkluxx-mobile-primary-ctas {
+    grid-area: primary;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    justify-self: center;
+    width: min(100%, 390px);
+    margin-top: 154px;
+  }
+  .turkluxx-mobile-primary-ctas > * { width: 100%; height: 64px; min-height: 64px; }
+  .turkluxx-mobile-primary-ctas .turkluxx-call-top { grid-area: auto; margin-top: 0; min-height: 64px; }
+  .turkluxx-mobile-callback-trigger { display: flex; gap: 12px; }
+  .turkluxx-mobile-callback-trigger svg { flex: 0 0 24px; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .turkluxx-callback { width: min(420px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 32px 24px 28px; overscroll-behavior: contain; scroll-padding-block: 20px; }
+}
+
+@media (min-width: 1200px) {
+  .turkluxx-lower-callback-icon { display: block; flex: 0 0 24px; width: 24px; height: 24px; margin-right: 12px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+}
