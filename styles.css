@@ -1867,7 +1867,6 @@
 
 .turkluxx-developer-identity,
 .turkluxx-developer-brand {
-    display: flex;
     align-items: center;
     justify-content: center;
     align-self: stretch;
@@ -1887,12 +1886,11 @@
     grid-area: brand;
     max-width: 370px;
     container-type: inline-size;
-    text-align: center;
 }
 
 .turkluxx-developer-brand > span {
-    font-size: clamp(30px, 22cqw, 88px);
-    line-height: 1.05;
+    font-size: clamp(30px, 22cqw, 90px);
+    line-height: 0.90;
     font-weight: 700;
     letter-spacing: -2px;
     background: linear-gradient(175deg, #fff1bf 12%, #d8b66a 50%, #b78a40 79%, #f3d992);
@@ -2749,16 +2747,310 @@
     }
 }
 
-@media (max-width: 1199px) {
-    .turkluxx-developer-identity,
-    .turkluxx-developer-brand {
-        transform: translateX(-12px);
+/* Homepage closing sections. Scoped to preserve every existing section. */
+.turkluxx-final-cta, .turkluxx-footer {
+    --turkluxx-ink: #212c6c;
+    font-family: 'Manrope', sans-serif;
+}
+
+.turkluxx-final-cta, .turkluxx-final-cta *, .turkluxx-footer, .turkluxx-footer * {
+    box-sizing: border-box;
+}
+
+.turkluxx-final-cta {
+    display: flex;
+    align-items: center;
+    min-height: 620px;
+    padding: 100px clamp(32px, 5vw, 96px);
+    color: #fffdf7;
+    background: linear-gradient(90deg, rgb(8 21 38 / 79%), rgb(8 21 38 / 54%) 43%, rgb(8 21 38 / 8%) 78%), url('assets/turkluxx-villa.png') center 58% / cover no-repeat;
+}
+
+.turkluxx-final-inner {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+}
+
+.turkluxx-final-cta .turkluxx-eyebrow {
+    margin-bottom: 24px;
+    color: #f3d992;
+    font-size: 12px;
+    letter-spacing: .18em;
+}
+
+.turkluxx-final-cta h2 {
+    max-width: 650px;
+    margin: 0;
+    font: 500 clamp(64px, 5.4vw, 88px)/1.02 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -.02em;
+}
+
+.turkluxx-final-body {
+    max-width: 460px;
+    margin: 26px 0 32px;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.turkluxx-final-cta .turkluxx-final-button {
+    display: inline-flex;
+    gap: 22px;
+    max-width: 100%;
+    min-height: 56px;
+    height: auto;
+    padding: 16px 26px;
+    border: 1px solid #212c6c;
+    border-radius: 0;
+    color: #fff;
+    background: #212c6c;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font: 500 14px/1.5 'Manrope', sans-serif;
+    letter-spacing: 0;
+    white-space: normal;
+    text-align: left;
+}
+
+.turkluxx-final-cta .turkluxx-final-button:hover {
+    background: #172154;
+}
+
+.turkluxx-final-button > span:last-child {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.turkluxx-final-cta :focus-visible, .turkluxx-footer :focus-visible {
+    outline: 2px solid #f3d992;
+    outline-offset: 5px;
+}
+
+.turkluxx-footer {
+    padding: 72px clamp(32px, 5vw, 96px) 28px;
+    background: #212c6c;
+    color: #eee9df;
+}
+
+.turkluxx-footer-inner {
+    max-width: 1440px;
+    margin-inline: auto;
+}
+
+.turkluxx-footer-columns {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 64px;
+}
+
+.turkluxx-footer .turkluxx-logo {
+    color: #eee9df;
+}
+
+.turkluxx-footer-brand p {
+    margin: 20px 0 0;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.turkluxx-footer h2 {
+    margin: 4px 0 22px;
+    color: #f3d992;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.turkluxx-footer-nav a {
+    display: block;
+    width: fit-content;
+    padding-block: 10px;
+    color: #eee9df;
+    font-size: 13px;
+    line-height: 1.7;
+    text-decoration: none;
+    text-underline-offset: 5px;
+}
+
+.turkluxx-footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.turkluxx-footer dl {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.turkluxx-footer dl > div + div {
+    margin-top: 16px;
+}
+
+.turkluxx-footer dt {
+    color: #eee9df;
+}
+
+.turkluxx-footer dd {
+    margin: 2px 0 0;
+    color: #c4c7da;
+    overflow-wrap: anywhere;
+}
+
+.turkluxx-footer-registration {
+    margin: 46px 0 24px;
+    color: #c4c7da;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.turkluxx-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(238 233 223 / 22%);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.turkluxx-footer-bottom p {
+    margin: 0;
+}
+
+.turkluxx-footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+}
+
+.turkluxx-footer-legal small {
+    width: 100%;
+    color: #c4c7da;
+    font-size: 10px;
+    text-align: right;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .turkluxx-final-cta {
+        min-height: 540px;
+        padding-block: 76px;
+        background-position: 62% center;
     }
 
-    .turkluxx-developer-brand span {
-        font-size: 47px;
-        line-height: 1;
-        display: block;
-        transform: translateY(-2px);
+    .turkluxx-final-cta h2 {
+        font-size: 64px;
+    }
+
+    .turkluxx-final-body {
+        max-width: 400px;
+        font-size: 16px;
+    }
+
+    .turkluxx-footer {
+        padding-top: 56px;
+    }
+
+    .turkluxx-footer-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 48px;
+    }
+
+    .turkluxx-footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .turkluxx-footer-brand p {
+        margin-top: 12px;
+    }
+
+    .turkluxx-footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .turkluxx-footer-legal small {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
+    .turkluxx-final-cta {
+        align-items: flex-end;
+        min-height: 520px;
+        padding: 64px 24px 40px;
+        background-image: linear-gradient(180deg, rgb(8 21 38 / 12%), rgb(8 21 38 / 74%) 40%, rgb(8 21 38 / 91%)), url('assets/turkluxx-villa.png');
+        background-position: 70% center;
+    }
+
+    .turkluxx-final-cta .turkluxx-eyebrow {
+        max-width: 290px;
+        margin-bottom: 18px;
+        font-size: 10px;
+        line-height: 1.8;
+        letter-spacing: .14em;
+    }
+
+    .turkluxx-final-cta h2 {
+        font-size: clamp(44px, 11vw, 60px);
+        line-height: 1.04;
+    }
+
+    .turkluxx-final-body {
+        max-width: 380px;
+        margin: 20px 0 26px;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .turkluxx-final-cta .turkluxx-final-button {
+        justify-content: space-between;
+        width: 100%;
+        max-width: 380px;
+        padding-inline: 18px;
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .turkluxx-footer {
+        padding: 40px 24px 24px;
+    }
+
+    .turkluxx-footer-columns {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .turkluxx-footer .turkluxx-logo-word {
+        font-size: 44px;
+    }
+
+    .turkluxx-footer-brand p {
+        margin-top: 12px;
+    }
+
+    .turkluxx-footer h2 {
+        margin: 0 0 12px;
+    }
+
+    .turkluxx-footer-registration {
+        margin: 32px 0 20px;
+    }
+
+    .turkluxx-footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 20px;
+    }
+
+    .turkluxx-footer-legal {
+        gap: 8px 18px;
+    }
+
+    .turkluxx-footer-legal small {
+        text-align: left;
     }
 }
