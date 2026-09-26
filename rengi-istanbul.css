@@ -1,0 +1,358 @@
+/* Page-only layout. Header markup and all header controls use styles.css unchanged. */
+.rengi-page {
+    background: #071e34;
+    color: #fffdf7;
+    font-family: 'Manrope', sans-serif;
+}
+
+.rengi-page .rengi-header-shell {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 24px;
+    background: #071e34;
+}
+
+.rengi-page .rengi-header-shell::before,
+.rengi-page .rengi-header-shell::after {
+    content: none;
+}
+
+.rengi-hero, .rengi-hero * { box-sizing: border-box; }
+
+.rengi-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: max(690px, calc(100svh - 145px));
+    background: linear-gradient(90deg, rgb(7 30 52 / 85%), rgb(7 30 52 / 66%) 30%, rgb(7 30 52 / 12%) 65%, transparent 85%),
+        url('assets/turkluxx-villa.png') 65% center / cover no-repeat;
+}
+
+.rengi-content {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 64px clamp(24px, 6vw, 100px);
+}
+
+.rengi-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 25px;
+    color: #f3d992;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .24em;
+}
+
+.rengi-label::before { content: ''; width: 38px; height: 1px; background: #d8b66a; }
+.rengi-content h1 {
+    margin: 0;
+    font: 500 clamp(76px, 7.7vw, 118px)/.88 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: .015em;
+}
+.rengi-content h1 span { display: block; margin-top: 8px; }
+.rengi-subheading {
+    margin: 28px 0 16px;
+    font: 500 clamp(25px, 2.3vw, 34px)/1.2 'Cormorant Garamond', Georgia, serif;
+}
+.rengi-description { max-width: 540px; margin: 0; font-size: 14px; line-height: 1.9; }
+.rengi-actions { display: flex; align-items: center; gap: 32px; margin-top: 30px; }
+.rengi-actions .rengi-request {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    width: auto;
+    height: auto;
+    min-height: 54px;
+    padding: 16px 24px;
+    border: 1px solid #d8b66a;
+    border-radius: 0;
+    background: #d8b66a;
+    color: #071e34;
+    box-shadow: none;
+    backdrop-filter: none;
+    font: 700 11px/1.5 'Manrope', sans-serif;
+    letter-spacing: .1em;
+    cursor: pointer;
+}
+.rengi-request span { font-size: 22px; line-height: 1; }
+.rengi-actions .rengi-request:hover { background: #f3d992; }
+.rengi-video-wrap { position: relative; }
+.rengi-video {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 54px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fffdf7;
+    font: 600 11px 'Manrope', sans-serif;
+    letter-spacing: .1em;
+}
+.rengi-play { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #d8b66a; border-radius: 50%; color: #f3d992; font-size: 19px; }
+.rengi-video-wrap small { display: block; margin-left: 48px; color: #eee9df; font-size: 10px; }
+.rengi-facts {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 28px clamp(24px, 6vw, 100px);
+    border-top: 1px solid rgb(216 182 106 / 40%);
+    background: rgb(7 30 52 / 94%);
+    list-style: none;
+}
+.rengi-facts li { padding: 0 24px; border-left: 1px solid rgb(216 182 106 / 30%); }
+.rengi-facts li:first-child { padding-left: 0; border: 0; }
+.rengi-facts strong { display: block; color: #f3d992; font-size: 15px; font-weight: 600; line-height: 1.6; }
+.rengi-facts span { display: block; margin-top: 4px; font-size: 12px; line-height: 1.6; }
+.rengi-hero :focus-visible { outline: 2px solid #f3d992; outline-offset: 5px; }
+
+@media (768px <= width < 1200px) {
+    .rengi-page .rengi-header-shell { grid-template-areas: 'header header'; }
+    .rengi-content { padding-block: 64px; }
+    .rengi-facts li { padding-inline: 14px; }
+    .rengi-facts strong { font-size: 13px; }
+}
+
+@media (max-width: 767px) {
+    /* Keep the original mobile grid and CTA spacing used by the shared header. */
+    .rengi-page .rengi-header-shell { grid-template-areas: 'logo language' 'nav nav' 'primary primary'; }
+    .rengi-hero {
+        min-height: 0;
+        padding-top: 180px;
+        background-image: linear-gradient(180deg, transparent 30px, rgb(7 30 52 / 35%) 160px, #071e34 540px), url('assets/turkluxx-villa.png');
+        background-size: 100% 100%, auto 600px;
+        background-position: top, 72% top;
+        background-color: #071e34;
+    }
+    .rengi-content { padding: 32px 24px 40px; }
+    .rengi-content h1 { font-size: clamp(54px, 14vw, 100px); }
+    .rengi-label { font-size: 10px; margin-bottom: 22px; }
+    .rengi-subheading { max-width: 340px; font-size: 28px; }
+    .rengi-description { max-width: 400px; font-size: 13px; }
+    .rengi-desktop-break { display: none; }
+    .rengi-actions { align-items: stretch; flex-direction: column; gap: 18px; max-width: 390px; }
+    .rengi-video-wrap { align-self: center; }
+    .rengi-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px 24px 24px; }
+    .rengi-facts li, .rengi-facts li:first-child { padding: 20px 8px 16px 0; border: 0; border-bottom: 1px solid rgb(216 182 106 / 22%); }
+    .rengi-facts li:nth-child(even) { padding-left: 16px; }
+    .rengi-facts li:last-child { grid-column: 1 / -1; border-bottom: 0; }
+    .rengi-facts strong { font-size: 14px; }
+}
+
+/* Project overview: isolated from the approved header and hero. */
+.rengi-overview,
+.rengi-overview * {
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.rengi-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    background: #f7f5f1;
+    color: #212c6c;
+    font-family: 'Manrope', sans-serif;
+}
+
+.rengi-overview-copy {
+    align-self: center;
+    padding: 48px 24px;
+}
+
+.rengi-overview-eyebrow {
+    margin: 0 0 20px;
+    color: #8c6b30;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .2em;
+}
+
+.rengi-overview h2 {
+    margin: 0 0 24px;
+    font: 500 clamp(38px, 5vw, 48px)/1.08 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -.025em;
+}
+
+.rengi-overview-body {
+    max-width: 52ch;
+    margin: 0 0 28px;
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.rengi-overview .rengi-overview-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    min-height: 48px;
+    margin: 0;
+    padding: 12px 18px;
+    border: 1px solid #b49860;
+    border-radius: 0;
+    background: transparent;
+    color: #212c6c;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font: 700 10px/1.5 'Manrope', sans-serif;
+    letter-spacing: .08em;
+    white-space: normal;
+    cursor: pointer;
+}
+
+.rengi-overview-cta span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.rengi-overview .rengi-overview-cta:hover {
+    background: #eee9df;
+}
+
+.rengi-overview .rengi-overview-cta:focus-visible {
+    outline: 2px solid #212c6c;
+    outline-offset: 5px;
+}
+
+.rengi-overview-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+}
+
+.rengi-overview-media img {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% center;
+}
+
+@media (min-width: 768px) {
+    .rengi-overview-copy {
+        padding: 56px 40px;
+    }
+
+    .rengi-overview-media {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (min-width: 1200px) {
+    .rengi-overview {
+        grid-template-columns: minmax(0, 35fr) minmax(0, 65fr);
+        min-height: 530px;
+    }
+
+    .rengi-overview-copy {
+        padding: 56px clamp(32px, 3.3vw, 64px);
+    }
+
+    .rengi-overview h2 {
+        font-size: clamp(38px, 3.05vw, 56px);
+    }
+
+    .rengi-overview-media {
+        aspect-ratio: auto;
+    }
+}
+
+/* Remaining property sections: no selectors target approved components. */
+.rengi-section, .rengi-section * { box-sizing: border-box; min-width: 0; }
+.rengi-section { padding: 76px clamp(24px, 5vw, 96px); background: #f7f5f1; color: #212c6c; font-family: 'Manrope', sans-serif; }
+.rengi-section-eyebrow { margin: 0 0 20px; color: #8c6b30; font-size: 11px; font-weight: 700; line-height: 1.6; letter-spacing: .18em; }
+.rengi-section h2 { margin: 0 0 24px; font: 500 clamp(38px, 3.5vw, 58px)/1.08 'Cormorant Garamond', Georgia, serif; letter-spacing: -.025em; }
+.rengi-section-body { max-width: 48ch; margin: 0 0 28px; font-size: 14px; line-height: 1.85; }
+.rengi-section-button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 48px; max-width: 100%; padding: 14px 20px; border: 1px solid #b49860; border-radius: 0; background: transparent; color: #212c6c; font: 700 10px/1.5 'Manrope', sans-serif; letter-spacing: .08em; cursor: pointer; }
+.rengi-section-button span { font-size: 20px; line-height: 1; }
+.rengi-section-button:hover:enabled { background: #eee9df; }
+.rengi-section button:disabled { cursor: default; }
+.rengi-section :focus-visible { outline: 2px solid #8c6b30; outline-offset: 5px; }
+.rengi-note { margin: 16px 0 0; font-size: 11px; line-height: 1.7; }
+.rengi-note a { color: inherit; text-underline-offset: 3px; }
+.rengi-location { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: clamp(28px, 3vw, 56px); align-items: center; border-top: 1px solid #eee9df; }
+.rengi-location h2 { font-size: clamp(34px, 2.8vw, 46px); }
+.rengi-map { position: relative; min-height: 370px; align-self: stretch; overflow: hidden; background: #eee9df; }
+.rengi-map > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.rengi-map-water { fill: #212c6c; opacity: .12; }
+.rengi-map-roads { fill: none; stroke: #f7f5f1; stroke-width: 12; }
+.rengi-map-label { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; text-align: center; }
+.rengi-map-label span { padding: 14px 18px; background: #212c6c; color: #fffdf7; font-size: 11px; letter-spacing: .12em; }
+.rengi-map-label small { padding: 6px 12px; background: #f7f5f1; font-size: 10px; }
+.rengi-landmarks ul { margin: 0; padding: 0; list-style: none; }
+.rengi-landmarks li { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 14px; padding: 19px 0; border-bottom: 1px solid #212c6c26; font-size: 13px; }
+.rengi-landmarks svg { width: 24px; height: 24px; fill: none; stroke: #8c6b30; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.rengi-landmarks strong { font-size: 12px; font-weight: 600; white-space: nowrap; }
+.rengi-explorer { background: #eee9df; }
+.rengi-type-tabs, .rengi-media-tabs { display: flex; overflow-x: auto; scrollbar-width: thin; }
+.rengi-type-tabs { margin: 32px 0; border-bottom: 1px solid #212c6c26; }
+.rengi-type-tabs button, .rengi-media-tabs button { flex-shrink: 0; min-height: 48px; padding: 14px 24px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #212c6c; font: 600 11px/1.5 'Manrope', sans-serif; letter-spacing: .08em; cursor: pointer; }
+.rengi-type-tabs button[aria-selected="true"], .rengi-media-tabs button[aria-selected="true"] { border-bottom-color: #8c6b30; background: #f7f5f1; }
+.rengi-type-tabs button:hover, .rengi-media-tabs button:hover { background: #f7f5f1; }
+.rengi-type-tabs :focus-visible, .rengi-media-tabs :focus-visible { outline-offset: -4px; }
+.rengi-villa-panel { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); grid-template-areas: 'image info' 'tabs info'; gap: 0 48px; }
+.rengi-villa-media { grid-area: image; margin: 0; }
+.rengi-villa-media img { display: block; width: 100%; height: clamp(340px, 31vw, 540px); object-fit: cover; object-position: 65% center; }
+.rengi-villa-media figcaption { min-height: 44px; padding: 12px 0; font-size: 11px; line-height: 1.7; }
+.rengi-media-tabs { grid-area: tabs; align-self: start; }
+.rengi-media-tabs button { padding-inline: 18px; font-size: 10px; }
+.rengi-villa-info { grid-area: info; padding-top: 16px; }
+.rengi-villa-info h3 { margin: 0 0 28px; font: 500 clamp(32px, 2.8vw, 44px)/1.12 'Cormorant Garamond', Georgia, serif; }
+.rengi-villa-info dl { margin: 0; }
+.rengi-villa-info dl > div { display: flex; justify-content: space-between; gap: 20px; padding: 17px 0; border-bottom: 1px solid #212c6c26; font-size: 13px; line-height: 1.5; }
+.rengi-villa-info dd { margin: 0; font-weight: 700; text-align: right; }
+.rengi-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.rengi-experience { display: flex; align-items: center; justify-content: space-between; gap: 40px; min-height: 310px; color: #fffdf7; background: linear-gradient(90deg, #071e34e6, #071e3480), url('assets/istanbul-family-hero.png') center 45% / cover; }
+.rengi-experience .rengi-section-eyebrow { color: #f3d992; }
+.rengi-experience h2 { max-width: 680px; margin-bottom: 0; font-size: clamp(30px, 3vw, 44px); }
+.rengi-experience-action { flex: 0 0 170px; text-align: center; }
+.rengi-experience-action button { display: inline-flex; flex-direction: column; align-items: center; gap: 16px; padding: 0; border: 0; background: none; color: #fffdf7; font: 600 11px 'Manrope', sans-serif; letter-spacing: .12em; }
+.rengi-experience-action button span { display: grid; place-items: center; width: 68px; height: 68px; border: 1px solid #d8b66a; border-radius: 50%; color: #f3d992; font-size: 30px; }
+.rengi-experience-action p { margin: 10px 0 0; font-size: 11px; }
+.rengi-contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 72px; }
+.rengi-contact-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.rengi-form-wide { grid-column: 1 / -1; }
+.rengi-contact-form label { display: block; margin-bottom: 9px; font-size: 12px; font-weight: 600; }
+.rengi-contact-form label span { font-weight: 500; }
+.rengi-contact-form input, .rengi-contact-form textarea { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid #212c6c40; border-radius: 0; background: transparent; color: #212c6c; font: 500 14px/1.6 'Manrope', sans-serif; }
+.rengi-contact-form textarea { display: block; resize: vertical; }
+.rengi-contact-form .rengi-section-button { background: #212c6c; border-color: #212c6c; color: #fffdf7; }
+.rengi-contact-form .rengi-section-button:hover { background: #071e34; }
+.rengi-form-status { margin: 12px 0 0; font-size: 13px; line-height: 1.7; }
+.rengi-form-status:empty { margin: 0; }
+@media (max-width: 1199px) {
+    .rengi-location { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rengi-landmarks { grid-column: 1 / -1; }
+    .rengi-landmarks ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; }
+    .rengi-villa-panel { gap: 0 28px; }
+    .rengi-contact { gap: 40px; }
+}
+@media (max-width: 767px) {
+    .rengi-section { padding: 48px 24px; }
+    .rengi-location, .rengi-contact { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .rengi-map { min-height: 300px; }
+    .rengi-landmarks ul { grid-template-columns: minmax(0, 1fr); }
+    .rengi-location h2 { font-size: 38px; }
+    .rengi-type-tabs { margin-top: 24px; }
+    .rengi-type-tabs button { padding-inline: 18px; }
+    .rengi-villa-panel { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'image' 'tabs' 'info'; }
+    .rengi-villa-media img { height: auto; aspect-ratio: 4 / 3; }
+    .rengi-media-tabs button { padding-inline: 14px; }
+    .rengi-villa-info { padding-top: 32px; }
+    .rengi-experience { min-height: 340px; gap: 28px; flex-direction: column; align-items: flex-start; }
+    .rengi-experience-action { flex-basis: auto; align-self: center; }
+    .rengi-experience-action button span { width: 54px; height: 54px; }
+    .rengi-contact-form { grid-template-columns: minmax(0, 1fr); }
+    .rengi-contact-form .rengi-section-button { width: 100%; }
+}
