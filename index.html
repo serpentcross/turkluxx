@@ -9,17 +9,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@500;600;700&family=Oooh+Baby&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/homepage-desktop.css">
 </head>
-<body class="turkluxx-page">
+<body class="turkluxx-page turkluxx-homepage">
 <!-- Desktop restart. The existing narrow-screen layout remains below. -->
 <section class="turkluxx-sales-hero" aria-labelledby="turkluxx-sales-title">
     <header class="turkluxx-sales-header">
         <a class="turkluxx-sales-logo" href="./" aria-label="TurkLuxx home"><span>TurkLuxx</span><small>EXCEPTIONAL
             HOMES<br>A BRIGHTER TOMORROW</small></a>
-        <nav class="turkluxx-sales-nav" aria-label="Main navigation">
+        <nav class="turkluxx-sales-nav turkluxx-home-narrow-nav" aria-label="Main navigation">
             <a href="/properties">Properties</a><a href="/why-turkluxx">Why TurkLuxx</a><a href="/karaarslan-group">About
             Us</a><a href="/contact">Contact</a>
+        </nav>
+        <nav class="turkluxx-sales-nav turkluxx-home-desktop-nav" aria-label="Main navigation">
+            <a href="#turkluxx-developer-heading" data-home-scroll="about">About TurkLuxx</a>
+            <a href="#turkluxx-home-footer" data-home-scroll="contact">Contact Us</a>
+            <a href="#turkluxx-project-heading" data-home-scroll="properties">Explore Properties</a>
         </nav>
         <div class="turkluxx-sales-language"><img src="assets/us-flag.svg" alt="" width="36" height="36"><select
                 aria-label="Language">
@@ -252,7 +258,7 @@
                 <p class="turkluxx-project-highlight">More than 12% of the project has already been sold, creating
                     strong early momentum.</p>
                 <p class="turkluxx-project-statement">Enter early. Secure today's price. Capture the growth.</p>
-                <a class="turkluxx-project-cta" href="/rengi-istanbul">Explore Rengi Istanbul</a>
+                <a class="turkluxx-project-cta" href="rengi-istanbul.html">Explore Rengi Istanbul</a>
             </div>
         </div>
     </section>
@@ -324,7 +330,7 @@
         </button>
     </div>
 </section>
-<footer class="turkluxx-footer">
+<footer class="turkluxx-footer" id="turkluxx-home-footer">
     <div class="turkluxx-footer-inner">
         <div class="turkluxx-footer-columns">
             <div class="turkluxx-footer-brand">
@@ -391,6 +397,10 @@
         <p class="turkluxx-callback-status" role="status" aria-live="polite"></p>
     </form>
 </dialog>
-<script src="callback.js" defer></script>
+<script src="js/callback.js" defer></script>
+<button class="turkluxx-back-to-top" type="button" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 11 6-6 6 6M12 5v15"/></svg>
+</button>
+<script src="js/homepage-navigation.js" defer></script>
 </body>
 </html>

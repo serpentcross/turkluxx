@@ -1,0 +1,71 @@
+/* Istanbul-only floor selector; typography, tabs and dialog reuse the page styles. */
+.rengi-floor-plans { border-top: 1px solid #d4c8b0; }
+.rengi-floor-plans .rengi-type-tabs { margin-bottom: 36px; }
+.rengi-floor-layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(240px, 3fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.rengi-floor-figure { margin: 0; }
+.rengi-floor-preview { display: block; width: 100%; padding: 0; border: 1px solid #d4c8b0; background: #faf9f5; cursor: zoom-in; }
+.rengi-floor-preview img { display: block; width: 100%; height: auto; }
+.rengi-floor-figure figcaption { margin-top: 12px; font-size: 11px; line-height: 1.7; }
+.rengi-floor-missing { display: grid; place-content: center; min-height: 420px; padding: 32px; border: 1px solid #d4c8b0; background: #faf9f5; text-align: center; }
+.rengi-floor-missing p { margin: 0 0 12px; font: 500 34px/1.2 'Cormorant Garamond', Georgia, serif; }
+.rengi-floor-missing span { font-size: 12px; line-height: 1.8; }
+.rengi-floor-plans [hidden] { display: none; }
+.rengi-floor-info { padding-top: 12px; }
+.rengi-floor-info h3 { margin: 0 0 24px; font: 500 clamp(32px, 2.8vw, 44px)/1.12 'Cormorant Garamond', Georgia, serif; }
+.rengi-floor-specs { margin: 0; }
+.rengi-floor-specs > div { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 17px 0; border-bottom: 1px solid #212c6c26; font-size: 13px; line-height: 1.5; }
+.rengi-floor-specs dt { display: flex; align-items: center; gap: 12px; }
+.rengi-floor-specs dd { margin: 0; font-weight: 700; text-align: right; white-space: nowrap; }
+.rengi-floor-specs svg { flex-shrink: 0; width: 22px; height: 22px; fill: none; stroke: #8c6b30; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.rengi-floor-plans .rengi-floor-fullscreen { margin-top: 28px; background: #b49860; border-color: #b49860; color: #071e34; }
+.rengi-floor-plans .rengi-floor-fullscreen:hover:enabled { background: #c5aa76; }
+.rengi-floor-plans .rengi-floor-fullscreen:disabled { opacity: .5; }
+.rengi-floor-plans .rengi-plan-lightbox { min-width: 0; }
+@media (max-width: 767px) {
+    .rengi-floor-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .rengi-floor-info { padding-top: 0; }
+    .rengi-floor-missing { min-height: 360px; padding: 24px; }
+    .rengi-floor-plans .rengi-floor-fullscreen { width: 100%; }
+}
+
+/* Match the current Explorer's desktop columns, image viewport and spacing.
+   Its media panel includes a 44px caption and a 48px view-selector row. */
+@media (min-width: 1200px) {
+    .rengi-floor-plans {
+        --rengi-floor-preview-height: clamp(340px, 31vw, 540px);
+        border-top: 0;
+        box-shadow: inset 0 1px #d4c8b0;
+    }
+    .rengi-floor-plans .rengi-type-tabs { margin-block: 32px; }
+    .rengi-floor-layout {
+        grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+        gap: 0 48px;
+        /* Explorer's minimum information height is its responsive title line
+           plus 443.28px of padding, eyebrow, specifications and note. */
+        min-height: max(
+            calc(var(--rengi-floor-preview-height) + 44px + 48px),
+            calc(clamp(32px, 2.8vw, 44px) * 1.12 + 443.28px)
+        );
+    }
+    .rengi-floor-preview,
+    .rengi-floor-missing {
+        height: var(--rengi-floor-preview-height);
+        min-height: 0;
+    }
+    .rengi-floor-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    .rengi-floor-figure figcaption {
+        min-height: 44px;
+        margin: 0;
+        padding-block: 12px;
+    }
+    .rengi-floor-info { padding-top: 16px; }
+    .rengi-floor-info h3 { margin-bottom: 17px; }
+    /* Keep the extra fullscreen action inside the reference panel at smaller desktops. */
+    .rengi-floor-specs > div { padding-block: clamp(13px, calc(2.5vw - 19px), 17px); }
+    .rengi-floor-plans .rengi-floor-fullscreen { margin-top: 12px; }
+}
