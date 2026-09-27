@@ -1,6 +1,7 @@
 (() => {
     'use strict';
-    if (!document.body.classList.contains('turkluxx-homepage')) return;
+    const isHomepage = document.body.classList.contains('turkluxx-homepage');
+    if (!isHomepage && !document.body.classList.contains('rengi-page')) return;
 
     const desktop = window.matchMedia('(min-width: 1200px)');
     const mobile = window.matchMedia('(max-width: 767px)');
@@ -10,6 +11,7 @@
     const legal = document.querySelector('.turkluxx-footer-legal');
 
     function positionSocial() {
+        if (!isHomepage) return;
         if (mobile.matches) legal.before(social);
         else socialParent.insertBefore(social, socialNext);
     }
@@ -92,7 +94,7 @@
             if (!target) return;
             event.preventDefault();
             let destination = pageTop(target) - headerOffset() - 24;
-            if (mobile.matches) {
+            if (mobile.matches || !isHomepage) {
                 // Start at the existing section, including property imagery above its heading.
                 destination = pageTop(target.closest('section, footer') || target) - headerOffset();
             } else {
@@ -104,6 +106,7 @@
     });
 
     function updateBackToTop() {
+        if (!backToTop) return;
         // Show on desktop and mobile after the hero has scrolled out of view.
         const supportedViewport = desktop.matches || mobile.matches;
 
@@ -112,7 +115,7 @@
             window.scrollY < hero.offsetHeight;
     }
 
-    backToTop.addEventListener('click', () => {
+    backToTop?.addEventListener('click', () => {
         if (desktop.matches || mobile.matches) {
             animateTo(
                 0,

@@ -1,0 +1,118 @@
+/* Homepage reference components, shared with selected Rengi Istanbul elements. */
+.rengi-page .turkluxx-sales-nav .rengi-desktop-contact { display: none; }
+.rengi-page .turkluxx-reference-cta > span:first-child { font: inherit; }
+.rengi-overview-cta > span:first-child { color: inherit; }
+
+@media (min-width: 1200px) {
+    .rengi-page .turkluxx-sales-nav .rengi-desktop-contact { display: inline; }
+
+    .turkluxx-home-desktop-nav a,
+    .rengi-page .turkluxx-sales-nav a {
+        font-family: 'Manrope', sans-serif;
+        font-size: clamp(16px, 1.3vw, 20px);
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: normal;
+        text-shadow: 0 2px 6px #071e34;
+    }
+
+    .turkluxx-developer .turkluxx-section-heading,
+    .rengi-page .turkluxx-reference-heading {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(32px, 8.5cqw, 50px);
+        font-weight: 500;
+        line-height: 1.08;
+        letter-spacing: -1px;
+        text-align: center;
+        text-wrap: balance;
+        color: #212c6c;
+    }
+
+    /* Match the homepage's 2fr / 4.6fr copy column, including its 40px gaps
+       and capped 1440px layout. Page query units exclude the scrollbar. */
+    .rengi-page { container-type: inline-size; }
+    .rengi-page .rengi-location {
+        grid-template-columns: minmax(400px, 1fr) minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+    .rengi-page .turkluxx-reference-heading {
+        text-align: left;
+        font-size: clamp(32px, calc(round(down, (min(100cqw - 2 * clamp(24px, 5vw, 96px), 1440px) - 80px) * 2 / 4.6, .015625px) * .085), 50px);
+    }
+
+    .turkluxx-developer .turkluxx-section-body,
+    .rengi-page .turkluxx-reference-body {
+        font-family: 'Manrope', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.65;
+        letter-spacing: normal;
+        color: #212c6c;
+    }
+
+}
+
+@media (min-width: 1200px), (max-width: 767px) {
+    .turkluxx-project .turkluxx-project-cta,
+    .rengi-page .turkluxx-reference-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 400px;
+        min-width: 400px;
+        max-width: 400px;
+        min-height: 56px;
+        padding: 14px 26px;
+        border: 1px solid #212c6c;
+        border-radius: 0;
+        color: #fff;
+        background: #212c6c;
+        font-family: 'Manrope', sans-serif;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: center;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+    .rengi-page .turkluxx-reference-cta { gap: 0; }
+    .rengi-page .rengi-overview-cta > span:last-child { color: inherit; }
+    .turkluxx-project--reverse .turkluxx-project-cta { max-width: 100%; }
+    .turkluxx-project .turkluxx-project-cta > span:first-child,
+    .rengi-page .turkluxx-reference-cta > span:first-child {
+        flex: 1;
+        text-align: center;
+    }
+    .turkluxx-project .turkluxx-project-cta > span:last-child,
+    .rengi-page .turkluxx-reference-cta > span:last-child {
+        flex: 0 0 auto;
+        margin-left: 16px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1;
+    }
+    .turkluxx-project .turkluxx-project-cta:hover,
+    .rengi-page .rengi-overview .turkluxx-reference-cta:hover,
+    .rengi-page .rengi-section .turkluxx-reference-cta:hover {
+        background: #172154;
+        text-decoration: none;
+    }
+    .rengi-page .turkluxx-reference-cta:focus-visible {
+        outline: 2px solid #212c6c;
+        outline-offset: 5px;
+    }
+}
+
+@media (max-width: 767px) {
+    .turkluxx-homepage .turkluxx-project .turkluxx-project-cta,
+    .rengi-page .turkluxx-reference-cta {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 14px 22px;
+        font-size: 16px;
+    }
+}
