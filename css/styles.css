@@ -3094,4 +3094,48 @@
     .turkluxx-footer-legal small {
         text-align: left;
     }
+
+    .turkluxx-homepage .turkluxx-final-button,
+    .turkluxx-homepage .turkluxx-final-button > span:first-child {
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .turkluxx-homepage .turkluxx-back-to-top:not([hidden]) {
+        display: grid;
+        place-items: center;
+
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        z-index: 100;
+
+        width: 44px;
+        height: 44px;
+        padding: 0;
+
+        border: 1px solid #d8b66a;
+        border-radius: 50%;
+
+        color: #f3d992;
+        background: #071e34ed;
+
+        box-shadow: 0 4px 16px #071e3433;
+
+        cursor: pointer;
+    }
+
+    .turkluxx-homepage .turkluxx-back-to-top svg {
+        width: 20px;
+        height: 20px;
+
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
 }

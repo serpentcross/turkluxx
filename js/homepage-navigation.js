@@ -3,6 +3,18 @@
     if (!document.body.classList.contains('turkluxx-homepage')) return;
 
     const desktop = window.matchMedia('(min-width: 1200px)');
+    const mobile = window.matchMedia('(max-width: 767px)');
+    const social = document.querySelector('.turkluxx-social');
+    const socialParent = social.parentNode;
+    const socialNext = social.nextSibling;
+    const legal = document.querySelector('.turkluxx-footer-legal');
+
+    function positionSocial() {
+        if (mobile.matches) legal.before(social);
+        else socialParent.insertBefore(social, socialNext);
+    }
+    positionSocial();
+    mobile.addEventListener('change', positionSocial);
     const header = document.querySelector('.turkluxx-sales-header');
     const hero = document.querySelector('.turkluxx-sales-hero');
     const backToTop = document.querySelector('.turkluxx-back-to-top');
@@ -10,7 +22,7 @@
     let frame = 0;
 
     // This homepage animation intentionally runs for 900ms under reduced motion too.
-    // No site-wide motion settings or narrow-screen interactions are changed.
+    // Desktop and mobile navigation share this animation; tablet interactions stay unchanged.
     const easeInOutCubic = progress => progress < .5
         ? 4 * progress * progress * progress
         : 1 - Math.pow(-2 * progress + 2, 3) / 2;
@@ -75,24 +87,41 @@
 
     document.querySelectorAll('[data-home-scroll]').forEach(link => {
         link.addEventListener('click', event => {
-            if (!desktop.matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            if ((!desktop.matches && !mobile.matches) || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
             const target = document.querySelector(link.hash);
             if (!target) return;
             event.preventDefault();
             let destination = pageTop(target) - headerOffset() - 24;
-            if (link.dataset.homeScroll === 'properties') destination = propertyDestination();
-            if (link.dataset.homeScroll === 'contact') destination = maximumScroll();
+            if (mobile.matches) {
+                // Start at the existing section, including property imagery above its heading.
+                destination = pageTop(target.closest('section, footer') || target) - headerOffset();
+            } else {
+                if (link.dataset.homeScroll === 'properties') destination = propertyDestination();
+                if (link.dataset.homeScroll === 'contact') destination = maximumScroll();
+            }
             animateTo(destination, target, link.hash);
         });
     });
 
     function updateBackToTop() {
-        // Appear after the hero's phone/callback controls have scrolled out of view.
-        backToTop.hidden = !desktop.matches || window.scrollY < hero.offsetHeight;
+        // Show on desktop and mobile after the hero has scrolled out of view.
+        const supportedViewport = desktop.matches || mobile.matches;
+
+        backToTop.hidden =
+            !supportedViewport ||
+            window.scrollY < hero.offsetHeight;
     }
+
     backToTop.addEventListener('click', () => {
-        if (desktop.matches) animateTo(0, document.querySelector('.turkluxx-sales-logo'), '');
+        if (desktop.matches || mobile.matches) {
+            animateTo(
+                0,
+                document.querySelector('.turkluxx-sales-logo'),
+                ''
+            );
+        }
     });
+
     window.addEventListener('scroll', updateBackToTop, { passive: true });
     window.addEventListener('resize', () => { cancelAnimation(); updateBackToTop(); });
     window.addEventListener('wheel', cancelAnimation, { passive: true });
