@@ -9,6 +9,70 @@
     display: contents;
 }
 
+/* Inactive slides stay hidden; controls remain absent on tablet and without JS. */
+.turkluxx-homepage [data-project-gallery] .turkluxx-project-image[hidden],
+.turkluxx-homepage [data-project-gallery] .turkluxx-gallery-controls[hidden] {
+    display: none;
+}
+
+@media (min-width: 1200px), (max-width: 767px) {
+    .turkluxx-homepage .turkluxx-gallery-controls {
+        position: absolute;
+        left: 50%;
+        bottom: 8px;
+        transform: translateX(-50%);
+        display: flex;
+        z-index: 1;
+    }
+    .turkluxx-homepage .turkluxx-gallery-dot {
+        display: grid;
+        place-items: center;
+        width: 16px;
+        height: 28px;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+    }
+    .turkluxx-homepage .turkluxx-gallery-dot::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #fffdf7;
+        opacity: .55;
+        box-shadow: 0 1px 3px #071e34cc;
+        transition: opacity 180ms ease, transform 180ms ease;
+    }
+    .turkluxx-homepage .turkluxx-gallery-dot[aria-pressed="true"]::before {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    .turkluxx-homepage .turkluxx-gallery-dot:focus-visible {
+        outline: 2px solid #f3d992;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    .turkluxx-homepage [data-project-gallery] {
+        touch-action: pan-y pinch-zoom;
+    }
+    .turkluxx-homepage [data-project-gallery] .turkluxx-project-image:not([hidden]) {
+        animation: turkluxx-gallery-reveal 220ms ease-out;
+    }
+}
+@keyframes turkluxx-gallery-reveal {
+    from { opacity: .65; }
+    to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .turkluxx-homepage [data-project-gallery] .turkluxx-project-image {
+        animation: none;
+    }
+    .turkluxx-homepage .turkluxx-gallery-dot::before {
+        transition: none;
+    }
+}
+
 @media (max-width: 767px) {
     /* Use the loaded font weights without changing the citizenship card geometry. */
     .turkluxx-homepage .turkluxx-citizenship h2 {
@@ -215,8 +279,7 @@
        Every project image:
        - height = 100% of its own 50vh section
        - touches top and bottom of the section
-       - keeps the original 2:1 aspect ratio
-       - is not cropped
+       - fills half the row width with object-fit: cover
 
        Istanbul:
        [ IMAGE ][ TEXT ]
@@ -253,13 +316,7 @@
      *
      * Must occupy the ENTIRE section.
      *
-     * Image width is derived from its required height:
-     *
-     * image height = 50vh
-     * image ratio  = 2:1
-     * image width  = 100vh
-     *
-     * Remaining width belongs to the text.
+     * Each column occupies exactly half the row width.
      */
     .turkluxx-homepage .turkluxx-project .turkluxx-section-layout {
         display: grid;
@@ -272,9 +329,7 @@
 
         margin: 0;
 
-        grid-template-columns:
-            min(100vh, 58vw)
-            minmax(0, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
 
         gap: 0;
 
@@ -294,6 +349,8 @@
 
         min-width: 0;
         min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
 
         margin: 0;
         padding: 0;
@@ -309,14 +366,11 @@
      *
      * Fill the complete height of the 50vh section.
      *
-     * Source image is exactly 2:1.
-     *
-     * The media column is dimensioned to the same ratio,
-     * therefore contain does NOT create top/bottom whitespace
-     * and does NOT crop the image.
+     * Cover the shared image area regardless of each source image's ratio.
      */
     .turkluxx-homepage .turkluxx-project .turkluxx-project-image {
-        position: static;
+        position: absolute;
+        inset: 0;
 
         display: block;
 
@@ -330,7 +384,7 @@
 
         aspect-ratio: auto;
 
-        object-fit: contain;
+        object-fit: cover;
         object-position: center;
 
         border: 0;
@@ -380,9 +434,7 @@
     .turkluxx-homepage
     .turkluxx-project--reverse
     .turkluxx-section-layout {
-        grid-template-columns:
-            minmax(0, 1fr)
-            min(100vh, 58vw);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .turkluxx-homepage
