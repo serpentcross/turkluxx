@@ -11,6 +11,7 @@
           rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="rengi-istanbul.css">
+    <link rel="stylesheet" href="rengi-plans.css">
 </head>
 <body class="turkluxx-page rengi-page">
 <div class="turkluxx-sales-hero rengi-header-shell">
@@ -48,51 +49,21 @@
 </div>
 
     <main>
-        <section class="rengi-hero" aria-labelledby="rengi-title">
-            <div class="rengi-content">
-                <p class="rengi-label">EXCLUSIVE VILLAS</p>
-                <h1 id="rengi-title">RENGI<span>ISTANBUL</span></h1>
-                <p class="rengi-subheading">Modern Living in a Timeless City.</p>
-                <p class="rengi-description">A unique collection of luxury villas surrounded by nature,<br class="rengi-desktop-break">
-                    with easy access to Istanbul&rsquo;s key destinations.</p>
-                <div class="rengi-actions">
-                    <button class="rengi-request turkluxx-callback-trigger" type="button"
-                            aria-haspopup="dialog" aria-controls="turkluxx-callback">REQUEST INFORMATION
-                        <span aria-hidden="true">&#10230;</span>
-                    </button>
-                    <!-- Enable when the project video is supplied. -->
-                    <div class="rengi-video-wrap">
-                        <button class="rengi-video" type="button" disabled aria-describedby="rengi-video-status">
-                            <span class="rengi-play" aria-hidden="true">&#9655;</span> WATCH VIDEO
-                        </button>
-                        <small id="rengi-video-status">Coming soon</small>
-                    </div>
-                </div>
-            </div>
-            <ul class="rengi-facts" aria-label="Property facts">
-                <li><strong>Luxury Villas</strong><span>and Twin Villas</span></li>
-                <li><strong>4&ndash;6</strong><span>Bedrooms</span></li>
-                <li><strong>From 350 m&sup2;</strong><span>Living Area</span></li>
-                <li><strong>Private Gardens</strong><span>&amp; Pools</span></li>
-                <li><strong>Close to Nature</strong><span>&amp; City Life</span></li>
-            </ul>
-        </section>
         <section class="rengi-overview" aria-labelledby="rengi-overview-title">
             <div class="rengi-overview-copy">
                 <p class="rengi-overview-eyebrow">THE PROJECT</p>
-                <h2 id="rengi-overview-title">Nature, Space<br>and Modern Living</h2>
-                <p class="rengi-overview-body">Rengi Istanbul is a premium residential project offering
-                    spacious villas designed for modern families. Surrounded by greenery and with panoramic
-                    views, it combines privacy, comfort and easy access to Istanbul&rsquo;s key destinations.</p>
+                <h1 id="rengi-overview-title">A Unique Living<br>Experience in Istanbul</h1>
+                <p class="rengi-overview-body">Rengi Istanbul combines modern architecture, spacious living and a privileged location,
+                    offering the perfect balance between tranquility and convenience.</p>
                 <button class="rengi-overview-cta turkluxx-callback-trigger" type="button"
                         aria-haspopup="dialog" aria-controls="turkluxx-callback">
-                    DISCOVER THE PROJECT <span aria-hidden="true">&rarr;</span>
+                    Discover the Project <span aria-hidden="true">&rarr;</span>
                 </button>
             </div>
             <div class="rengi-overview-media">
                 <img src="assets/turkluxx-villa.png"
                      alt="Illustrative contemporary stone villa with a private pool and landscaped terrace"
-                     width="1774" height="887" loading="lazy" decoding="async">
+                     width="1774" height="887" fetchpriority="high" decoding="async">
             </div>
         </section>
 
@@ -153,6 +124,51 @@
                 </div>
             </div>
             <p class="rengi-sr-only" id="rengi-viewer-status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="rengi-floor-plans rengi-section" aria-labelledby="rengi-floor-title">
+            <p class="rengi-section-eyebrow">FLOOR PLANS</p>
+            <h2 id="rengi-floor-title">Space for every part of life</h2>
+            <p class="rengi-plans-note">Demo layouts only &mdash; not actual Rengi Istanbul floor plans. Approved plans coming soon.</p>
+            <div class="rengi-plan-tabs" role="tablist" aria-label="Floor plan villa type">
+                <button id="plan-type-a" role="tab" aria-selected="true" aria-controls="rengi-plan-type-panel" data-plan-type="a">TYPE A</button>
+                <button id="plan-type-b" role="tab" aria-selected="false" aria-controls="rengi-plan-type-panel" tabindex="-1" data-plan-type="b">TYPE B</button>
+                <button id="plan-type-c" role="tab" aria-selected="false" aria-controls="rengi-plan-type-panel" tabindex="-1" data-plan-type="c">TYPE C</button>
+                <button id="plan-type-twin" role="tab" aria-selected="false" aria-controls="rengi-plan-type-panel" tabindex="-1" data-plan-type="twin">TWIN VILLA</button>
+            </div>
+            <div id="rengi-plan-type-panel" role="tabpanel" aria-labelledby="plan-type-a">
+                <div class="rengi-plan-tabs rengi-floor-tabs" role="tablist" aria-label="Floor">
+                    <button id="plan-floor-ground" role="tab" aria-selected="true" aria-controls="rengi-plan-panel" data-plan-floor="ground">GROUND FLOOR</button>
+                    <button id="plan-floor-first" role="tab" aria-selected="false" aria-controls="rengi-plan-panel" tabindex="-1" data-plan-floor="first">FIRST FLOOR</button>
+                    <button id="plan-floor-second" role="tab" aria-selected="false" aria-controls="rengi-plan-panel" tabindex="-1" data-plan-floor="second">SECOND FLOOR</button>
+                </div>
+                <div id="rengi-plan-panel" role="tabpanel" aria-labelledby="plan-floor-ground">
+                    <button class="rengi-plan-preview" type="button" aria-haspopup="dialog" aria-controls="rengi-plan-lightbox" aria-label="Open floor plan fullscreen">
+                        <span id="rengi-plan-art"></span><span class="rengi-plan-expand">View fullscreen &nearr;</span>
+                    </button>
+                    <p class="rengi-plans-note" id="rengi-plan-caption" role="status" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+        <section class="rengi-master-plan rengi-section" aria-labelledby="rengi-master-title">
+            <p class="rengi-section-eyebrow">MASTER PLAN</p>
+            <h2 id="rengi-master-title">Explore Rengi Istanbul</h2>
+            <p class="rengi-plans-note">Demo preview only. The image, villa positions and availability below are placeholders, not a verified site plan or live inventory.</p>
+            <ul class="rengi-plan-legend" aria-label="Demo availability legend">
+                <li><span data-status="available"></span>Available</li><li><span data-status="reserved"></span>Reserved</li><li><span data-status="sold"></span>Sold</li>
+            </ul>
+            <div class="rengi-master-stage">
+                <img src="assets/turkluxx-villa.png" alt="Illustrative villa image standing in for the future Rengi Istanbul master plan" width="1774" height="887" loading="lazy">
+                <svg id="rengi-master-overlay" viewBox="0 0 1000 500" aria-label="Demo villa areas; select a villa for placeholder details"></svg>
+                <div class="rengi-unit-popup" id="rengi-unit-popup" hidden aria-label="Demo villa details">
+                    <button class="rengi-unit-close" type="button" aria-label="Close villa details">&times;</button>
+                    <p class="rengi-unit-demo">DEMO DATA</p><h3 id="rengi-unit-name"></h3>
+                    <p id="rengi-unit-type"></p><p id="rengi-unit-area"></p><p id="rengi-unit-beds"></p>
+                    <p id="rengi-unit-status"></p>
+                    <a href="#rengi-floor-title" id="rengi-unit-details">View Details <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+            <p class="rengi-plans-note">Select a marked area to inspect demo villa details.</p>
+            <p class="rengi-plans-sr" id="rengi-unit-announcement" role="status" aria-live="polite"></p>
         </section>
         <section class="rengi-experience rengi-section" aria-labelledby="rengi-experience-title">
             <div><p class="rengi-section-eyebrow" id="rengi-experience-title">EXPERIENCE RENGI ISTANBUL</p>
@@ -241,7 +257,15 @@
         <p class="turkluxx-callback-status" role="status" aria-live="polite"></p>
     </form>
 </dialog>
+<dialog class="rengi-plan-lightbox" id="rengi-plan-lightbox" aria-labelledby="rengi-lightbox-title">
+    <div class="rengi-lightbox-toolbar">
+        <div><h2 id="rengi-lightbox-title">Floor plan</h2><p>Demo layout &mdash; not an actual project plan</p></div>
+        <div class="rengi-lightbox-actions"><button type="button" id="rengi-plan-zoom-out" aria-label="Zoom out">&minus;</button><output id="rengi-plan-zoom" aria-live="polite">100%</output><button type="button" id="rengi-plan-zoom-in" aria-label="Zoom in">+</button><button type="button" id="rengi-plan-close" aria-label="Close fullscreen plan" autofocus>&times;</button></div>
+    </div>
+    <div class="rengi-lightbox-scroll" tabindex="0" aria-label="Floor plan; zoom and scroll to inspect"><div id="rengi-lightbox-art"></div></div>
+</dialog>
 <script src="callback.js" defer></script>
 <script src="rengi-istanbul.js" defer></script>
+<script src="rengi-plans.js" defer></script>
 </body>
 </html>
