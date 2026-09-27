@@ -2578,25 +2578,66 @@
 .turkluxx-project .turkluxx-project-cta {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: auto;
-    max-width: 100%;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+
     min-height: 56px;
-    height: auto;
+
     padding: 14px 22px;
+
     border: 1px solid #212c6c;
     border-radius: 0;
+
     color: #fff;
     background: #212c6c;
+
     font-size: 16px;
     font-weight: 600;
     line-height: 1.5;
+
     text-align: center;
     text-decoration: none;
+
+    flex-shrink: 0;
 }
 
 .turkluxx-project .turkluxx-project-cta:hover {
     background: #172154;
+}
+
+.turkluxx-project .turkluxx-project-cta > span:first-child {
+    flex: 1;
+    text-align: center;
+}
+
+.turkluxx-cta-arrow {
+    flex: 0 0 auto;
+    margin-left: 16px;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.turkluxx-homepage .turkluxx-final-cta a {
+    box-sizing: border-box;
+
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+
+    min-height: 56px;
+
+    padding: 14px 22px;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
 }
 
 .turkluxx-project a:focus-visible {
