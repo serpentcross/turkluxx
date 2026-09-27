@@ -9,3 +9,8 @@
 /httpRequests/
 .idea
 .chrome-rengi-check
+
+# Generated deployment output and local tooling
+/dist/
+/node_modules/
+/.wrangler/

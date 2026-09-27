@@ -1,0 +1,15 @@
+{
+  "name": "turkluxx",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "deploy": "wrangler deploy --config wrangler.json",
+    "test": "node --test scripts/build.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.142.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
