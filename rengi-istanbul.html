@@ -7,14 +7,13 @@
     <title>Rengi Istanbul &mdash; TurkLuxx</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@500;600;700&family=Oooh+Baby&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@500;600&family=Manrope:wght@500;600;700&family=Oooh+Baby&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/rengi-istanbul.css">
-    <link rel="stylesheet" href="css/rengi-floor-plans.css">
     <link rel="stylesheet" href="css/homepage-desktop.css">
     <link rel="stylesheet" href="css/desktop-components.css">
     <link rel="stylesheet" href="css/rengi-navigation-footer.css">
+    <link rel="stylesheet" href="css/rengi-villa-explorer.css">
 </head>
 <body class="turkluxx-page rengi-page">
 <div class="turkluxx-sales-hero rengi-header-shell">
@@ -127,161 +126,47 @@
     <section id="rengi-explorer" class="rengi-explorer rengi-section" aria-labelledby="rengi-explorer-title">
         <p class="rengi-section-eyebrow">VILLA TYPES</p>
         <h2 id="rengi-explorer-title">Explore the Villas</h2>
-        <div class="rengi-type-tabs" role="tablist" aria-label="Villa type">
-            <button id="rengi-type-a" role="tab" aria-selected="true" aria-controls="rengi-villa-panel" data-villa="a">
-                TYPE A
-            </button>
-            <button id="rengi-type-b" role="tab" aria-selected="false" aria-controls="rengi-villa-panel" tabindex="-1"
-                    data-villa="b">TYPE B
-            </button>
-            <button id="rengi-type-c" role="tab" aria-selected="false" aria-controls="rengi-villa-panel" tabindex="-1"
-                    data-villa="c">TYPE C
-            </button>
-            <button id="rengi-type-twin" role="tab" aria-selected="false" aria-controls="rengi-villa-panel"
-                    tabindex="-1" data-villa="twin">TWIN VILLA
-            </button>
-        </div>
-        <div class="rengi-villa-panel" id="rengi-villa-panel" role="tabpanel" aria-labelledby="rengi-type-a">
-            <figure class="rengi-villa-media" id="rengi-media-panel" role="tabpanel"
-                    aria-labelledby="rengi-media-exterior">
-                <button class="rengi-media-preview" id="rengi-media-preview" type="button" disabled
-                        aria-haspopup="dialog" aria-controls="rengi-plan-lightbox">
-                    <img id="rengi-villa-image" src="assets/turkluxx-villa.png"
-                         alt="Illustrative contemporary villa exterior with a swimming pool" width="1774" height="887"
-                         loading="lazy">
-                    <span class="rengi-media-expand" hidden>View Fullscreen &#8599;</span>
-                </button>
-                <figcaption id="rengi-media-caption">Illustrative exterior. Project photography coming soon.
-                </figcaption>
-            </figure>
-            <div class="rengi-media-tabs" role="tablist" aria-label="Villa view">
-                <button id="rengi-media-exterior" role="tab" aria-selected="true" aria-controls="rengi-media-panel"
-                        data-view="exterior">EXTERIOR
-                </button>
-                <button id="rengi-media-ground" role="tab" aria-selected="false" aria-controls="rengi-media-panel"
-                        tabindex="-1" data-view="ground">GROUND FLOOR
-                </button>
-                <button id="rengi-media-first" role="tab" aria-selected="false" aria-controls="rengi-media-panel"
-                        tabindex="-1" data-view="first">FIRST FLOOR
-                </button>
-                <button id="rengi-media-interior" role="tab" aria-selected="false" aria-controls="rengi-media-panel"
-                        tabindex="-1" data-view="interior">INTERIOR
-                </button>
+        <div class="rengi-type-tabs" role="tablist" aria-label="Villa category"></div>
+        <div id="rengi-villa-selection" role="tabpanel">
+            <fieldset class="rengi-variant-selector">
+                <legend class="rengi-sr-only">Villa variant</legend>
+                <div class="rengi-variant-options"></div>
+            </fieldset>
+            <div id="rengi-floor-plans" class="rengi-view-tabs" role="tablist" aria-label="Villa content">
+                <button id="rengi-photos-tab" type="button" role="tab" aria-selected="true" aria-controls="rengi-villa-panel" data-view="photos">PHOTOS</button>
+                <button id="rengi-plans-tab" type="button" role="tab" aria-selected="false" aria-controls="rengi-villa-plans" data-view="plans" tabindex="-1">FLOOR PLANS</button>
             </div>
-            <div class="rengi-villa-info">
-                <p class="rengi-section-eyebrow" id="rengi-villa-name">Type A</p>
-                <h3 id="rengi-villa-subtitle">Modern Family Villa</h3>
-                <dl id="rengi-villa-specs">
-                    <div>
-                        <dt>Living Area</dt>
-                        <dd>350 m&sup2;</dd>
-                    </div>
-                    <div>
-                        <dt>Plot Size</dt>
-                        <dd>500&ndash;700 m&sup2;</dd>
-                    </div>
-                    <div>
-                        <dt>Bedrooms</dt>
-                        <dd>4+1</dd>
-                    </div>
-                    <div>
-                        <dt>Bathrooms</dt>
-                        <dd>4</dd>
-                    </div>
-                    <div>
-                        <dt>Private Pool</dt>
-                        <dd>Yes</dd>
-                    </div>
-                    <div>
-                        <dt>Garden</dt>
-                        <dd>Yes</dd>
-                    </div>
-                </dl>
-                <p class="rengi-note" id="rengi-villa-note">Provisional specifications. Final details to be
-                    confirmed.</p>
+            <div class="rengi-villa-panel" id="rengi-villa-panel" role="tabpanel" aria-labelledby="rengi-photos-tab">
+                <figure class="rengi-villa-media">
+                    <div class="rengi-villa-grid" role="group" aria-label="Villa images"></div>
+                </figure>
+                <section class="rengi-villa-philosophy" aria-labelledby="rengi-philosophy-title" hidden>
+                    <p class="rengi-section-eyebrow">THE PHILOSOPHY</p>
+                    <h3 id="rengi-philosophy-title"></h3>
+                    <div class="rengi-philosophy-body"></div>
+                </section>
             </div>
         </div>
-        <p class="rengi-sr-only" id="rengi-viewer-status" role="status" aria-live="polite"></p>
-    </section>
-    <section id="rengi-floor-plans" class="rengi-floor-plans rengi-section" aria-labelledby="rengi-floor-title">
-        <p class="rengi-section-eyebrow">FLOOR PLANS</p>
-        <h2 id="rengi-floor-title">Floor Plans &mdash; Type A</h2>
-        <div class="rengi-type-tabs" role="tablist" aria-label="Type A floor plans">
-            <button id="rengi-floor-tab-ground" type="button" role="tab" aria-selected="true"
-                    aria-controls="rengi-floor-panel" data-floor="ground">Ground Floor
-            </button>
-            <button id="rengi-floor-tab-first" type="button" role="tab" aria-selected="false"
-                    aria-controls="rengi-floor-panel" tabindex="-1" data-floor="first">First Floor
-            </button>
-            <button id="rengi-floor-tab-second" type="button" role="tab" aria-selected="false"
-                    aria-controls="rengi-floor-panel" tabindex="-1" data-floor="second">Second Floor
-            </button>
-            <button id="rengi-floor-tab-site" type="button" role="tab" aria-selected="false"
-                    aria-controls="rengi-floor-panel" tabindex="-1" data-floor="site">Site Plan
-            </button>
-        </div>
-        <div class="rengi-floor-layout" id="rengi-floor-panel" role="tabpanel" aria-labelledby="rengi-floor-tab-ground">
-            <figure class="rengi-floor-figure">
-                <button class="rengi-floor-preview" type="button" aria-label="View ground floor fullscreen"
-                        aria-haspopup="dialog" aria-controls="rengi-floor-dialog">
-                    <img id="rengi-floor-image" src="assets/rengi/a-ground.jpg"
-                         alt="Diamond A1 lower-floor architectural drawing from the Rengi Istanbul brochure"
-                         loading="lazy">
+        <div id="rengi-villa-plans" role="tabpanel" aria-labelledby="rengi-plans-tab" hidden>
+            <fieldset class="rengi-variant-selector">
+                <legend class="rengi-sr-only">Villa floor</legend>
+                <div class="rengi-variant-options rengi-floor-options"></div>
+            </fieldset>
+            <div class="rengi-villa-plan-layout">
+                <button class="rengi-villa-plan-preview" type="button" aria-haspopup="dialog">
+                    <img alt="" loading="lazy">
                 </button>
-                <div class="rengi-floor-missing" hidden><p>Second Floor</p><span>Drawing not yet available</span></div>
-                <figcaption id="rengi-floor-caption">Diamond A1 lower floor from the project brochure. Representative
-                    Type A drawing.
-                </figcaption>
-            </figure>
-            <div class="rengi-floor-info">
-                <h3 id="rengi-floor-heading">Ground Floor</h3>
-                <dl class="rengi-floor-specs">
-                    <div>
-                        <dt>Living Area</dt>
-                        <dd>180 m&sup2;</dd>
-                    </div>
-                    <div>
-                        <dt>Terrace</dt>
-                        <dd>50 m&sup2;</dd>
-                    </div>
-                    <div>
-                        <dt>Bedrooms</dt>
-                        <dd>1 + 1</dd>
-                    </div>
-                    <div>
-                        <dt>Bathrooms</dt>
-                        <dd>2</dd>
-                    </div>
-                    <div>
-                        <dt>Kitchen</dt>
-                        <dd>1</dd>
-                    </div>
-                    <div>
-                        <dt>Living Room</dt>
-                        <dd>1</dd>
-                    </div>
-                </dl>
-                <p class="rengi-note" id="rengi-floor-note">Specifications supplied separately; the brochure drawing
-                    shows a representative Type A variant.</p>
-                <button class="rengi-section-button rengi-floor-fullscreen turkluxx-reference-cta" type="button" aria-haspopup="dialog"
-                        aria-controls="rengi-floor-dialog"><span>VIEW FULLSCREEN</span> <span aria-hidden="true">&rarr;</span>
-                </button>
+                <article class="rengi-floor-card"></article>
             </div>
         </div>
-        <p class="rengi-sr-only" role="status" aria-live="polite"></p>
-        <dialog class="rengi-plan-lightbox" id="rengi-floor-dialog" aria-labelledby="rengi-floor-dialog-title">
-            <div class="rengi-lightbox-toolbar">
-                <h2 id="rengi-floor-dialog-title">Type A &mdash; Ground Floor</h2>
-                <div class="rengi-lightbox-actions">
-                    <button type="button" data-zoom-out aria-label="Zoom out">&minus;</button>
-                    <output aria-live="polite">100%</output>
-                    <button type="button" data-zoom-in aria-label="Zoom in">+</button>
-                    <button type="button" data-close aria-label="Close fullscreen floor plan" autofocus>&times;</button>
-                </div>
-            </div>
-            <div class="rengi-lightbox-scroll" tabindex="0" aria-label="Floor plan; zoom and scroll to inspect"><img
-                    alt=""></div>
+        <dialog class="rengi-villa-lightbox" aria-modal="true" aria-label="Villa image viewer">
+            <button class="rengi-villa-close" type="button" aria-label="Close image viewer" autofocus>&times;</button>
+            <img class="rengi-villa-full-image" alt="">
+            <button class="rengi-villa-previous" type="button" aria-label="Previous image">&#8592;</button>
+            <button class="rengi-villa-next" type="button" aria-label="Next image">&#8594;</button>
+            <p class="rengi-villa-counter" role="status" aria-live="polite" aria-atomic="true"></p>
         </dialog>
+        <p class="rengi-sr-only" id="rengi-viewer-status" role="status" aria-live="polite" aria-atomic="true"></p>
     </section>
     <section id="rengi-master-plan" class="rengi-master-plan rengi-section" aria-labelledby="rengi-master-title">
         <p class="rengi-section-eyebrow">MASTER PLAN</p>
@@ -437,6 +322,7 @@
 <script src="js/callback.js" defer></script>
 <script src="js/homepage-navigation.js" defer></script>
 <script src="js/rengi-istanbul.js" defer></script>
-<script src="js/rengi-floor-plans.js" defer></script>
+<script src="js/rengi-villa-data.js" defer></script>
+<script src="js/rengi-villa-explorer.js" defer></script>
 </body>
 </html>
