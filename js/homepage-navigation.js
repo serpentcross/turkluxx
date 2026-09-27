@@ -12,11 +12,12 @@
 
     function positionSocial() {
         if (!isHomepage) return;
-        if (mobile.matches) legal.before(social);
+        if (mobile.matches || desktop.matches) legal.before(social);
         else socialParent.insertBefore(social, socialNext);
     }
     positionSocial();
     mobile.addEventListener('change', positionSocial);
+    desktop.addEventListener('change', positionSocial);
     const header = document.querySelector('.turkluxx-sales-header');
     const hero = document.querySelector('.turkluxx-sales-hero');
     const backToTop = document.querySelector('.turkluxx-back-to-top');

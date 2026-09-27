@@ -1048,3 +1048,43 @@
         font-size: 18px;
     }
 }
+/* Shared desktop footer social row; reuse each page's existing mobile links. */
+@media (min-width: 1200px) {
+    .turkluxx-homepage .turkluxx-footer-bottom { align-items: center; }
+    .turkluxx-homepage .turkluxx-footer .turkluxx-social {
+        position: static;
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        width: auto;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        transform: none;
+    }
+    .turkluxx-homepage .turkluxx-footer .turkluxx-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #fffdf7;
+        border: 0;
+        background: none;
+        text-decoration: none;
+    }
+    .turkluxx-homepage .turkluxx-footer .turkluxx-social svg {
+        display: block;
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+}

@@ -34,11 +34,11 @@
         }
         const image = planPreview.querySelector('img');
         image.src = floor.image;
-        image.alt = `${villa.name} ${floor.name} plan`;
-        planPreview.setAttribute('aria-label', `View ${villa.name} ${floor.name} plan fullscreen`);
+        image.alt = `${villa.name} ${floor.name || floor.code} plan`;
+        planPreview.setAttribute('aria-label', `View ${villa.name} ${floor.name || floor.code} plan fullscreen`);
         const header = element('header');
         const heading = element('h4', floor.code);
-        heading.append(element('span', floor.name));
+        if (floor.name) heading.append(element('span', floor.name));
         const total = element('p', 'Total: ');
         total.append(element('strong', floor.total));
         header.append(heading, total);
@@ -94,7 +94,7 @@
         if (!images.length) return;
         slideIndex = (next + images.length) % images.length;
         fullImage.src = images[slideIndex];
-        fullImage.alt = mode === 'plans' ? `${villa.name} ${villa.floors[slideIndex].name} plan`
+        fullImage.alt = mode === 'plans' ? `${villa.name} ${villa.floors[slideIndex].name || villa.floors[slideIndex].code} plan`
             : `${villa.name} villa, view ${slideIndex + 1}`;
         if (mode === 'plans') {
             floorIndex = slideIndex;
@@ -141,6 +141,7 @@
         viewer.querySelector('.rengi-philosophy-body').replaceChildren(...villa.description.map(text => element('p', text)));
         floorIndex = 0;
         const floors = villa.floors || [];
+        floorOptions.closest('fieldset').hidden = floors.length <= 1;
         floorOptions.replaceChildren(...floors.map((floor, index) => {
             const label = element('label', undefined, 'rengi-variant-option');
             const input = element('input');
@@ -153,7 +154,7 @@
                 floorIndex = index;
                 renderFloor();
             });
-            label.append(input, document.createTextNode(floor.name));
+            label.append(input, document.createTextNode(floor.name || floor.code));
             return label;
         }));
         renderFloor();
@@ -172,7 +173,13 @@
             tab.tabIndex = active ? 0 : -1;
             if (active) panel.setAttribute('aria-labelledby', tab.id);
         });
-        options.replaceChildren(...Object.entries(villaData[category]).map(([key, villa]) => {
+        const displayOrder = {
+            '4+1': ['jade', 'crystal', 'coral'],
+            '5+1': ['silver', 'pearl', 'emerald', 'sapphire', 'motherOfPearl', 'ruby'],
+            '6+1': ['gold', 'diamond']
+        };
+        options.replaceChildren(...displayOrder[category].map(key => {
+            const villa = villaData[category][key];
             const label = document.createElement('label');
             label.className = 'rengi-variant-option';
             const input = document.createElement('input');
