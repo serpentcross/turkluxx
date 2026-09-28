@@ -70,7 +70,8 @@
     line-height: 1.85;
 }
 
-.rengi-overview .rengi-overview-cta {
+.rengi-overview .rengi-overview-cta,
+.rengi-explorer .rengi-villa-contact {
     display: inline-flex;
     align-items: center;
     gap: 16px;

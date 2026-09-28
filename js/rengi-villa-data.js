@@ -5,6 +5,7 @@ const villaData = {
         "jade": {
             "category": "4+1",
             "name": "Jade",
+            "turkishName": "Yeşim",
             "title": "Jade",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -112,6 +113,7 @@ const villaData = {
         "crystal": {
             "category": "4+1",
             "name": "Crystal",
+            "turkishName": "Kristal",
             "title": "Crystal",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -224,6 +226,7 @@ const villaData = {
         "coral": {
             "category": "4+1",
             "name": "Coral",
+            "turkishName": "Mercan",
             "title": "Coral",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -362,6 +365,7 @@ const villaData = {
         "ruby": {
             "category": "5+1",
             "name": "Ruby",
+            "turkishName": "Yakut",
             "title": "Ruby",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -509,7 +513,8 @@ const villaData = {
         },
         "motherOfPearl": {
             "category": "5+1",
-            "name": "Mother-of-pearl",
+            "name": "Mother-of-Pearl",
+            "turkishName": "Sedef",
             "title": "Mother-of-pearl",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -662,6 +667,7 @@ const villaData = {
         "sapphire": {
             "category": "5+1",
             "name": "Sapphire",
+            "turkishName": "Safir",
             "title": "Sapphire",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -813,6 +819,7 @@ const villaData = {
         "emerald": {
             "category": "5+1",
             "name": "Emerald",
+            "turkishName": "Zümrüt",
             "title": "Emerald",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -952,6 +959,7 @@ const villaData = {
         "pearl": {
             "category": "5+1",
             "name": "Pearl",
+            "turkishName": "İnci",
             "title": "Pearl",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -1077,6 +1085,7 @@ const villaData = {
         "silver": {
             "category": "5+1",
             "name": "Silver",
+            "turkishName": "Gümüş",
             "title": "Silver",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -1203,6 +1212,7 @@ const villaData = {
         "diamond": {
             "category": "6+1",
             "name": "Diamond",
+            "turkishName": "Elmas",
             "title": "Diamond",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
@@ -1375,6 +1385,7 @@ const villaData = {
         "gold": {
             "category": "6+1",
             "name": "Gold",
+            "turkishName": "Altın",
             "title": "Gold",
             "quickSpecs": {
                 "livingArea": "To be confirmed",

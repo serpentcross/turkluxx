@@ -21,6 +21,50 @@
     const viewTabs = [...viewer.querySelectorAll('.rengi-view-tabs button')];
     const floorOptions = viewer.querySelector('.rengi-floor-options');
     const planPreview = viewer.querySelector('.rengi-villa-plan-preview');
+    const villaCta = viewer.querySelector('.rengi-villa-contact');
+    const villaContext = document.querySelector('#callback-villa');
+    const callback = document.querySelector('#turkluxx-callback');
+    const callbackTitle = callback.querySelector('#turkluxx-callback-title');
+    const defaultCallbackTitle = callbackTitle.textContent;
+    const displayName = villa => `${villa.name} (${villa.turkishName})`;
+
+    function resetCallbackTitle() {
+        callbackTitle.textContent = defaultCallbackTitle;
+        callbackTitle.style.removeProperty('font-size');
+        callbackTitle.style.removeProperty('line-height');
+        callbackTitle.style.removeProperty('white-space');
+    }
+
+    function fitCallbackTitle() {
+        resetCallbackTitle();
+        if (!callback.open || !villaContext.value) return;
+        const style = getComputedStyle(callbackTitle);
+        const originalSize = parseFloat(style.fontSize);
+        // Keep the original heading's line box, so the form and dialog never grow.
+        const originalHeight = parseFloat(style.height);
+        callbackTitle.style.lineHeight = `${originalHeight}px`;
+        callbackTitle.style.whiteSpace = 'nowrap';
+        callbackTitle.textContent = `LET'S TALK ABOUT ${villaContext.value.toUpperCase()} VILLA`;
+        let size = originalSize;
+        while (callbackTitle.scrollWidth > callbackTitle.clientWidth && size > 1) {
+            size -= 0.5;
+            callbackTitle.style.fontSize = `${size}px`;
+        }
+    }
+
+    document.querySelectorAll('.turkluxx-callback-trigger').forEach(button => {
+        button.addEventListener('click', () => {
+            villaContext.value = button === villaCta ? villaData[category][variant].name : '';
+            fitCallbackTitle();
+        });
+    });
+    callback.addEventListener('close', () => {
+        villaContext.value = '';
+        resetCallbackTitle();
+    });
+    window.addEventListener('resize', () => {
+        if (callback.open) fitCallbackTitle();
+    });
 
     function renderFloor() {
         const villa = villaData[category][variant];
@@ -137,7 +181,8 @@
             return button;
         }));
         viewer.querySelector('.rengi-villa-philosophy').hidden = !villa.description.length;
-        viewer.querySelector('#rengi-philosophy-title').textContent = villa.name;
+        viewer.querySelector('#rengi-philosophy-title').textContent = displayName(villa);
+        villaCta.querySelector('span').textContent = `I want ${villa.name} villa`;
         viewer.querySelector('.rengi-philosophy-body').replaceChildren(...villa.description.map(text => element('p', text)));
         floorIndex = 0;
         const floors = villa.floors || [];
@@ -187,7 +232,7 @@
             input.name = 'rengi-villa-variant';
             input.value = key;
             input.addEventListener('change', () => { if (input.checked) { variant = key; renderVilla(); } });
-            label.append(input, document.createTextNode(villa.name));
+            label.append(input, document.createTextNode(displayName(villa)));
             return label;
         }));
         renderVilla(announce);
