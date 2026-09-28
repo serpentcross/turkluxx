@@ -84,5 +84,6 @@
     "js/rengi-istanbul.js",
     "js/rengi-villa-data.js",
     "js/rengi-villa-explorer.js",
-    "rengi-istanbul.html"
+    "rengi-istanbul.html",
+    "assets/rengi/master-plan.jpg"
 ]

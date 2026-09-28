@@ -90,7 +90,7 @@
 
     document.querySelectorAll('[data-home-scroll]').forEach(link => {
         link.addEventListener('click', event => {
-            if ((!desktop.matches && !mobile.matches) || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            if ((!desktop.matches && !mobile.matches && link.dataset.homeScroll !== 'master-villas') || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
             const target = document.querySelector(link.hash);
             if (!target) return;
             event.preventDefault();
