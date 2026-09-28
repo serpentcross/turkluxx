@@ -235,7 +235,7 @@
 
     .turkluxx-homepage .turkluxx-home-desktop-nav {
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-evenly;
         gap: 6px;
@@ -550,6 +550,8 @@
     .turkluxx-homepage .turkluxx-home-desktop-nav {
         display: flex;
         gap: clamp(20px, 2vw, 36px);
+        min-width: 0;
+        flex-wrap: wrap;
     }
 
     .turkluxx-home-desktop-nav a {
@@ -1087,4 +1089,69 @@
         height: 22px;
         fill: currentColor;
     }
+}
+/* Investment information uses the callback's surface, backdrop and motion. */
+.turkluxx-roi-modal {
+    box-sizing: border-box;
+    color-scheme: dark;
+    width: min(820px, calc(100% - 32px));
+    padding: 44px;
+    overscroll-behavior: contain;
+    scroll-padding-block: 24px;
+}
+.turkluxx-roi-modal .turkluxx-roi-label {
+    margin: 0 32px 18px 0;
+    color: #d8b66a;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .16em;
+}
+.turkluxx-roi-modal h2 {
+    margin: 0 0 16px;
+    font-size: clamp(42px, 6vw, 64px);
+}
+.turkluxx-roi-subheading {
+    margin: 0 0 22px;
+    color: #fff8e8;
+    font: 500 30px/1.15 'Cormorant Garamond', Georgia, serif;
+}
+.turkluxx-roi-modal .turkluxx-roi-intro {
+    max-width: 65ch;
+    margin-bottom: 28px;
+    font-size: 16px;
+}
+.turkluxx-roi-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0 0 32px;
+    padding-block: 24px;
+    border-block: 1px solid #d8b66a55;
+}
+.turkluxx-roi-points dt {
+    margin-bottom: 10px;
+    color: #f3d992;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+.turkluxx-roi-points dd {
+    margin: 0;
+    color: #e3ded3;
+    font-size: 14px;
+    line-height: 1.7;
+}
+.turkluxx-roi-modal .turkluxx-roi-note {
+    margin: 22px 0 0;
+    color: #c6c3bc;
+    font-size: 12px;
+    line-height: 1.7;
+}
+.turkluxx-roi-trigger,
+.turkluxx-roi-modal .turkluxx-final-button {
+    cursor: pointer;
+}
+@media (max-width: 767px) {
+    .turkluxx-roi-modal { padding: 32px 24px 28px; }
+    .turkluxx-roi-points { grid-template-columns: 1fr; gap: 22px; }
 }

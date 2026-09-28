@@ -26,7 +26,7 @@
     const callback = document.querySelector('#turkluxx-callback');
     const callbackTitle = callback.querySelector('#turkluxx-callback-title');
     const defaultCallbackTitle = callbackTitle.textContent;
-    const displayName = villa => `${villa.name} (${villa.turkishName})`;
+    const displayName = villa => `${villa.turkishName} (${villa.name})`;
 
     function resetCallbackTitle() {
         callbackTitle.textContent = defaultCallbackTitle;

@@ -2834,7 +2834,7 @@
     line-height: 1.75;
 }
 
-.turkluxx-final-cta .turkluxx-final-button {
+:is(.turkluxx-final-cta, .turkluxx-roi-modal) .turkluxx-final-button {
     display: inline-flex;
     gap: 22px;
     max-width: 100%;
@@ -2854,7 +2854,7 @@
     text-align: left;
 }
 
-.turkluxx-final-cta .turkluxx-final-button:hover {
+:is(.turkluxx-final-cta, .turkluxx-roi-modal) .turkluxx-final-button:hover {
     background: #172154;
 }
 
@@ -3047,7 +3047,7 @@
         line-height: 1.7;
     }
 
-    .turkluxx-final-cta .turkluxx-final-button {
+    :is(.turkluxx-final-cta, .turkluxx-roi-modal) .turkluxx-final-button {
         justify-content: space-between;
         width: 100%;
         max-width: 380px;

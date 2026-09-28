@@ -1,0 +1,29 @@
+/* Antalya-only additions; header, footer, buttons and gallery use Istanbul styles. */
+.antalya-page .antalya-explorer { min-height: 60vh; }
+.antalya-page #antalya-explorer-title { margin: 0 0 24px; font: 500 clamp(38px, 3.5vw, 58px)/1.08 'Cormorant Garamond', Georgia, serif; letter-spacing: -.025em; }
+.antalya-page .antalya-project-tabs { flex-wrap: wrap; overflow: visible; }
+.antalya-page .antalya-project-tabs button { flex: 1 1 auto; }
+.antalya-page .antalya-project-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.antalya-page .antalya-visual-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; background: #e3dfd6; border: 1px solid #d4c8b0; }
+.antalya-page .antalya-visual-placeholder svg { fill: none; stroke: #8c6b3066; stroke-width: 1; }
+.antalya-page .antalya-project-location { margin: 0 0 20px; }
+.antalya-page .antalya-project-tagline { margin: 0 0 18px; color: #212c6c; font: 600 24px/1.35 'Cormorant Garamond', Georgia, serif; }
+.antalya-page .rengi-villa-contact { width: 100%; max-width: 400px; margin-top: 24px; }
+.antalya-page .antalya-project-layout .rengi-villa-philosophy { grid-area: auto; }
+.antalya-page .antalya-project-layout .rengi-villa-media { grid-area: auto; }
+.antalya-page .antalya-project-tabs { margin-bottom: 28px; }
+.antalya-page .antalya-apartments { margin-top: 32px; }
+.antalya-page .antalya-apartments legend { margin-bottom: 12px; }
+.antalya-page .antalya-facts { margin: 24px 0 0; }
+.antalya-page .antalya-facts > div { display: flex; justify-content: space-between; gap: 24px; padding: 12px 0; border-bottom: 1px solid #212c6c26; font-size: 15px; line-height: 1.65; }
+.antalya-page .antalya-facts dd { margin: 0; text-align: right; }
+.antalya-page .antalya-plan-gallery img { object-fit: contain; }
+.antalya-page .antalya-plan-gallery .rengi-villa-thumbnail { background: #f7f5f1; }
+@media (max-width: 1199px) {
+    .antalya-page .antalya-project-layout { gap: 28px; }
+}
+@media (max-width: 767px) {
+    .antalya-page .antalya-project-layout { grid-template-columns: minmax(0, 1fr); }
+    .antalya-page .antalya-project-layout .rengi-villa-philosophy { margin-top: 0; }
+    .antalya-page .antalya-project-tabs button { flex: 0 1 auto; }
+}

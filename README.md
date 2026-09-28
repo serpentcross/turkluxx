@@ -18,7 +18,7 @@ See Cloudflare's [custom build documentation](https://developers.cloudflare.com/
 `scripts/public-files.json` is the reviewed source allowlist: `index.html`,
 `rengi-istanbul.html`, styles in `css/`, scripts in `js/`, every current villa
 photo and floor plan in `img/`, and the public images in `assets/`.
-`rengi-antalya.html` is also copied automatically if present (currently absent).
+`rengi-antalya.html` is also copied automatically if present.
 When adding public assets, add their paths to the manifest; never edit or commit
 `dist/`. The unreferenced source material in `materials/` is not published.
 Repository files, documentation, local tools and unlisted files are not copied.

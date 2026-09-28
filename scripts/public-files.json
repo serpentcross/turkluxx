@@ -9,6 +9,7 @@
     "css/rengi-istanbul.css",
     "css/rengi-navigation-footer.css",
     "css/rengi-villa-explorer.css",
+    "css/rengi-antalya.css",
     "css/styles.css",
     "img/ist_villas/4_1/coral/floor_plans/coral-floor-1.jpg",
     "img/ist_villas/4_1/coral/floor_plans/coral-floor-2.jpg",
@@ -84,6 +85,8 @@
     "js/rengi-istanbul.js",
     "js/rengi-villa-data.js",
     "js/rengi-villa-explorer.js",
+    "js/rengi-antalya-data.js",
+    "js/rengi-antalya.js",
     "rengi-istanbul.html",
     "assets/rengi/master-plan.jpg"
 ]
