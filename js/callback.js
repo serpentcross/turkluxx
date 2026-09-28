@@ -4,7 +4,7 @@
   const form = dialog.querySelector('form');
   const status = dialog.querySelector('[role="status"]');
 
-  // Both dialogs share dismissal, scroll restoration and focus handling.
+  // All dialogs share dismissal, scroll restoration and focus handling.
   function modalController(modal) {
     let trigger;
     let scrollY = 0;
@@ -56,19 +56,23 @@
   }
 
   const callback = modalController(dialog);
-  const roiDialog = document.querySelector('#turkluxx-roi');
-  const roi = roiDialog ? modalController(roiDialog) : null;
+  const informationModals = new Map(
+    [...document.querySelectorAll('.turkluxx-roi-modal, .turkluxx-info-modal')]
+      .map(modal => [modal, modalController(modal)])
+  );
   triggers.forEach(button => button.addEventListener('click', () => {
     status.textContent = '';
     // Close the information dialog before opening the existing form. Restore
-    // focus to the navigation item when the consultation flow finishes.
-    if (roiDialog?.open) roi.close(opener => callback.open(opener));
+    // focus to its original trigger when the consultation flow finishes.
+    const active = [...informationModals].find(([modal]) => modal.open);
+    if (active) active[1].close(opener => callback.open(opener));
     else callback.open(button);
   }));
-  document.querySelectorAll('.turkluxx-roi-trigger').forEach(button => {
+  document.querySelectorAll('.turkluxx-roi-trigger, .turkluxx-info-trigger').forEach(button => {
+    const information = informationModals.get(document.getElementById(button.getAttribute('aria-controls')));
     button.addEventListener('click', event => {
       event.preventDefault();
-      roi?.open(button);
+      information?.open(button);
     });
     button.addEventListener('keydown', event => {
       if (event.key === ' ') {

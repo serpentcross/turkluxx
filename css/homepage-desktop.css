@@ -1090,8 +1090,8 @@
         fill: currentColor;
     }
 }
-/* Investment information uses the callback's surface, backdrop and motion. */
-.turkluxx-roi-modal {
+/* Shared information dialogs use the callback's surface, backdrop and motion. */
+:is(.turkluxx-roi-modal, .turkluxx-info-modal) {
     box-sizing: border-box;
     color-scheme: dark;
     width: min(820px, calc(100% - 32px));
@@ -1099,28 +1099,28 @@
     overscroll-behavior: contain;
     scroll-padding-block: 24px;
 }
-.turkluxx-roi-modal .turkluxx-roi-label {
+:is(.turkluxx-roi-modal, .turkluxx-info-modal) :is(.turkluxx-roi-label, .turkluxx-info-label) {
     margin: 0 32px 18px 0;
     color: #d8b66a;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: .16em;
 }
-.turkluxx-roi-modal h2 {
+:is(.turkluxx-roi-modal, .turkluxx-info-modal) h2 {
     margin: 0 0 16px;
     font-size: clamp(42px, 6vw, 64px);
 }
-.turkluxx-roi-subheading {
+:is(.turkluxx-roi-subheading, .turkluxx-info-subheading) {
     margin: 0 0 22px;
     color: #fff8e8;
     font: 500 30px/1.15 'Cormorant Garamond', Georgia, serif;
 }
-.turkluxx-roi-modal .turkluxx-roi-intro {
+:is(.turkluxx-roi-modal, .turkluxx-info-modal) :is(.turkluxx-roi-intro, .turkluxx-info-intro) {
     max-width: 65ch;
     margin-bottom: 28px;
     font-size: 16px;
 }
-.turkluxx-roi-points {
+:is(.turkluxx-roi-points, .turkluxx-info-points) {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
@@ -1128,30 +1128,71 @@
     padding-block: 24px;
     border-block: 1px solid #d8b66a55;
 }
-.turkluxx-roi-points dt {
+:is(.turkluxx-roi-points, .turkluxx-info-points) dt {
     margin-bottom: 10px;
     color: #f3d992;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .08em;
 }
-.turkluxx-roi-points dd {
+:is(.turkluxx-roi-points, .turkluxx-info-points) dd {
     margin: 0;
     color: #e3ded3;
     font-size: 14px;
     line-height: 1.7;
 }
-.turkluxx-roi-modal .turkluxx-roi-note {
+:is(.turkluxx-roi-modal, .turkluxx-info-modal) :is(.turkluxx-roi-note, .turkluxx-info-note) {
     margin: 22px 0 0;
     color: #c6c3bc;
     font-size: 12px;
     line-height: 1.7;
 }
 .turkluxx-roi-trigger,
-.turkluxx-roi-modal .turkluxx-final-button {
+:is(.turkluxx-roi-modal, .turkluxx-info-modal) .turkluxx-final-button {
     cursor: pointer;
 }
 @media (max-width: 767px) {
-    .turkluxx-roi-modal { padding: 32px 24px 28px; }
-    .turkluxx-roi-points { grid-template-columns: 1fr; gap: 22px; }
+    :is(.turkluxx-roi-modal, .turkluxx-info-modal) { padding: 32px 24px 28px; }
+    :is(.turkluxx-roi-points, .turkluxx-info-points) { grid-template-columns: 1fr; gap: 22px; }
+}
+/* Four information points use paired columns, then the shared mobile stack. */
+@media (min-width: 768px) {
+    .turkluxx-info-points--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.turkluxx-info-modal .turkluxx-info-question {
+    margin: 0 0 14px;
+    font-size: 16px;
+}
+.turkluxx-info-source {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+    min-height: 44px;
+    margin-top: 14px;
+    color: #f3d992;
+    font-size: 14px;
+    line-height: 1.6;
+    text-decoration: underline;
+    text-decoration-color: #d8b66a80;
+    text-underline-offset: 5px;
+}
+.turkluxx-info-source:hover { text-decoration-color: currentColor; }
+/* Keep the close control reachable while the longer Citizenship content scrolls. */
+.turkluxx-info-close {
+    position: sticky;
+    top: -32px;
+    height: 44px;
+    z-index: 1;
+    margin: -32px -32px -12px 0;
+    pointer-events: none;
+}
+.turkluxx-info-close .turkluxx-callback-close {
+    top: 0;
+    right: 0;
+    pointer-events: auto;
+    background: #10243b;
+}
+@media (max-width: 767px) {
+    .turkluxx-info-close { top: -20px; margin: -20px -12px -24px 0; }
 }
