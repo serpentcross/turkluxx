@@ -177,6 +177,12 @@
         (origin?.isConnected ? origin : tabs.querySelector('[aria-selected="true"]'))?.focus({ preventScroll: true });
     });
 
+    window.registerTurkLuxxLeadContext(cta, () => ({
+        project: 'Rengi Antalya',
+        property: project().name,
+        propertyCode: null
+    }));
+
     // Same callback script/markup as Istanbul; only Antalya context is page-specific.
     const callback = document.querySelector('#turkluxx-callback');
     const title = callback.querySelector('h2');

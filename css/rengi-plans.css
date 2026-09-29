@@ -1,0 +1,68 @@
+﻿/* Isolated styles for the floor and master plan additions. */
+.rengi-floor-plans { background: #f7f5f1; }
+.rengi-master-plan { background: #eee9df; }
+.rengi-plans-note { max-width: 80ch; margin: 0 0 24px; font-size: 12px; line-height: 1.8; }
+.rengi-plan-tabs { display: flex; overflow-x: auto; scrollbar-width: thin; border-bottom: 1px solid #212c6c26; }
+.rengi-plan-tabs button { flex-shrink: 0; min-height: 48px; padding: 14px 24px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #212c6c; font: 600 11px/1.5 'Manrope', sans-serif; letter-spacing: .08em; cursor: pointer; }
+.rengi-plan-tabs button[aria-selected="true"] { border-bottom-color: #8c6b30; background: #eee9df; }
+.rengi-floor-tabs { margin: 16px 0 24px; }
+.rengi-plan-tabs :focus-visible { outline-offset: -4px; }
+.rengi-plan-preview { display: block; position: relative; width: 100%; padding: 24px; border: 1px solid #212c6c26; background: #fffdf7; color: #212c6c; cursor: zoom-in; }
+#rengi-plan-art { display: block; max-width: 1000px; margin: auto; }
+#rengi-plan-art svg, #rengi-plan-art img, #rengi-lightbox-art svg, #rengi-lightbox-art img { display: block; width: 100%; height: auto; }
+.rengi-plan-expand { display: block; margin-top: 16px; text-align: right; font: 600 12px 'Manrope', sans-serif; }
+#rengi-plan-caption { margin: 16px 0 0; }
+.rengi-plan-legend { display: flex; flex-wrap: wrap; gap: 24px; padding: 0; margin: 24px 0; list-style: none; }
+.rengi-plan-legend li { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.rengi-plan-legend span { display: block; width: 13px; height: 13px; border: 1px solid #212c6c; }
+.rengi-plan-legend [data-status="available"] { background: #d8b66a; }
+.rengi-plan-legend [data-status="reserved"] { background: #fffdf7; border-style: dashed; }
+.rengi-plan-legend [data-status="sold"] { background: #212c6c; }
+.rengi-master-stage { position: relative; }
+.rengi-master-stage > img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; }
+#rengi-master-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.rengi-demo-unit { cursor: pointer; }
+.rengi-demo-unit rect { stroke: #212c6c; stroke-width: 2; fill: #d8b66a; fill-opacity: .9; }
+.rengi-demo-unit[data-status="reserved"] rect { fill: #fffdf7; stroke-dasharray: 8 4; }
+.rengi-demo-unit[data-status="sold"] rect { fill: #212c6c; stroke: #d8b66a; }
+.rengi-demo-unit text { fill: #212c6c; font: 700 18px 'Manrope', sans-serif; pointer-events: none; }
+.rengi-demo-unit[data-status="sold"] text { fill: #fffdf7; }
+.rengi-demo-unit:hover rect, .rengi-demo-unit:focus rect, .rengi-demo-unit[aria-expanded="true"] rect { stroke: #fffdf7; stroke-width: 5; fill-opacity: 1; }
+.rengi-demo-unit:focus { outline: none; }
+.rengi-unit-popup { position: absolute; right: 20px; top: 20px; width: 245px; padding: 24px; border: 1px solid #b49860; background: #fffdf7; box-shadow: 0 8px 24px #071e3426; z-index: 1; }
+.rengi-unit-popup[hidden] { display: none; }
+.rengi-unit-popup h3 { margin: 8px 0 14px; font: 500 28px/1.1 'Cormorant Garamond', Georgia, serif; }
+.rengi-unit-popup p { margin: 6px 0; font-size: 12px; line-height: 1.6; }
+.rengi-unit-popup .rengi-unit-demo { color: #8c6b30; font-size: 10px; letter-spacing: .12em; }
+.rengi-unit-popup a { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; color: #212c6c; font-size: 12px; text-underline-offset: 5px; }
+.rengi-unit-close { position: absolute; right: 0; top: 0; width: 44px; height: 44px; border: 0; background: transparent; color: #212c6c; font-size: 24px; cursor: pointer; }
+.rengi-master-stage + .rengi-plans-note { margin-top: 16px; margin-bottom: 0; }
+.rengi-plans-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.rengi-plan-lightbox { box-sizing: border-box; position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; padding: 0; margin: 0; border: 0; background: #f7f5f1; color: #212c6c; font-family: 'Manrope', sans-serif; }
+.rengi-plan-lightbox[open] { display: flex; flex-direction: column; }
+.rengi-plan-lightbox::backdrop { background: #071e34; }
+.rengi-lightbox-toolbar { display: flex; flex-shrink: 0; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid #212c6c26; }
+.rengi-lightbox-toolbar h2 { margin: 0; font: 500 28px/1.2 'Cormorant Garamond', Georgia, serif; }
+.rengi-lightbox-toolbar p { margin: 6px 0 0; font-size: 11px; }
+.rengi-lightbox-actions { display: flex; align-items: center; gap: 8px; }
+.rengi-lightbox-actions button { width: 44px; height: 44px; border: 1px solid #b49860; background: transparent; color: #212c6c; font-size: 22px; cursor: pointer; }
+.rengi-lightbox-actions output { min-width: 48px; text-align: center; font-size: 12px; }
+.rengi-lightbox-scroll { flex: 1; min-height: 0; overflow: auto; padding: 24px; overscroll-behavior: contain; }
+#rengi-lightbox-art { width: 100%; margin: auto; }
+#rengi-lightbox-art.is-zoom-150 { width: 150%; }
+#rengi-lightbox-art.is-zoom-200 { width: 200%; }
+#rengi-lightbox-art.is-zoom-250 { width: 250%; }
+.rengi-plan-lightbox :focus-visible { outline: 2px solid #8c6b30; outline-offset: -3px; }
+html.rengi-plan-modal-open { overflow: hidden; }
+@media (max-width: 767px) {
+    .rengi-plan-tabs button { padding-inline: 18px; }
+    .rengi-plan-preview { padding: 12px 4px; }
+    .rengi-plan-expand { padding-right: 8px; font-size: 11px; }
+    .rengi-plan-legend { gap: 16px; }
+    .rengi-unit-popup { position: relative; top: auto; right: auto; width: 100%; margin-top: 12px; box-shadow: none; }
+    #rengi-master-overlay { height: auto; aspect-ratio: 2 / 1; }
+    .rengi-lightbox-toolbar { flex-wrap: wrap; padding: 16px; }
+    .rengi-lightbox-toolbar h2 { font-size: 24px; }
+    .rengi-lightbox-actions { width: 100%; justify-content: flex-end; }
+    .rengi-lightbox-scroll { padding: 12px; }
+}

@@ -4,6 +4,30 @@
   const form = dialog.querySelector('form');
   const status = dialog.querySelector('[role="status"]');
 
+  // Context exists only in memory for the current form opening. Resolvers read
+  // the selected item from each page's existing data model at click time.
+  const leadResolvers = new WeakMap();
+  let leadContext = null;
+  window.registerTurkLuxxLeadContext = (trigger, resolveContext) => {
+    leadResolvers.set(trigger, resolveContext);
+  };
+  window.buildTurkLuxxLeadPayload = sourceForm => {
+    const fields = new FormData(sourceForm);
+    const value = key => String(fields.get(key) || '').trim();
+    const context = sourceForm === form ? leadContext : null;
+    return {
+      referral: window.getTurkLuxxReferral(),
+      name: value('name'),
+      phone: value('phone'),
+      email: value('email'),
+      project: context?.project || null,
+      property: context?.property || null,
+      propertyCode: context?.propertyCode || null,
+      page: window.location.href
+    };
+  };
+  dialog.addEventListener('close', () => { leadContext = null; });
+
   // All dialogs share dismissal, scroll restoration and focus handling.
   function modalController(modal) {
     let trigger;
@@ -61,6 +85,12 @@
       .map(modal => [modal, modalController(modal)])
   );
   triggers.forEach(button => button.addEventListener('click', () => {
+    const context = leadResolvers.get(button)?.();
+    leadContext = context ? {
+      project: context.project || null,
+      property: context.property || null,
+      propertyCode: context.propertyCode || null
+    } : null;
     status.textContent = '';
     // Close the information dialog before opening the existing form. Restore
     // focus to its original trigger when the consultation flow finishes.
@@ -82,16 +112,22 @@
     });
   });
 
-  for (const input of form.querySelectorAll('input')) {
+  const validators = [];
+  for (const input of form.querySelectorAll('input:not([type="hidden"])')) {
     const validate = () => {
       input.setCustomValidity(input.value && !input.value.trim() ? 'Please enter your ' + input.name + '.' : '');
     };
+    validators.push(validate);
     input.addEventListener('input', () => { validate(); status.textContent = ''; });
     input.addEventListener('change', validate);
   }
   form.addEventListener('submit', event => {
     event.preventDefault();
+    validators.forEach(validate => validate());
     if (!form.reportValidity()) return;
+    const payload = window.buildTurkLuxxLeadPayload(form);
+    // Local integration hook only; a future backend adapter can consume detail.
+    form.dispatchEvent(new CustomEvent('turkluxx:lead-ready', { detail: payload, bubbles: true }));
     status.textContent = 'Your details are valid. This form is not connected yet, so your request has not been sent. Please call +1 818 434 7266.';
   });
 })();

@@ -28,6 +28,15 @@
     const defaultCallbackTitle = callbackTitle.textContent;
     const displayName = villa => `${villa.turkishName} (${villa.name})`;
 
+    window.registerTurkLuxxLeadContext(villaCta, () => {
+        const villa = villaData[category][variant];
+        return {
+            project: 'Rengi Istanbul',
+            property: displayName(villa),
+            propertyCode: villa.floors?.[0]?.code || null
+        };
+    });
+
     function resetCallbackTitle() {
         callbackTitle.textContent = defaultCallbackTitle;
         callbackTitle.style.removeProperty('font-size');
