@@ -8,6 +8,9 @@
   // the selected item from each page's existing data model at click time.
   const leadResolvers = new WeakMap();
   let leadContext = null;
+  let pending = false;
+  let opening = 0;
+  const submitButton = form.querySelector('[type="submit"]');
   window.registerTurkLuxxLeadContext = (trigger, resolveContext) => {
     leadResolvers.set(trigger, resolveContext);
   };
@@ -26,7 +29,7 @@
       page: window.location.href
     };
   };
-  dialog.addEventListener('close', () => { leadContext = null; });
+  dialog.addEventListener('close', () => { leadContext = null; opening += 1; });
 
   // All dialogs share dismissal, scroll restoration and focus handling.
   function modalController(modal) {
@@ -85,6 +88,7 @@
       .map(modal => [modal, modalController(modal)])
   );
   triggers.forEach(button => button.addEventListener('click', () => {
+    opening += 1;
     const context = leadResolvers.get(button)?.();
     leadContext = context ? {
       project: context.project || null,
@@ -121,13 +125,44 @@
     input.addEventListener('input', () => { validate(); status.textContent = ''; });
     input.addEventListener('change', validate);
   }
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (pending) return;
     validators.forEach(validate => validate());
     if (!form.reportValidity()) return;
     const payload = window.buildTurkLuxxLeadPayload(form);
-    // Local integration hook only; a future backend adapter can consume detail.
-    form.dispatchEvent(new CustomEvent('turkluxx:lead-ready', { detail: payload, bubbles: true }));
-    status.textContent = 'Your details are valid. This form is not connected yet, so your request has not been sent. Please call +1 818 434 7266.';
+    const submittedOpening = opening;
+    pending = true;
+    submitButton.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    status.textContent = 'Sending your enquiry...';
+    try {
+      // Preserve the existing local event. This handler alone performs the send.
+      form.dispatchEvent(new CustomEvent('turkluxx:lead-ready', { detail: payload, bubbles: true }));
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(30000)
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.ok !== true) {
+        console.error('[TurkLuxx lead] Submission failed', { status: response.status });
+        throw new Error('Lead request failed');
+      }
+      if (opening === submittedOpening && dialog.open) {
+        status.textContent = 'Thank you. Your enquiry has been sent. Our team will be in touch.';
+      }
+    } catch (error) {
+      console.error('[TurkLuxx lead] Request did not complete', { type: error.name });
+      if (opening === submittedOpening && dialog.open) {
+        status.textContent = 'We could not confirm your enquiry was sent. Please try again or call +1 818 434 7266.';
+      }
+    } finally {
+      pending = false;
+      submitButton.disabled = false;
+      form.removeAttribute('aria-busy');
+    }
   });
 })();

@@ -1,3 +1,73 @@
+## Lead email endpoint (implemented; not deployed)
+
+Use Node.js 22+ and the pinned Wrangler installation:
+
+```sh
+npm ci
+npm run dev
+```
+
+Open http://127.0.0.1:8787/. Wrangler builds `dist/` automatically and serves
+both assets and `POST /api/lead`. A Python/static-only server cannot execute
+this endpoint. Local `send_email` is simulated by Wrangler: messages are logged
+and written under ignored `.wrangler/tmp/email/`; no real email is delivered.
+Use synthetic contact details for local tests. Do not use remote bindings for
+these checks.
+
+`worker/index.mjs` handles exactly `/api/lead`; other `/api/*` paths return JSON
+404 and other requests fall back to `env.ASSETS.fetch`. API responses are not
+cached. The binding `LEAD_EMAIL` is restricted to `turkluxx101@gmail.com`.
+The fixed sender is `TurkLuxx Leads <leads@turkluxx.com>`; validated customer email
+is Reply-To only. Neither recipient nor sender is client-controlled.
+
+Validation requires JSON with non-empty name, phone and email, and an exact
+ALMA/MUHHAMED/VLAD/DIRECT referral. Limits (characters): name 120, phone 80,
+email 254, project 120, property 180, propertyCode 80, page 2048. Optional values
+may be null or absent. Control characters are rejected; email format and
+HTTP(S) page URLs are checked. Bodies over 8 KiB are rejected even without
+Content-Length. Cross-origin browser submissions are rejected; no CORS is added.
+Client leadId/submittedAt and unknown fields are ignored. Referral validation
+checks its allowed value, not proof of referral ownership.
+
+The Worker creates UTC `submittedAt` and `TL-YYYYMMDD-` plus an uppercase,
+hyphen-free `crypto.randomUUID()` (122 random bits). It waits for the native
+email binding before returning success. Binding errors return a generic 502;
+server logs include the generated lead ID, not contact data or internal errors.
+Success means Cloudflare accepted the send, not a guarantee of inbox delivery.
+
+The existing callback submit handler builds the same payload and continues to
+emit `turkluxx:lead-ready`. It alone sends the request. An in-memory pending flag
+and disabled submit button prevent concurrent submissions; errors retain all
+fields and permit retry. A modal-opening counter prevents a late response from
+changing the status of a different enquiry. There is no database-backed
+idempotency: a retry after an ambiguous network timeout could send another email.
+
+Verification:
+
+```sh
+npm test
+npm run build
+# With npm run dev running; uses the existing local Python Playwright test tool:
+python scripts/test-lead-browser.py
+```
+
+The Node suite tests validation, fixed addressing, email composition, server
+metadata and binding failures with an in-memory stub. Browser checks exercise
+A-D against the local Worker simulator, pending double-submit prevention,
+failure/retry, first-touch context and modal reopening. No real email test has
+been performed.
+
+Given the confirmed Email Routing setup and verified destination in the same
+Cloudflare account as this Worker, no additional dashboard change is required
+for this restricted binding. Wrangler applies it when deployment is authorized.
+No credentials or external email provider are required. Do not deploy or run a
+real email test until explicitly authorized.
+
+Cloudflare references:
+- https://developers.cloudflare.com/email-service/api/send-emails/workers-api/
+- https://developers.cloudflare.com/email-service/configuration/send-bindings/
+- https://developers.cloudflare.com/email-service/local-development/sending/
+
 # TurkLuxx desktop hero
 
 ## Cloudflare deployment
