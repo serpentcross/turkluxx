@@ -13,7 +13,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "293.76 m²",
+                "netArea": "256.13 m²",
+                "landShare": "693–706 m²"
             },
             "description": [
                 "Jade is more than just a product of nature; it is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -121,7 +124,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "291.83 m²",
+                "netArea": "254.13 m²",
+                "landShare": "728–1,344 m²"
             },
             "description": [
                 "Beyond being a product of nature, Crystal is one of the values forming the philosophical core of Rengi İstanbul.",
@@ -234,7 +240,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "348.22 m²",
+                "netArea": "303.09 m²",
+                "landShare": "632–873 m²"
             },
             "description": [
                 "Beyond being a product of nature, Coral is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -373,7 +382,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "410.64 m²",
+                "netArea": "348.32 m²",
+                "landShare": "664–1,290 m²"
             },
             "description": [
                 "Beyond being a product of nature, Ruby is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -522,7 +534,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "466.59 m²",
+                "netArea": "366.12–406.50 m²",
+                "landShare": "828–1,287 m²"
             },
             "description": [
                 "Beyond being a product of nature, mother-of-pearl is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -675,7 +690,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "504.77 m²",
+                "netArea": "444.14 m²",
+                "landShare": "985–1,384 m²"
             },
             "description": [
                 "Beyond being a product of nature, Sapphire is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -827,7 +845,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "430.36 m²",
+                "netArea": "368.04 m²",
+                "landShare": "807–1,166 m²"
             },
             "description": [
                 "Beyond being a mere product of nature, Emerald is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -967,7 +988,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "413.22 m²",
+                "netArea": "369.33 m²",
+                "landShare": "1,022–1,067 m²"
             },
             "description": [
                 "Beyond being a product of nature, the pearl is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -1093,7 +1117,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "367.71 m²",
+                "netArea": "323.25 m²",
+                "landShare": "1,083–1,391 m²"
             },
             "description": [
                 "Beyond being a product of nature, Silver is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -1220,7 +1247,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "567.22 m²",
+                "netArea": "473.93 m²",
+                "landShare": "1,201–1,554 m²"
             },
             "description": [
                 "Beyond being a product of nature, the diamond is one of the values that form the philosophical core of Rengi İstanbul.",
@@ -1393,7 +1423,10 @@ const villaData = {
                 "bedrooms": "To be confirmed",
                 "bathrooms": "To be confirmed",
                 "privatePool": "To be confirmed",
-                "garden": "To be confirmed"
+                "garden": "To be confirmed",
+                "grossArea": "685.43 m²",
+                "netArea": "597.73 m²",
+                "landShare": "1,118–1,503 m²"
             },
             "description": [
                 "Beyond being a product of nature, Gold is one of the values that form the philosophical core of Rengi İstanbul.",

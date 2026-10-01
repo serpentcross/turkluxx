@@ -65,6 +65,22 @@
             <div id="rengi-floor-plans" class="rengi-view-tabs" role="tablist" aria-label="Villa content">
                 <button id="rengi-photos-tab" type="button" role="tab" aria-selected="true" aria-controls="rengi-villa-panel" data-view="photos">PHOTOS</button>
                 <button id="rengi-plans-tab" type="button" role="tab" aria-selected="false" aria-controls="rengi-villa-plans" data-view="plans" tabindex="-1">FLOOR PLANS</button>
+                <div class="rengi-villa-specs" aria-label="Villa specifications">
+                    <div class="rengi-villa-spec">
+                        <span>Gross Area</span>
+                        <strong data-villa-spec="gross"></strong>
+                    </div>
+
+                    <div class="rengi-villa-spec">
+                        <span>Net Area</span>
+                        <strong data-villa-spec="net"></strong>
+                    </div>
+
+                    <div class="rengi-villa-spec">
+                        <span>Land Share</span>
+                        <strong data-villa-spec="land"></strong>
+                    </div>
+                </div>
             </div>
             <div class="rengi-villa-panel" id="rengi-villa-panel" role="tabpanel" aria-labelledby="rengi-photos-tab">
                 <figure class="rengi-villa-media">
@@ -150,9 +166,27 @@
                 </li>
                 <li>
                     <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6M8 10h2m4 0h2"/>
+                    </svg>
+                    <span>University</span><strong>~4.2 km</strong>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M5 21V3h14v18M2 21h20M12 6v6m-3-3h6m-6 12v-5h6v5"/>
                     </svg>
                     <span>Hospital</span><strong>~4.2 km (9 min drive)</strong>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 21 9 3m10 18L15 3M8 8h8M7 13h10M6 18h12"/>
+                    </svg>
+                    <span>TEM Motorway</span><strong>~1.8 km</strong>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 21h16M7 21V9h7v12M14 21V5h4v16M16 5V2m-7 11h3m-3 4h3"/>
+                    </svg>
+                    <span>Tüyap Tower Minaret</span><strong>~3.2 km</strong>
                 </li>
                 <li>
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -178,9 +212,8 @@
                     </svg>
                     <span>City Center</span><strong>~33.5 km (20.8 miles)</strong>
                 </li>
-
             </ul>
-            <p class="rengi-note">Distances to be confirmed.</p></div>
+        </div>
     </section>
     <section id="rengi-master-plan" class="rengi-master-plan rengi-section" aria-labelledby="rengi-master-title">
         <div class="rengi-master-layout">

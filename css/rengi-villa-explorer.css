@@ -1,7 +1,21 @@
 /* Only the two-level villa explorer; other galleries and plan viewers are unchanged. */
-.rengi-explorer .rengi-type-tabs { margin-bottom: 12px; }
-.rengi-explorer .rengi-variant-selector { margin: 0 0 24px; padding: 0; border: 0; min-width: 0; }
-.rengi-explorer .rengi-variant-options { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.rengi-explorer .rengi-type-tabs {
+    margin-bottom: 12px;
+}
+
+.rengi-explorer .rengi-variant-selector {
+    margin: 0 0 24px;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+}
+
+.rengi-explorer .rengi-variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+}
+
 .rengi-explorer .rengi-variant-option {
     display: inline-flex;
     align-items: center;
@@ -12,6 +26,7 @@
     cursor: pointer;
     white-space: nowrap;
 }
+
 .rengi-explorer .rengi-variant-option input {
     appearance: none;
     display: grid;
@@ -25,6 +40,7 @@
     flex: 0 0 16px;
     cursor: pointer;
 }
+
 .rengi-explorer .rengi-variant-option input::before {
     content: '';
     width: 8px;
@@ -33,97 +49,523 @@
     background: #b49860;
     transform: scale(0);
 }
-.rengi-explorer .rengi-variant-option input:checked::before { transform: scale(1); }
-.rengi-explorer .rengi-variant-option input:focus-visible { outline: 2px solid #212c6c; outline-offset: 3px; }
-.rengi-explorer .rengi-villa-panel { grid-template-areas: 'image info'; align-items: start; }
-.rengi-explorer .rengi-type-tabs button { font-size: 18px; font-weight: 600; }
-.rengi-explorer .rengi-villa-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.rengi-explorer .rengi-villa-thumbnail { display: block; overflow: hidden; padding: 0; border: 0; background: transparent; cursor: zoom-in; aspect-ratio: 3 / 2; }
-.rengi-explorer .rengi-villa-thumbnail img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: center; transition: transform 300ms ease; }
-.rengi-explorer .rengi-villa-thumbnail:focus-visible { outline: 2px solid #8c6b30; outline-offset: 3px; }
-.rengi-explorer .rengi-villa-philosophy { grid-area: info; margin-top: 0; max-width: 800px; text-align: left; }
-.rengi-explorer .rengi-villa-philosophy h3 { margin: 0 0 24px; font: 500 clamp(34px, 3vw, 46px)/1.12 'Cormorant Garamond', Georgia, serif; }
-.rengi-explorer .rengi-philosophy-heading { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-.rengi-explorer .rengi-philosophy-heading h3 { flex: 1; min-width: 0; margin: 0; overflow-wrap: anywhere; }
+
+.rengi-explorer .rengi-variant-option input:checked::before {
+    transform: scale(1);
+}
+
+.rengi-explorer .rengi-variant-option input:focus-visible {
+    outline: 2px solid #212c6c;
+    outline-offset: 3px;
+}
+
+.rengi-explorer .rengi-villa-panel {
+    grid-template-areas: 'image info';
+    align-items: start;
+}
+
+.rengi-explorer .rengi-type-tabs button {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.rengi-explorer .rengi-villa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.rengi-explorer .rengi-villa-thumbnail {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+    aspect-ratio: 3 / 2;
+}
+
+.rengi-explorer .rengi-villa-thumbnail img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 300ms ease;
+}
+
+.rengi-explorer .rengi-villa-thumbnail:focus-visible {
+    outline: 2px solid #8c6b30;
+    outline-offset: 3px;
+}
+
+.rengi-explorer .rengi-villa-philosophy {
+    grid-area: info;
+    margin-top: 0;
+    max-width: 800px;
+    text-align: left;
+}
+
+.rengi-explorer .rengi-villa-philosophy h3 {
+    margin: 0 0 24px;
+    font: 500 clamp(34px, 3vw, 46px)/1.12 'Cormorant Garamond', Georgia, serif;
+}
+
+.rengi-explorer .rengi-philosophy-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.rengi-explorer .rengi-philosophy-heading h3 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
 .rengi-explorer .rengi-villa-contact {
     flex: 0 0 58%;
     width: auto;
     min-width: 0;
     max-width: 100%;
 }
+
 @media (min-width: 1200px) {
-    .rengi-explorer .rengi-villa-contact { flex-basis: 48%; }
+    .rengi-explorer .rengi-villa-contact {
+        flex-basis: 48%;
+    }
 }
+
 @media (max-width: 767px) {
-    .rengi-explorer .rengi-philosophy-heading { flex-direction: column; align-items: stretch; }
-    .rengi-explorer .rengi-villa-contact { flex-basis: auto; width: 100%; }
+    .rengi-explorer .rengi-philosophy-heading {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .rengi-explorer .rengi-villa-contact {
+        flex-basis: auto;
+        width: 100%;
+    }
 }
-.rengi-explorer .rengi-philosophy-body p { margin: 0 0 18px; font-size: 17px; line-height: 1.85; }
-.rengi-explorer .rengi-floor-card { padding: 26px; border: 1px solid #212c6c26; background: #f7f5f1; }
-.rengi-explorer .rengi-floor-card header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #b49860; }
-.rengi-explorer .rengi-floor-card h4 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.6; letter-spacing: .04em; text-transform: uppercase; }
-.rengi-explorer .rengi-floor-card header p { margin: 0; font-size: 11px; color: #8c6b30; }
-.rengi-explorer .rengi-floor-card strong { display: inline-block; margin-left: 6px; font-size: 14px; font-weight: 600; color: #212c6c; white-space: nowrap; }
-.rengi-explorer .rengi-floor-card dl { margin: 0; }
-.rengi-explorer .rengi-floor-card dl > div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #212c6c15; font-size: 13px; line-height: 1.6; }
-.rengi-explorer .rengi-floor-card dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
-.rengi-explorer .rengi-floor-card dd { margin: 0; white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
-.rengi-explorer .rengi-villa-lightbox { position: fixed; inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fffdf7; overflow: hidden; touch-action: pan-y pinch-zoom; }
-.rengi-explorer .rengi-villa-lightbox::backdrop { background: #071e34ed; }
-.rengi-explorer .rengi-villa-lightbox[open] { display: flex; align-items: center; justify-content: center; }
-.rengi-explorer .rengi-villa-full-image { display: block; max-width: calc(100% - 128px); max-height: calc(100% - 120px); object-fit: contain; user-select: none; -webkit-user-drag: none; }
-.rengi-explorer .rengi-villa-lightbox button { position: absolute; display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 0; background: transparent; color: inherit; font: 300 30px/1 Arial, sans-serif; cursor: pointer; text-shadow: 0 1px 4px #071e34; }
-.rengi-explorer .rengi-villa-lightbox button:focus-visible { outline: 2px solid #b49860; outline-offset: -3px; }
-.rengi-explorer .rengi-villa-close { top: 12px; right: 12px; }
-.rengi-explorer .rengi-villa-previous { left: 8px; top: calc(50% - 24px); }
-.rengi-explorer .rengi-villa-next { right: 8px; top: calc(50% - 24px); }
-.rengi-explorer .rengi-villa-counter { position: absolute; bottom: 20px; left: 0; width: 100%; margin: 0; text-align: center; font-size: 13px; letter-spacing: .12em; }
-.rengi-explorer [hidden] { display: none !important; }
+
+.rengi-explorer .rengi-philosophy-body p {
+    margin: 0 0 18px;
+    font-size: 17px;
+    line-height: 1.85;
+}
+
+.rengi-explorer .rengi-floor-card {
+    padding: 26px;
+    border: 1px solid #212c6c26;
+    background: #f7f5f1;
+}
+
+.rengi-explorer .rengi-floor-card header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #b49860;
+}
+
+.rengi-explorer .rengi-floor-card h4 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.rengi-explorer .rengi-floor-card header p {
+    margin: 0;
+    font-size: 11px;
+    color: #8c6b30;
+}
+
+.rengi-explorer .rengi-floor-card strong {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #212c6c;
+    white-space: nowrap;
+}
+
+.rengi-explorer .rengi-floor-card dl {
+    margin: 0;
+}
+
+.rengi-explorer .rengi-floor-card dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #212c6c15;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.rengi-explorer .rengi-floor-card dl > div:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.rengi-explorer .rengi-floor-card dd {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.rengi-explorer .rengi-villa-lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fffdf7;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+}
+
+.rengi-explorer .rengi-villa-lightbox::backdrop {
+    background: #071e34ed;
+}
+
+.rengi-explorer .rengi-villa-lightbox[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rengi-explorer .rengi-villa-full-image {
+    display: block;
+    max-width: calc(100% - 128px);
+    max-height: calc(100% - 120px);
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.rengi-explorer .rengi-villa-lightbox button {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: 300 30px/1 Arial, sans-serif;
+    cursor: pointer;
+    text-shadow: 0 1px 4px #071e34;
+}
+
+.rengi-explorer .rengi-villa-lightbox button:focus-visible {
+    outline: 2px solid #b49860;
+    outline-offset: -3px;
+}
+
+.rengi-explorer .rengi-villa-close {
+    top: 12px;
+    right: 12px;
+}
+
+.rengi-explorer .rengi-villa-previous {
+    left: 8px;
+    top: calc(50% - 24px);
+}
+
+.rengi-explorer .rengi-villa-next {
+    right: 8px;
+    top: calc(50% - 24px);
+}
+
+.rengi-explorer .rengi-villa-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: .12em;
+}
+
+.rengi-explorer [hidden] {
+    display: none !important;
+}
+
 @media (hover: hover) and (pointer: fine) and (min-width: 1200px) {
-    .rengi-explorer .rengi-villa-thumbnail:hover img { transform: scale(1.025); }
+    .rengi-explorer .rengi-villa-thumbnail:hover img {
+        transform: scale(1.025);
+    }
 }
+
 @media (max-width: 767px) {
-    .rengi-explorer .rengi-type-tabs button { font-size: 16px; }
-    .rengi-explorer .rengi-villa-panel { grid-template-areas: 'image' 'info'; }
-    .rengi-explorer .rengi-variant-options { column-gap: 18px; }
-    .rengi-explorer .rengi-villa-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .rengi-explorer .rengi-villa-philosophy { margin-top: 40px; }
-    .rengi-explorer .rengi-floor-card { padding: 20px; }
-    .rengi-explorer .rengi-villa-full-image { max-width: calc(100% - 32px); max-height: calc(100% - 140px); }
-    .rengi-explorer .rengi-villa-previous, .rengi-explorer .rengi-villa-next { top: auto; bottom: 8px; }
+    .rengi-explorer .rengi-type-tabs button {
+        font-size: 16px;
+    }
+
+    .rengi-explorer .rengi-villa-panel {
+        grid-template-areas: 'image' 'info';
+    }
+
+    .rengi-explorer .rengi-variant-options {
+        column-gap: 18px;
+    }
+
+    .rengi-explorer .rengi-villa-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .rengi-explorer .rengi-villa-philosophy {
+        margin-top: 40px;
+    }
+
+    .rengi-explorer .rengi-floor-card {
+        padding: 20px;
+    }
+
+    .rengi-explorer .rengi-villa-full-image {
+        max-width: calc(100% - 32px);
+        max-height: calc(100% - 140px);
+    }
+
+    .rengi-explorer .rengi-villa-previous, .rengi-explorer .rengi-villa-next {
+        top: auto;
+        bottom: 8px;
+    }
 }
+
 @media (prefers-reduced-motion: reduce) {
-    .rengi-explorer .rengi-villa-thumbnail img { transition: none; }
+    .rengi-explorer .rengi-villa-thumbnail img {
+        transition: none;
+    }
 }
 
 /* Content modes share the existing villa data and lightbox. */
-.rengi-explorer .rengi-view-tabs { display: flex; gap: 28px; margin-bottom: 28px; border-bottom: 1px solid #212c6c26; }
-.rengi-explorer .rengi-view-tabs button { padding: 12px 0; min-height: 44px; border: 0; border-bottom: 2px solid transparent; color: #212c6cb3; background: transparent; font: 600 12px/1.5 'Inter', sans-serif; letter-spacing: .08em; cursor: pointer; }
-.rengi-explorer .rengi-view-tabs button[aria-selected="true"] { color: #212c6c; border-bottom-color: #8c6b30; }
-.rengi-explorer .rengi-view-tabs button:focus-visible, .rengi-explorer .rengi-villa-plan-preview:focus-visible { outline: 2px solid #8c6b30; outline-offset: 3px; }
-.rengi-explorer .rengi-villa-plan-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 48px; align-items: start; }
-.rengi-explorer .rengi-villa-plan-preview { display: block; width: 100%; padding: 16px; border: 0; background: #f7f5f1; cursor: zoom-in; }
-.rengi-explorer .rengi-villa-plan-preview img { display: block; width: 100%; height: auto; object-fit: contain; }
-.rengi-explorer .rengi-floor-card header { display: block; }
-.rengi-explorer .rengi-floor-card h4 span { display: block; margin: 4px 0 12px; }
+.rengi-explorer .rengi-view-tabs {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #212c6c26;
+}
+
+.rengi-explorer .rengi-view-tabs button {
+    padding: 12px 0;
+    min-height: 44px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: #212c6cb3;
+    background: transparent;
+    font: 600 12px/1.5 'Inter', sans-serif;
+    letter-spacing: .08em;
+    cursor: pointer;
+}
+
+.rengi-explorer .rengi-view-tabs button[aria-selected="true"] {
+    color: #212c6c;
+    border-bottom-color: #8c6b30;
+}
+
+.rengi-explorer .rengi-view-tabs button:focus-visible, .rengi-explorer .rengi-villa-plan-preview:focus-visible {
+    outline: 2px solid #8c6b30;
+    outline-offset: 3px;
+}
+
+.rengi-explorer .rengi-villa-plan-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+}
+
+.rengi-explorer .rengi-villa-plan-preview {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: 0;
+    background: #f7f5f1;
+    cursor: zoom-in;
+}
+
+.rengi-explorer .rengi-villa-plan-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.rengi-explorer .rengi-floor-card header {
+    display: block;
+}
+
+.rengi-explorer .rengi-floor-card h4 span {
+    display: block;
+    margin: 4px 0 12px;
+}
+
 @media (max-width: 1199px) {
-    .rengi-explorer .rengi-villa-plan-layout { gap: 28px; }
+    .rengi-explorer .rengi-villa-plan-layout {
+        gap: 28px;
+    }
 }
+
 @media (max-width: 767px) {
-    .rengi-explorer .rengi-villa-plan-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-    .rengi-explorer .rengi-villa-plan-preview { padding: 8px; }
+    .rengi-explorer .rengi-villa-plan-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .rengi-explorer .rengi-villa-plan-preview {
+        padding: 8px;
+    }
 }
+
 /* Compact desktop previews; full-size detail remains in the existing lightbox. */
 @media (min-width: 1200px) {
-    .rengi-explorer #rengi-villa-plans { --rengi-preview-height: 540px; }
-    .rengi-explorer #rengi-villa-plans .rengi-variant-selector { margin-bottom: 16px; }
-    .rengi-explorer .rengi-villa-plan-layout { grid-template-columns: minmax(0, 57fr) minmax(0, 43fr); }
-    .rengi-explorer .rengi-villa-plan-preview { height: var(--rengi-preview-height); }
-    .rengi-explorer .rengi-villa-plan-preview img { height: 100%; object-fit: contain; object-position: center; }
-    .rengi-explorer #rengi-villa-plans .rengi-floor-card { display: flex; flex-direction: column; max-height: var(--rengi-preview-height); padding: 20px; }
-    .rengi-explorer #rengi-villa-plans .rengi-floor-card header { flex: 0 0 auto; padding-bottom: 12px; }
-    .rengi-explorer #rengi-villa-plans .rengi-floor-card h4 span { margin: 2px 0 6px; }
-    .rengi-explorer #rengi-villa-plans .rengi-floor-card dl { min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #b49860 #eee9df; }
-    .rengi-explorer #rengi-villa-plans .rengi-floor-card dl > div { padding-block: 7px; }
-    .rengi-explorer #rengi-villa-plans .rengi-floor-card dl > div:last-child { padding-bottom: 7px; }
+    .rengi-explorer #rengi-villa-plans {
+        --rengi-preview-height: 540px;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-variant-selector {
+        margin-bottom: 16px;
+    }
+
+    .rengi-explorer .rengi-villa-plan-layout {
+        grid-template-columns: minmax(0, 57fr) minmax(0, 43fr);
+    }
+
+    .rengi-explorer .rengi-villa-plan-preview {
+        height: var(--rengi-preview-height);
+    }
+
+    .rengi-explorer .rengi-villa-plan-preview img {
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-floor-card {
+        display: flex;
+        flex-direction: column;
+        max-height: var(--rengi-preview-height);
+        padding: 20px;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-floor-card header {
+        flex: 0 0 auto;
+        padding-bottom: 12px;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-floor-card h4 span {
+        margin: 2px 0 6px;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-floor-card dl {
+        min-height: 0;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #b49860 #eee9df;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-floor-card dl > div {
+        padding-block: 7px;
+    }
+
+    .rengi-explorer #rengi-villa-plans .rengi-floor-card dl > div:last-child {
+        padding-bottom: 7px;
+    }
+}
+
+/* Villa tabs + specifications */
+.rengi-view-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.rengi-villa-specs {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-left: auto;
+    padding-left: 40px;
+}
+
+.rengi-villa-spec {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.rengi-villa-spec span {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.58;
+}
+
+.rengi-villa-spec strong {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+    .rengi-view-tabs {
+        flex-wrap: wrap;
+    }
+
+    .rengi-villa-specs {
+        order: 2;
+        width: 100%;
+        margin-left: 0;
+        padding: 14px 0 0;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .rengi-villa-spec {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        width: 33.333%;
+    }
+
+    .rengi-villa-spec:nth-child(2) {
+        align-items: center;
+    }
+
+    .rengi-villa-spec:nth-child(3) {
+        align-items: flex-end;
+    }
+
+    .rengi-villa-spec span {
+        font-size: 10px;
+        letter-spacing: 0.06em;
+    }
+
+    .rengi-villa-spec strong {
+        font-size: 12px;
+    }
 }

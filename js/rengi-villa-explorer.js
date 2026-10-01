@@ -173,6 +173,15 @@
         gesture = null;
         slideIndex = 0;
         const villa = villaData[category][variant];
+        const specs = villa.quickSpecs || {};
+        const grossSpec = viewer.querySelector('[data-villa-spec="gross"]');
+        const netSpec = viewer.querySelector('[data-villa-spec="net"]');
+        const landSpec = viewer.querySelector('[data-villa-spec="land"]');
+
+        if (grossSpec) grossSpec.textContent = specs.grossArea || '—';
+        if (netSpec) netSpec.textContent = specs.netArea || '—';
+        if (landSpec) landSpec.textContent = specs.landShare || '—';
+
         options.querySelectorAll('input').forEach(input => { input.checked = input.value === variant; });
         gallery.setAttribute('aria-label', `${villa.name} images`);
         gallery.replaceChildren(...villa.photos.map((src, i) => {
