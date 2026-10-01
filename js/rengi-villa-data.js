@@ -19,11 +19,10 @@ const villaData = {
                 "landShare": "693–706 m²"
             },
             "description": [
-                "Jade is more than just a product of nature; it is one of the values that form the philosophical core of Rengi İstanbul.",
-                "At Rengi İstanbul, green establishes a balance through the elegance of naturalness.",
-                "Soft shades of green blend with the reassuring presence of the earth, evoking a sense of simple serenity and measured vitality.",
-                "In every detail, nature’s unique rhythm meets the serene lines of the architecture.",
-                "In the philosophy of Rengi İstanbul, elegance is defined not by ostentation, but by fidelity to the natural."
+                "Elegant proportions within a composed private setting.",
+                "Jade features approximately 294 m² of gross and 256 m² of net interior space, with land shares ranging from approximately 693 to 706 m².",
+                "The residences maintain a consistent relationship between their architectural footprint and private grounds, with most of the documented villas emphasizing generous lower gardens.",
+                "Jade offers a refined 4+1 configuration with a clear sense of proportion and privacy."
             ],
             "floors": [
                 {
@@ -130,11 +129,10 @@ const villaData = {
                 "landShare": "728–1,344 m²"
             },
             "description": [
-                "Beyond being a product of nature, Crystal is one of the values forming the philosophical core of Rengi İstanbul.",
-                "At Rengi İstanbul, everything defined as “Crystal” is characterized by openness—light is not concealed but invited in.",
-                "Transparency is not merely an expression of simplicity; it is a hallmark of trust, harmony, and timeless elegance.",
-                "Every surface creates space for the flow of light; the architecture breathes in unison with its natural surroundings.",
-                "In the vision of Rengi İstanbul, clarity is not simply a design choice—it is an honest form of living."
+                "A refined architectural footprint with striking variations in private land.",
+                "Crystal represents the most compact architectural configuration in the development, at approximately 292 m² gross and 254 m² net. ",
+                "Yet its land configurations reveal a notable contrast, ranging from approximately 728 to 1,344 m².",
+                "This creates the potential for remarkably different outdoor experiences within the same architectural collection—from more intimate settings to residences surrounded by substantially larger private grounds. "
             ],
             "floors": [
                 {
@@ -246,11 +244,10 @@ const villaData = {
                 "landShare": "632–873 m²"
             },
             "description": [
-                "Beyond being a product of nature, Coral is one of the values that form the philosophical core of Rengi İstanbul.",
-                "In Rengi İstanbul, the warmth of Coral exists not for show, but to breathe life into the space.",
-                "Bringing balance to emotions and serenity to the environment, this hue carries a calming rhythm across every surface and a sense of gentle warmth in every touch.",
-                "Its energy is intense yet quiet; it infuses the space with vitality while bringing tranquility to the soul.",
-                "In the vision of Rengi İstanbul, Coral stands as an elegant element of balance, uniting the energy of life with serenity."
+                "A generous 4+1 residence with room to live outdoors.",
+                "Coral offers approximately 348 m² of gross and 303 m² of net interior space, with individual land shares ranging from approximately 632 to 873 m².",
+                "The residences feature varied garden configurations, including substantial lower gardens and, in some villas, additional upper-level outdoor space.",
+                "Coral brings a generous architectural footprint to the 4+1 collection while maintaining a strong connection to private outdoor living.",
             ],
             "floors": [
                 {
@@ -388,11 +385,10 @@ const villaData = {
                 "landShare": "664–1,290 m²"
             },
             "description": [
-                "Beyond being a product of nature, Ruby is one of the values that form the philosophical core of Rengi İstanbul.",
-                "In Rengi İstanbul, the warm tones of Ruby derive their strength from elegance.",
-                "Here, the energy of red is not clamor but determination—a measured passion felt in every line, a refined power in every surface.",
-                "The warmth within the light permeates the soul of the space, striking a balance that is both distinguished and intimate.",
-                "In the vision of Rengi İstanbul, Ruby shines not to draw attention, but to assert its presence through character."
+                "Distinctive residences shaped by their individual settings. ",
+                "Ruby offers approximately 411 m² of gross and 348 m² of net interior space, while its individual land shares vary considerably—from approximately 664 m² to 1,290 m².",
+                "This variation gives the collection a particularly diverse outdoor character, with different residences offering different relationships between architecture, gardens and private land.",
+                "Ruby is a collection where the setting becomes an important part of each residence's identity.",
             ],
             "floors": [
                 {
@@ -540,11 +536,10 @@ const villaData = {
                 "landShare": "828–1,287 m²"
             },
             "description": [
-                "Beyond being a product of nature, mother-of-pearl is one of the values that form the philosophical core of Rengi İstanbul.",
-                "In Rengi İstanbul’s mother-of-pearl, light does not merely play upon the surface—it permeates the depths.",
-                "Each layer is part of a meticulously conceived whole, much like the delicate transitions found within mother-of-pearl itself.",
-                "Colors blend softly; a simple elegance transforms into the most serene form of radiance.",
-                "In the philosophy of Rengi İstanbul, beauty is not found in a single glance, but is discovered within every layer and behind every reflection."
+                "Refined proportions with a variety of private landscapes.",
+                "Mother of Pearl brings together 5+1 residences of approximately 467 m² gross area, with individual land shares ranging from approximately 828 to 1,287 m². ",
+                "The collection offers particularly varied garden configurations, from generous lower gardens to residences with gardens distributed across both levels.",
+                "Each residence therefore has its own relationship with the surrounding landscape while retaining a consistent architectural identity."
             ],
             "floors": [
                 {
@@ -696,11 +691,10 @@ const villaData = {
                 "landShare": "985–1,384 m²"
             },
             "description": [
-                "Beyond being a product of nature, Sapphire is one of the values that form the philosophical core of Rengi İstanbul.",
-                "At Rengi İstanbul, every shade of blue within Sapphire represents balance, and every reflection feels like a breath.",
-                "Where the sea meets the lake, it unites the depth of the water with the flow of light, transforming a sense of airiness into a form of elegance.",
-                "Here, the blue is not merely a color; it is a realm of serenity that softens the rhythm of life.",
-                "In the vision of Rengi İstanbul, this tranquil radiance is not a silent elegance—it is an elegant power that endures through time."
+                "A generous expression of the 5+1 residence. ",
+                "Sapphire offers approximately 505 m² of gross and 444 m² of net interior space, making it the largest architectural configuration within the 5+1 collection.",
+                "Land shares range from approximately 985 to 1,384 m², with individual residences offering different combinations of lower and upper garden areas.",
+                "The result is a collection where substantial interiors are complemented by equally considered outdoor living."
             ],
             "floors": [
                 {
@@ -851,11 +845,10 @@ const villaData = {
                 "landShare": "807–1,166 m²"
             },
             "description": [
-                "Beyond being a mere product of nature, Emerald is one of the values that form the philosophical core of Rengi İstanbul.",
-                "At Rengi İstanbul, nature is felt not just in the surroundings, but at the very essence of life.",
-                "The serene power of green meets the lines of architecture, bringing freshness like a cool breeze and tranquility like a deep, resonant tone.",
-                "In this vision, nature is not a backdrop but the heart of the design—there is breath in every surface and vitality in every detail.",
-                "The elegance of Rengi İstanbul comes to life in the simplicity found within this naturalness."
+                "Balanced architecture and carefully composed outdoor space.",
+                "The Emerald collection features approximately 430 m² of gross and 368 m² of net interior space, accompanied by individual land shares ranging from approximately 807 to 1,166 m².",
+                "The gardens vary between residences, creating different degrees of openness and connection to the outdoors.",
+                "Emerald offers a balanced 5+1 living experience in which the architecture and its private setting work together as one composition."
             ],
             "floors": [
                 {
@@ -994,12 +987,10 @@ const villaData = {
                 "landShare": "1,022–1,067 m²"
             },
             "description": [
-                "Beyond being a product of nature, the pearl is one of the values that form the philosophical core of Rengi İstanbul.",
-                "At Rengi İstanbul, beauty is not displayed—it is felt.",
-                "Beneath its layers lies the labor of time; upon its surface, a simple radiance.",
-                "Every detail emulates the perfection of this naturalness; every line speaks the language of elegance.",
-                "In the philosophy of Rengi İstanbul, refinement is not a privilege, but the natural state of life.",
-                "For here, the radiance is quiet, yet its impact endures."
+                "A measured balance of interior comfort and private grounds.",
+                "Pearl presents approximately 413 m² of gross and 369 m² of net interior space, with land shares ranging from approximately 1,022 to 1,067 m².",
+                "Several residences feature substantial lower gardens, while others introduce additional upper-level outdoor space.",
+                "The collection is defined by its balanced proportions and the close relationship between the residence and its private landscape. "
             ],
             "floors": [
                 {
@@ -1123,12 +1114,10 @@ const villaData = {
                 "landShare": "1,083–1,391 m²"
             },
             "description": [
-                "Beyond being a product of nature, Silver is one of the values that form the philosophical core of Rengi İstanbul.",
-                "In Rengi İstanbul, the radiance of Silver stems not from ostentation, but from restraint.",
-                "With its soft reflections, Silver embodies the quiet essence of elegance—neither too much nor too little; a measured balance, a balanced measure.",
-                "This balance finds its expression in Rengi İstanbul’s aesthetic vision;",
-                "it is not merely a design principle, but a way of life.",
-                "Here, the shimmer touches the soul rather than the eye; the power of simplicity shines forth, making its presence felt without fanfare."
+                "A refined 5+1 residence with generous private land.",
+                "Silver offers approximately 368 m² of gross and 323 m² of net interior space, while individual land shares range from approximately 1,083 to 1,391 m².",
+                "This creates an interesting relationship between the villa's considered architectural footprint and the generous private grounds surrounding it.",
+                "Silver is defined by the opportunity to enjoy substantial outdoor space without compromising the comfort and functionality of a sophisticated 5+1 residence."
             ],
             "floors": [
                 {
@@ -1253,12 +1242,10 @@ const villaData = {
                 "landShare": "1,201–1,554 m²"
             },
             "description": [
-                "Beyond being a product of nature, the diamond is one of the values that form the philosophical core of Rengi İstanbul.",
-                "Here, everything begins when light touches the right point.",
-                "The diamond embodies the clarity that governs this light—order lies in its precision, care in its facets, and simplicity in its essence.",
-                "Its brilliance is not a spectacle; it is a consistency defined by discernment, self-assurance, and balance.",
-                "That is why, at Rengi İstanbul, radiance is not merely an adornment, but a matter of character.",
-                "Every detail is perfectly placed, every line serves a purpose, and every reflection is an element of elegance."
+                "A Generous architecture, surrounded by exceptional private grounds.",
+                "The Diamond collection pairs approximately 567 m² of gross and 474 m² of net interior space with some of the development's most generous land shares, ranging from approximately 1,201 to 1,554 m².",
+                "The residences also benefit from substantial lower and upper garden areas, creating a layered outdoor setting around the architecture.",
+                "Diamond is a composition of generous living space and expansive private grounds."
             ],
             "floors": [
                 {
@@ -1429,12 +1416,10 @@ const villaData = {
                 "landShare": "1,118–1,503 m²"
             },
             "description": [
-                "Beyond being a product of nature, Gold is one of the values that form the philosophical core of Rengi İstanbul.",
-                "At Rengi İstanbul, everything is defined by the elegance inherent in warm tones.",
-                "Gold is special not because it shines, but because it retains its value over time.",
-                "This philosophy is woven into the very fabric of Rengi İstanbul—where enduring quality stems not from ostentation, but from balance, restraint, and simplicity.",
-                "There is a sense of confidence in every surface and refinement in every detail.",
-                "For here, the gleam is not fleeting; it evolves into a radiance that matures with the passage of time."
+                "A residence defined by scale and proportion",
+                "The Gold collection presents the largest villa configuration at Rengi Istanbul, with approximately 685 m² of gross and 598 m² of net interior space.",
+                "Individual residences are complemented by private land shares ranging from approximately 1,118 to 1,503 m², with gardens distributed across different levels.",
+                "Gold brings together substantial architecture and generous outdoor space, creating residences designed for an exceptional sense of scale, privacy and continuity between interior and landscape."
             ],
             "floors": [
                 {

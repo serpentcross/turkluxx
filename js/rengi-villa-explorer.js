@@ -201,7 +201,17 @@
         viewer.querySelector('.rengi-villa-philosophy').hidden = !villa.description.length;
         viewer.querySelector('#rengi-philosophy-title').textContent = displayName(villa);
         villaCta.querySelector('span').textContent = `I want ${villa.name} villa`;
-        viewer.querySelector('.rengi-philosophy-body').replaceChildren(...villa.description.map(text => element('p', text)));
+        viewer.querySelector('.rengi-philosophy-body').replaceChildren(
+            ...villa.description.map((text, index) => {
+                const p = element('p', text);
+
+                if (index === 0) {
+                    p.classList.add('rengi-philosophy-lead');
+                }
+
+                return p;
+            })
+        );
         floorIndex = 0;
         const floors = villa.floors || [];
         floorOptions.closest('fieldset').hidden = floors.length <= 1;

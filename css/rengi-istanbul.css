@@ -1039,3 +1039,6 @@
     .rengi-master-preview img { height: auto; max-height: 280px; }
     .rengi-roi-media img { max-height: 240px; }
 }
+.rengi-philosophy-lead {
+    font-weight: 700;
+}
