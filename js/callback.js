@@ -157,7 +157,7 @@
     } catch (error) {
       console.error('[TurkLuxx lead] Request did not complete', { type: error.name });
       if (opening === submittedOpening && dialog.open) {
-        status.textContent = 'We could not confirm your enquiry was sent. Please try again or call +1 818 434 7266.';
+        status.textContent = 'We could not confirm your enquiry was sent. Please try again or call +1 213 732 20 02.';
       }
     } finally {
       pending = false;
