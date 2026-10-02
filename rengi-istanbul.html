@@ -65,6 +65,7 @@
             <div id="rengi-floor-plans" class="rengi-view-tabs" role="tablist" aria-label="Villa content">
                 <button id="rengi-photos-tab" type="button" role="tab" aria-selected="true" aria-controls="rengi-villa-panel" data-view="photos">PHOTOS</button>
                 <button id="rengi-plans-tab" type="button" role="tab" aria-selected="false" aria-controls="rengi-villa-plans" data-view="plans" tabindex="-1">FLOOR PLANS</button>
+                <button id="rengi-location-tab" type="button" role="tab" aria-selected="false" aria-controls="rengi-villa-panel" data-view="location" tabindex="-1">LOCATION</button>
                 <div class="rengi-villa-specs" aria-label="Villa specifications">
                     <div class="rengi-villa-spec">
                         <span>Gross Area</span>
@@ -85,6 +86,9 @@
             <div class="rengi-villa-panel" id="rengi-villa-panel" role="tabpanel" aria-labelledby="rengi-photos-tab">
                 <figure class="rengi-villa-media">
                     <div class="rengi-villa-grid" role="group" aria-label="Villa images"></div>
+                    <button class="rengi-villa-map-preview" type="button" aria-haspopup="dialog" aria-label="View villa location map fullscreen" hidden>
+                        <img class="rengi-villa-map" alt="" loading="lazy">
+                    </button>
                 </figure>
                 <section class="rengi-villa-philosophy" aria-labelledby="rengi-philosophy-title" hidden>
                     <p class="rengi-section-eyebrow">THE PHILOSOPHY</p>
@@ -108,7 +112,13 @@
                 <button class="rengi-villa-plan-preview" type="button" aria-haspopup="dialog">
                     <img alt="" loading="lazy">
                 </button>
-                <article class="rengi-floor-card"></article>
+                <div class="rengi-floor-information">
+                    <article class="rengi-floor-card"></article>
+                    <button class="rengi-overview-cta turkluxx-reference-cta rengi-villa-contact rengi-floor-contact turkluxx-callback-trigger" type="button"
+                            aria-haspopup="dialog" aria-controls="turkluxx-callback">
+                        <span></span> <span aria-hidden="true">&rarr;</span>
+                    </button>
+                </div>
             </div>
         </div>
         <dialog class="rengi-villa-lightbox" aria-modal="true" aria-label="Villa image viewer">
@@ -296,11 +306,19 @@
                 <dl>
                     <div>
                         <dt>Official email</dt>
-                        <dd data-company-field="email">info@turkluxx.com</dd>
+                        <dd data-company-field="email" class="contact-email">
+                            <a href="mailto:info@turkluxx.com">
+                                info@turkluxx.com
+                            </a>
+                        </dd>
                     </div>
                     <div>
                         <dt>Phone / WhatsApp</dt>
-                        <dd data-company-field="phone">+1 213 732 2002</dd>
+                        <dd data-company-field="phone">
+                            <a href="https://wa.me/12137322002" target="_blank" rel="noopener noreferrer">
+                                +1 213 732 2002
+                            </a>
+                        </dd>
                     </div>
                     <div>
                         <dt>Registered business address</dt>

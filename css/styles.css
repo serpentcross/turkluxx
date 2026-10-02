@@ -3139,3 +3139,27 @@
     }
 
 }
+
+footer a[href^="mailto:"] {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+footer a[href^="mailto:"]:visited {
+    color: #d9d9d9 !important;
+}
+
+footer a[href^="https://wa.me/"] {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+footer a[href^="https://wa.me/"]:visited {
+    color: #d9d9d9 !important;
+}
+
+footer a[href^="mailto:"]:hover,
+footer a[href^="https://wa.me/"]:hover {
+    color: #eeeeee !important;
+    text-decoration: underline;
+}

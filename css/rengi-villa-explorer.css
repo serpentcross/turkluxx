@@ -569,3 +569,44 @@
         font-size: 12px;
     }
 }
+/* Location shares the Photos panel and its single Philosophy block. */
+.rengi-explorer .rengi-villa-media .rengi-villa-map {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+
+.rengi-explorer .rengi-floor-contact {
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+/* Allow the third tab without compressing the existing area specifications. */
+.rengi-explorer .rengi-view-tabs {
+    flex-wrap: wrap;
+    row-gap: 12px;
+}
+
+.rengi-explorer .rengi-view-tabs button {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Half-width Location preview; original image files and other media are unchanged. */
+.rengi-explorer .rengi-villa-map-preview {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.rengi-explorer .rengi-villa-map-preview:focus-visible {
+    outline: 2px solid #8c6b30;
+    outline-offset: 4px;
+}

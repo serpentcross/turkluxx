@@ -3,6 +3,7 @@
 const villaData = {
     "4+1": {
         "jade": {
+            "map": "img/ist_villas/4_1/jade/map/jade-map.jpeg",
             "category": "4+1",
             "name": "Jade",
             "turkishName": "Yeşim",
@@ -113,6 +114,7 @@ const villaData = {
             "slug": "jade"
         },
         "crystal": {
+            "map": "img/ist_villas/4_1/crystal/map/crystal-map.jpeg",
             "category": "4+1",
             "name": "Crystal",
             "turkishName": "Kristal",
@@ -228,6 +230,7 @@ const villaData = {
             "slug": "crystal"
         },
         "coral": {
+            "map": "img/ist_villas/4_1/coral/map/coral-map.jpeg",
             "category": "4+1",
             "name": "Coral",
             "turkishName": "Mercan",
@@ -369,6 +372,7 @@ const villaData = {
     },
     "5+1": {
         "ruby": {
+            "map": "img/ist_villas/5_1/ruby/map/ruby-map.jpeg",
             "category": "5+1",
             "name": "Ruby",
             "turkishName": "Yakut",
@@ -520,6 +524,7 @@ const villaData = {
             "slug": "ruby"
         },
         "motherOfPearl": {
+            "map": "img/ist_villas/5_1/mother-of-pearl/map/mother-of-pearl-map.jpeg",
             "category": "5+1",
             "name": "Mother-of-Pearl",
             "turkishName": "Sedef",
@@ -675,6 +680,7 @@ const villaData = {
             "slug": "mother-of-pearl"
         },
         "sapphire": {
+            "map": "img/ist_villas/5_1/sapphire/map/sapphire-map.jpeg",
             "category": "5+1",
             "name": "Sapphire",
             "turkishName": "Safir",
@@ -829,6 +835,7 @@ const villaData = {
             ]
         },
         "emerald": {
+            "map": "img/ist_villas/5_1/emerald/map/emerald-map.jpeg",
             "category": "5+1",
             "name": "Emerald",
             "turkishName": "Zümrüt",
@@ -971,6 +978,7 @@ const villaData = {
             ]
         },
         "pearl": {
+            "map": "img/ist_villas/5_1/pearl/map/pearl-map.jpeg",
             "category": "5+1",
             "name": "Pearl",
             "turkishName": "İnci",
@@ -1098,6 +1106,7 @@ const villaData = {
             "slug": "pearl"
         },
         "silver": {
+            "map": "img/ist_villas/5_1/silver/map/silver-map.jpeg",
             "category": "5+1",
             "name": "Silver",
             "turkishName": "Gümüş",
@@ -1226,6 +1235,7 @@ const villaData = {
     },
     "6+1": {
         "diamond": {
+            "map": "img/ist_villas/6_1/diamond/map/diamond-map.jpeg",
             "category": "6+1",
             "name": "Diamond",
             "turkishName": "Elmas",
@@ -1400,6 +1410,7 @@ const villaData = {
             ]
         },
         "gold": {
+            "map": "img/ist_villas/6_1/gold/map/gold-map.jpeg",
             "category": "6+1",
             "name": "Gold",
             "turkishName": "Altın",

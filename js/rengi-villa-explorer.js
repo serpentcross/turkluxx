@@ -21,21 +21,23 @@
     const viewTabs = [...viewer.querySelectorAll('.rengi-view-tabs button')];
     const floorOptions = viewer.querySelector('.rengi-floor-options');
     const planPreview = viewer.querySelector('.rengi-villa-plan-preview');
-    const villaCta = viewer.querySelector('.rengi-villa-contact');
+    const villaCtas = [...viewer.querySelectorAll('.rengi-villa-contact')];
+    const mapImage = viewer.querySelector('.rengi-villa-map');
+    const mapPreview = viewer.querySelector('.rengi-villa-map-preview');
     const villaContext = document.querySelector('#callback-villa');
     const callback = document.querySelector('#turkluxx-callback');
     const callbackTitle = callback.querySelector('#turkluxx-callback-title');
     const defaultCallbackTitle = callbackTitle.textContent;
     const displayName = villa => `${villa.turkishName} (${villa.name})`;
 
-    window.registerTurkLuxxLeadContext(villaCta, () => {
+    villaCtas.forEach(cta => window.registerTurkLuxxLeadContext(cta, () => {
         const villa = villaData[category][variant];
         return {
             project: 'Rengi Istanbul',
             property: displayName(villa),
             propertyCode: villa.floors?.[0]?.code || null
         };
-    });
+    }));
 
     function resetCallbackTitle() {
         callbackTitle.textContent = defaultCallbackTitle;
@@ -63,7 +65,7 @@
 
     document.querySelectorAll('.turkluxx-callback-trigger').forEach(button => {
         button.addEventListener('click', () => {
-            villaContext.value = button === villaCta ? villaData[category][variant].name : '';
+            villaContext.value = villaCtas.includes(button) ? villaData[category][variant].name : '';
             fitCallbackTitle();
         });
     });
@@ -109,7 +111,10 @@
             tab.setAttribute('aria-selected', String(active));
             tab.tabIndex = active ? 0 : -1;
         });
-        viewer.querySelector('#rengi-villa-panel').hidden = mode !== 'photos';
+        viewer.querySelector('#rengi-villa-panel').hidden = mode === 'plans';
+        viewer.querySelector('#rengi-villa-panel').setAttribute('aria-labelledby', mode === 'location' ? 'rengi-location-tab' : 'rengi-photos-tab');
+        gallery.hidden = mode !== 'photos';
+        mapPreview.hidden = mode !== 'location';
         viewer.querySelector('#rengi-villa-plans').hidden = mode !== 'plans';
     }
     viewTabs.forEach(tab => {
@@ -126,6 +131,7 @@
         });
     });
     planPreview.addEventListener('click', () => openLightbox(floorIndex, planPreview));
+    mapPreview.addEventListener('click', () => openLightbox(0, mapPreview));
     let gesture;
 
     function element(tag, text, className) {
@@ -143,11 +149,13 @@
 
     function showSlide(next) {
         const villa = villaData[category][variant];
-        const images = mode === 'plans' ? villa.floors.map(floor => floor.image) : villa.photos;
+        const images = mode === 'location' ? [villa.map]
+            : mode === 'plans' ? villa.floors.map(floor => floor.image) : villa.photos;
         if (!images.length) return;
         slideIndex = (next + images.length) % images.length;
         fullImage.src = images[slideIndex];
-        fullImage.alt = mode === 'plans' ? `${villa.name} ${villa.floors[slideIndex].name || villa.floors[slideIndex].code} plan`
+        fullImage.alt = mode === 'location' ? `${displayName(villa)} location map`
+            : mode === 'plans' ? `${villa.name} ${villa.floors[slideIndex].name || villa.floors[slideIndex].code} plan`
             : `${villa.name} villa, view ${slideIndex + 1}`;
         if (mode === 'plans') {
             floorIndex = slideIndex;
@@ -200,7 +208,10 @@
         }));
         viewer.querySelector('.rengi-villa-philosophy').hidden = !villa.description.length;
         viewer.querySelector('#rengi-philosophy-title').textContent = displayName(villa);
-        villaCta.querySelector('span').textContent = `I want ${villa.name} villa`;
+        villaCtas.forEach(cta => { cta.querySelector('span').textContent = `I want ${villa.name} villa`; });
+        mapImage.src = villa.map;
+        mapImage.alt = `${displayName(villa)} location map`;
+        mapPreview.setAttribute('aria-label', `View ${displayName(villa)} location map fullscreen`);
         viewer.querySelector('.rengi-philosophy-body').replaceChildren(
             ...villa.description.map((text, index) => {
                 const p = element('p', text);
