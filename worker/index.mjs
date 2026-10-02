@@ -1,4 +1,4 @@
-const REFERRALS = new Set(['ALMA', 'MUHHAMED', 'VLAD', 'DIRECT']);
+const REFERRALS = new Set(['ALMA', 'AHMAD', 'MUHAMED', 'VLAD', 'DIRECT']);
 const MAX_BYTES = 8192;
 const RECIPIENT = 'turkluxx101@gmail.com';
 

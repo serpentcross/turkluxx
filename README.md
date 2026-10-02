@@ -21,7 +21,7 @@ The fixed sender is `TurkLuxx Leads <leads@turkluxx.com>`; validated customer em
 is Reply-To only. Neither recipient nor sender is client-controlled.
 
 Validation requires JSON with non-empty name, phone and email, and an exact
-ALMA/MUHHAMED/VLAD/DIRECT referral. Limits (characters): name 120, phone 80,
+ALMA/AHMAD/MUHAMED/VLAD/DIRECT referral. Limits (characters): name 120, phone 80,
 email 254, project 120, property 180, propertyCode 80, page 2048. Optional values
 may be null or absent. Control characters are rejected; email format and
 HTTP(S) page URLs are checked. Bodies over 8 KiB are rejected even without

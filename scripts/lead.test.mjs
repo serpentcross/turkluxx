@@ -16,8 +16,9 @@ function environment() {
 for (const [label, fields, subject] of [
   ['A/I DIRECT generic and null optionals', {}, 'General Enquiry'],
   ['B ALMA Istanbul', { referral: 'ALMA', project: 'Rengi Istanbul', property: 'Zümrüt (Emerald)', propertyCode: 'B3-AG' }, 'Zümrüt (Emerald)'],
-  ['C MUHHAMED Antalya', { referral: 'MUHHAMED', project: 'Rengi Antalya', property: 'GreenLife' }, 'GreenLife'],
-  ['D VLAD Istanbul', { referral: 'VLAD', project: 'Rengi Istanbul', property: 'Elmas (Diamond)', propertyCode: 'A1-ÜG' }, 'Elmas (Diamond)']
+  ['C MUHAMED Antalya', { referral: 'MUHAMED', project: 'Rengi Antalya', property: 'GreenLife' }, 'GreenLife'],
+  ['D VLAD Istanbul', { referral: 'VLAD', project: 'Rengi Istanbul', property: 'Elmas (Diamond)', propertyCode: 'A1-ÜG' }, 'Elmas (Diamond)'],
+  ['AHMAD generic', { referral: 'AHMAD' }, 'General Enquiry']
 ]) {
   test(label, async () => {
     const env = environment();
@@ -32,6 +33,7 @@ for (const [label, fields, subject] of [
     assert.equal(msg.replyTo, generic.email);
     assert.equal(msg.subject, `[${fields.referral || 'DIRECT'}] New TurkLuxx Lead — ${subject}`);
     assert.ok(msg.text.includes(data.leadId));
+    assert.ok(msg.text.includes(`Referral: ${fields.referral || 'DIRECT'}`));
     assert.ok(!msg.text.includes('null') && !msg.text.includes('FORGED'));
     if (!fields.project) assert.ok(!msg.text.includes('Project:'));
   });
