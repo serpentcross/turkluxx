@@ -359,5 +359,16 @@
   "referral.invalid": "رابط الإحالة هذا غير صالح.",
   "referral.explanation": "يرجى التحقق من الرابط الذي تلقيته أو المتابعة إلى TurkLuxx دون إسناد إحالة.",
   "referral.continue": "المتابعة إلى TURKLUXX",
-  "referral.documentTitle": "رابط إحالة غير صالح — TurkLuxx"
+  "referral.documentTitle": "رابط إحالة غير صالح — TurkLuxx",
+  "villa.names.jade": "Jade",
+  "villa.names.crystal": "Crystal",
+  "villa.names.coral": "Coral",
+  "villa.names.ruby": "Ruby",
+  "villa.names.motherofpearl": "Mother of Pearl",
+  "villa.names.sapphire": "Sapphire",
+  "villa.names.emerald": "Emerald",
+  "villa.names.pearl": "Pearl",
+  "villa.names.silver": "Silver",
+  "villa.names.diamond": "Diamond",
+  "villa.names.gold": "Gold"
 }

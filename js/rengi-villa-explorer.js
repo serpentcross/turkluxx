@@ -27,7 +27,8 @@
     const villaContext = document.querySelector('#callback-villa');
     const callback = document.querySelector('#turkluxx-callback');
     const callbackTitle = callback.querySelector('#turkluxx-callback-title');
-    const displayName = villa => `${villa.turkishName} (${villa.name})`;
+    // Keep the English source name; i18n resolves product names for every display.
+    const displayName = villa => villa.name;
     const bind = (...args) => window.TurkLuxxI18n.bind(...args);
     const translated = source => window.TurkLuxxI18n.text(source);
 
@@ -35,7 +36,7 @@
         const villa = villaData[category][variant];
         return {
             project: 'Rengi Istanbul',
-            property: displayName(villa),
+            property: translated(displayName(villa)),
             propertyCode: villa.floors?.[0]?.code || null
         };
     }));
@@ -60,7 +61,7 @@
         const originalHeight = parseFloat(style.height);
         callbackTitle.style.lineHeight = `${originalHeight}px`;
         callbackTitle.style.whiteSpace = 'nowrap';
-        bind(callbackTitle, 'callback.villaTitle', () => ({ name: window.TurkLuxxI18n.language === 'en' ? villaContext.value.toUpperCase() : villaContext.value }));
+        bind(callbackTitle, 'callback.villaTitle', () => ({ name: villaContext.value }));
         let size = originalSize;
         while (callbackTitle.scrollWidth > callbackTitle.clientWidth && size > 1) {
             size -= 0.5;

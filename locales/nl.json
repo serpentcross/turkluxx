@@ -359,5 +359,16 @@
   "referral.invalid": "Deze verwijzingslink is ongeldig.",
   "referral.explanation": "Controleer de ontvangen link of ga verder naar TurkLuxx zonder verwijzingstoewijzing.",
   "referral.continue": "GA VERDER NAAR TURKLUXX",
-  "referral.documentTitle": "Ongeldige verwijzingslink — TurkLuxx"
+  "referral.documentTitle": "Ongeldige verwijzingslink — TurkLuxx",
+  "villa.names.jade": "Jade",
+  "villa.names.crystal": "Crystal",
+  "villa.names.coral": "Coral",
+  "villa.names.ruby": "Ruby",
+  "villa.names.motherofpearl": "Mother of Pearl",
+  "villa.names.sapphire": "Sapphire",
+  "villa.names.emerald": "Emerald",
+  "villa.names.pearl": "Pearl",
+  "villa.names.silver": "Silver",
+  "villa.names.diamond": "Diamond",
+  "villa.names.gold": "Gold"
 }

@@ -8,7 +8,7 @@ const catalogs = Object.fromEntries(codes.map(code => [code, JSON.parse(readFile
 const source = readFileSync(new URL('../js/i18n.js', import.meta.url), 'utf8');
 const placeholders = s => [...s.matchAll(/\{([a-zA-Z]+)\}/g)].map(m => m[1]).sort();
 test('Six catalogs cover every English key with valid strings and matching parameters', () => {
-    assert.equal(Object.keys(catalogs.en).length, 361);
+    assert.equal(Object.keys(catalogs.en).length, 372);
     for (const key of ['istanbul.master_plan_186', 'istanbul.villa_types_188', 'antalya.explore_the_projects_199']) assert.ok(key in catalogs.en);
     for (const code of codes) {
         const bytes = readFileSync(new URL(`../locales/${code}.json`, import.meta.url));
@@ -37,7 +37,7 @@ test('Explicit dynamic translation bindings reference existing source keys', () 
     }
 });
 test('Identical English values are limited to proper names and shared vocabulary', () => {
-    const properNames = ['home.karaarslan_i_n_aat', 'istanbul.rengi_istanbul_turkluxx', 'antalya.rengi_antalya_turkluxx', 'antalya.facts.lara_lara_turizm_caddesi'];
+    const properNames = ['home.karaarslan_i_n_aat', 'istanbul.rengi_istanbul_turkluxx', 'antalya.rengi_antalya_turkluxx', 'antalya.facts.lara_lara_turizm_caddesi', ...Object.keys(catalogs.en).filter(key => key.startsWith('villa.names.'))];
     const shared = {
         ru: [], ar: [], es: ['istanbul.hospital', 'common.total'], tr: ['istanbul.plan'],
         nl: ['common.contact', 'home.in_istanbul', 'home.privacy', 'istanbul.school', 'rooms.garage', 'rooms.vestibule', 'antalya.facts.status', 'antalya.apartments.1_1_type_1', 'antalya.apartments.1_1_type_2']
@@ -94,6 +94,31 @@ function runtime({ search = '', stored = null, blocked = false, remote = {}, bro
     });
     return { api: window.TurkLuxxI18n, document, storage, urls };
 }
+
+test('Villa product names follow the active language in labels and dynamic references', async () => {
+    const data = runInNewContext(`${readFileSync(new URL('../js/rengi-villa-data.js', import.meta.url), 'utf8')}; villaData`);
+    const villas = Object.values(data).flatMap(Object.values);
+    assert.deepEqual(villas.map(villa => villa.name).sort(), ['Jade', 'Crystal', 'Coral', 'Emerald', 'Mother of Pearl', 'Pearl', 'Ruby', 'Sapphire', 'Silver', 'Gold', 'Diamond'].sort());
+    const { api } = runtime();
+    await api.ready;
+    // Switch in both directions to catch translated names retained from a previous locale.
+    for (const code of ['en', 'ru', 'es', 'ar', 'nl', 'tr', 'en', 'tr', 'ru']) {
+        await api.setLanguage(code);
+        for (const villa of villas) {
+            const expected = code === 'tr' ? villa.turkishName : villa.name;
+            assert.equal(api.text(villa.name), expected, `${code}: ${villa.name}`);
+            for (const key of ['villa.cta', 'callback.villaTitle', 'media.map', 'media.plan', 'media.villaView', 'villa.selected']) {
+                const rendered = api.t(key, { name: villa.name, floor: 'Ground Floor', number: 1, category: villa.category, count: 2 });
+                assert.ok(rendered.includes(expected), `${code} ${key}: ${expected}`);
+                assert.ok(!rendered.includes(`${villa.turkishName} (${villa.name})`));
+            }
+            for (const key of villa.descriptionKeys) {
+                if (catalogs.en[key].includes(villa.name)) assert.ok(api.t(key).includes(expected), `${code} ${key}`);
+                if (code === 'tr') assert.ok(!api.t(key).includes(villa.name), `${key}: English product name`);
+            }
+        }
+    }
+});
 
 test('Browser regional languages select all six locales, Arabic RTL, and unsupported languages fall back', async () => {
     for (const [browserLanguage, expected] of [['en-US', 'en'], ['ru-RU', 'ru'], ['es-MX', 'es'], ['ar-SA', 'ar'], ['tr-TR', 'tr'], ['nl-NL', 'nl'], ['de-DE', 'en']]) {

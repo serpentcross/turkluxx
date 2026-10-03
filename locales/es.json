@@ -359,5 +359,16 @@
   "referral.invalid": "Este enlace de recomendación no es válido.",
   "referral.explanation": "Compruebe el enlace que recibió o continúe a TurkLuxx sin atribución de recomendación.",
   "referral.continue": "CONTINUAR A TURKLUXX",
-  "referral.documentTitle": "Enlace de recomendación no válido — TurkLuxx"
+  "referral.documentTitle": "Enlace de recomendación no válido — TurkLuxx",
+  "villa.names.jade": "Jade",
+  "villa.names.crystal": "Crystal",
+  "villa.names.coral": "Coral",
+  "villa.names.ruby": "Ruby",
+  "villa.names.motherofpearl": "Mother of Pearl",
+  "villa.names.sapphire": "Sapphire",
+  "villa.names.emerald": "Emerald",
+  "villa.names.pearl": "Pearl",
+  "villa.names.silver": "Silver",
+  "villa.names.diamond": "Diamond",
+  "villa.names.gold": "Gold"
 }

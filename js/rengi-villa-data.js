@@ -526,9 +526,9 @@ const villaData = {
         "motherOfPearl": {
             "map": "img/ist_villas/5_1/mother-of-pearl/map/mother-of-pearl-map.jpeg",
             "category": "5+1",
-            "name": "Mother-of-Pearl",
+            "name": "Mother of Pearl",
             "turkishName": "Sedef",
-            "title": "Mother-of-pearl",
+            "title": "Mother of Pearl",
             "quickSpecs": {
                 "livingArea": "To be confirmed",
                 "plotSize": "To be confirmed",

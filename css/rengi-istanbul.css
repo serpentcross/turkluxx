@@ -346,7 +346,7 @@
     border-bottom: 1px solid #212c6c26;
 }
 
-.rengi-type-tabs button, .rengi-media-tabs button {
+.rengi-type-tabs button, .rengi-media-tabs button, #rengi-floor-plans button {
     flex-shrink: 0;
     min-height: 48px;
     padding: 14px 24px;
@@ -354,21 +354,24 @@
     border-bottom: 2px solid transparent;
     background: transparent;
     color: #212c6c;
-    font: 600 11px/1.5 'Manrope', sans-serif;
     letter-spacing: .08em;
     cursor: pointer;
 }
 
-.rengi-type-tabs button[aria-selected="true"], .rengi-media-tabs button[aria-selected="true"] {
+.rengi-type-tabs button, .rengi-media-tabs button {
+    font: 600 11px/1.5 'Manrope', sans-serif;
+}
+
+.rengi-type-tabs button[aria-selected="true"], .rengi-media-tabs button[aria-selected="true"], #rengi-floor-plans button[aria-selected="true"] {
     border-bottom-color: #8c6b30;
     background: #f7f5f1;
 }
 
-.rengi-type-tabs button:hover, .rengi-media-tabs button:hover {
+.rengi-type-tabs button:hover, .rengi-media-tabs button:hover, #rengi-floor-plans button:hover {
     background: #f7f5f1;
 }
 
-.rengi-type-tabs :focus-visible, .rengi-media-tabs :focus-visible {
+.rengi-type-tabs :focus-visible, .rengi-media-tabs :focus-visible, #rengi-floor-plans :focus-visible {
     outline-offset: -4px;
 }
 
@@ -616,7 +619,7 @@
         margin-top: 24px;
     }
 
-    .rengi-type-tabs button {
+    .rengi-type-tabs button, #rengi-floor-plans button {
         padding-inline: 18px;
     }
 

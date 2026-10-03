@@ -8,7 +8,7 @@
   "home.why_turkluxx": "Why TurkLuxx",
   "home.about_us": "About Us",
   "common.contact": "Contact",
-  "common.roi_30_70": "ROI 30%–70%",
+  "common.roi_30_70": "ROI (30%–70%)",
   "home.about_turkluxx": "About TurkLuxx",
   "common.contact_us": "Contact Us",
   "home.explore_properties": "Explore Properties",
@@ -359,5 +359,16 @@
   "referral.invalid": "This referral link is not valid.",
   "referral.explanation": "Please check the link you received or continue to TurkLuxx without referral attribution.",
   "referral.continue": "CONTINUE TO TURKLUXX",
-  "referral.documentTitle": "Invalid referral link — TurkLuxx"
+  "referral.documentTitle": "Invalid referral link — TurkLuxx",
+  "villa.names.jade": "Jade",
+  "villa.names.crystal": "Crystal",
+  "villa.names.coral": "Coral",
+  "villa.names.ruby": "Ruby",
+  "villa.names.motherofpearl": "Mother of Pearl",
+  "villa.names.sapphire": "Sapphire",
+  "villa.names.emerald": "Emerald",
+  "villa.names.pearl": "Pearl",
+  "villa.names.silver": "Silver",
+  "villa.names.diamond": "Diamond",
+  "villa.names.gold": "Gold"
 }

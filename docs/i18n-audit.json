@@ -89,7 +89,7 @@
     "intentionallyUntranslated": false
   },
   {
-    "source": "ROI 30%–70%",
+    "source": "ROI (30%–70%)",
     "key": "common.roi_30_70",
     "locations": [
       "index.html:text",

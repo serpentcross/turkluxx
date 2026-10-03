@@ -359,5 +359,16 @@
   "referral.invalid": "Эта реферальная ссылка недействительна.",
   "referral.explanation": "Проверьте полученную ссылку или перейдите на TurkLuxx без привязки к этой реферальной ссылке.",
   "referral.continue": "ПЕРЕЙТИ НА TURKLUXX",
-  "referral.documentTitle": "Недействительная реферальная ссылка — TurkLuxx"
+  "referral.documentTitle": "Недействительная реферальная ссылка — TurkLuxx",
+  "villa.names.jade": "Jade",
+  "villa.names.crystal": "Crystal",
+  "villa.names.coral": "Coral",
+  "villa.names.ruby": "Ruby",
+  "villa.names.motherofpearl": "Mother of Pearl",
+  "villa.names.sapphire": "Sapphire",
+  "villa.names.emerald": "Emerald",
+  "villa.names.pearl": "Pearl",
+  "villa.names.silver": "Silver",
+  "villa.names.diamond": "Diamond",
+  "villa.names.gold": "Gold"
 }

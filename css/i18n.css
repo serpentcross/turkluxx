@@ -69,6 +69,15 @@ html[dir="rtl"] .rengi-type-tabs button {
     direction: rtl;
 }
 
+html[dir="rtl"] #rengi-explorer .rengi-type-tabs {
+    direction: rtl;
+}
+
+html[dir="rtl"] #rengi-explorer .rengi-type-tabs button {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
 html[dir="rtl"] .turkluxx-callback-close {
     right: auto;
     inset-inline-end: 20px;

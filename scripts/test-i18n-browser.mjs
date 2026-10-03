@@ -220,7 +220,9 @@ try {
                 for (const code of codes) {
                     await evaluate(`TurkLuxxI18n.setLanguage('${code}')`); await pause(20);
                     assert.equal(await evaluate('document.querySelector("input[name=rengi-villa-variant]:checked").value'), variant);
-                    const name = await evaluate(`villaData['${category}']['${variant}'].name`);
+                    const name = await evaluate(`villaData['${category}']['${variant}'][${JSON.stringify(code === 'tr' ? 'turkishName' : 'name')}]`);
+                    assert.equal(await evaluate('document.querySelector("input[name=rengi-villa-variant]:checked").parentElement.textContent.trim()'), name);
+                    assert.equal(await evaluate('document.querySelector("#rengi-philosophy-title").textContent'), name);
                     assert.equal(await evaluate('document.querySelector(".rengi-villa-contact span").textContent'), catalogs[code]['villa.cta'].replace('{name}', name));
                     const paragraphs = await evaluate('[...document.querySelectorAll(".rengi-philosophy-body p")].map(p=>({key:p.dataset.i18n,text:p.textContent,lead:p.classList.contains("rengi-philosophy-lead")}))');
                     assert.equal(paragraphs.length, 4);
@@ -250,7 +252,7 @@ try {
                         await evaluate(`document.querySelector('${opener}').click()`);
                         assert.ok(await evaluate('document.querySelector(".rengi-villa-lightbox").open'));
                         const imageLabel = await evaluate('document.querySelector(".rengi-villa-lightbox img").alt');
-                        assert.ok(imageLabel.includes(name) || mode === 'location');
+                        assert.ok(imageLabel.includes(name));
                         await noEnglishFallback(code);
                         assert.equal(await evaluate('[...document.querySelectorAll(".rengi-villa-grid img,.rengi-villa-map,.rengi-villa-plan-preview img")].every(img=>getComputedStyle(img).transform === "none")'), true, 'Images are never mirrored');
                         await evaluate('document.querySelector(".rengi-villa-lightbox").close()');
@@ -258,9 +260,9 @@ try {
                     // Visitor-facing translated CTAs must keep the canonical lead context.
                     await evaluate('document.querySelector(".rengi-villa-contact").click()');
                     await until('document.querySelector("#turkluxx-callback").open');
-                    assert.equal(await evaluate('document.querySelector("#turkluxx-callback-title").textContent'), catalogs[code]['callback.villaTitle'].replace('{name}', code === 'en' ? name.toUpperCase() : name));
+                    assert.equal(await evaluate('document.querySelector("#turkluxx-callback-title").textContent'), catalogs[code]['callback.villaTitle'].replace('{name}', name));
                     assert.ok(await evaluate("document.querySelector('#turkluxx-callback-title').scrollWidth <= document.querySelector('#turkluxx-callback-title').clientWidth + 1"), `${width} ${code} ${name} title fits`);
-                    const expectedLead = await evaluate(`({property:villaData['${category}']['${variant}'].turkishName+' ('+villaData['${category}']['${variant}'].name+')',propertyCode:villaData['${category}']['${variant}'].floors[0].code})`);
+                    const expectedLead = await evaluate(`({property:TurkLuxxI18n.text(villaData['${category}']['${variant}'].name),propertyCode:villaData['${category}']['${variant}'].floors[0].code})`);
                     const actualLead = await evaluate('buildTurkLuxxLeadPayload(document.querySelector("#turkluxx-callback-form"))');
                     assert.equal(actualLead.project, 'Rengi Istanbul');
                     assert.equal(actualLead.property, expectedLead.property);
