@@ -49,6 +49,9 @@
       });
       modal.showModal();
       modal.scrollTop = 0;
+      if (modal.id === 'turkluxx-roi' && Array.isArray(window.dataLayer)) {
+        window.dataLayer.push({ event: 'roi_popup_open' });
+      }
     }
 
     function close(afterClose) {
