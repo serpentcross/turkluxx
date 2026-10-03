@@ -17,23 +17,47 @@ function fixture(t) {
     mkdirSync(dirname(join(root, file)), { recursive: true });
     writeFileSync(join(root, file), content);
   }
-  const files = ['index.html', 'rengi-istanbul.html', 'css/site.css', 'js/site.js', 'img/villa/floor.jpg'];
+  const files = ['index.html', 'rengi-istanbul.html', 'css/site.css', 'js/i18n.js', 'img/villa/floor.jpg'];
   for (const file of files) put(file, `original ${file}`);
+  const html = '<html lang="en"><head><link rel="stylesheet" href="css/site.css"><script src="js/i18n.js" defer></script></head><body>Original</body></html>';
+  put('index.html', html); put('rengi-istanbul.html', html);
+  put('css/site.css', '/* comment */ body { color: red; font-weight: 600; }');
+  put('js/i18n.js', '(() => { window.testBuild = "Русский العربية Türkçe"; })();');
   put('scripts/public-files.json', JSON.stringify(files));
   put('wrangler.json', JSON.stringify({ assets: { directory: './dist' } }));
-  copyFileSync(script, join(root, 'scripts/build.mjs'));
+  put('scripts/build.mjs', readFileSync(script, 'utf8').replace("from 'esbuild'", `from '${import.meta.resolve('esbuild')}'`).replace("from 'postcss'", `from '${import.meta.resolve('postcss')}'`));
   return { root, files, put, run: () => spawnSync(process.execPath, [join(root, 'scripts/build.mjs')], { encoding: 'utf8' }) };
 }
 
-test('copies only allowlisted files byte-for-byte, includes optional Antalya, cleans stale output', t => {
+test('bundles production pages, copies only allowlisted assets, and cleans stale output', t => {
   const f = fixture(t);
-  f.put('rengi-antalya.html', 'Antalya');
+  f.put('rengi-antalya.html', readFileSync(join(f.root, 'index.html'), 'utf8'));
   for (const file of ['.git/objects/pack/secret.pack', 'node_modules/private.js', 'assets/README.md', 'assets/unlisted.png', 'dist/.git/old', 'dist/stale.html']) f.put(file, 'private');
   const result = f.run();
   assert.equal(result.status, 0, result.stderr);
-  for (const file of [...f.files, 'rengi-antalya.html']) assert.deepEqual(readFileSync(join(f.root, 'dist', file)), readFileSync(join(f.root, file)));
+  assert.deepEqual(readFileSync(join(f.root, 'dist/img/villa/floor.jpg')), readFileSync(join(f.root, 'img/villa/floor.jpg')));
+  for (const file of ['index.html', 'rengi-istanbul.html', 'rengi-antalya.html']) {
+    const html = readFileSync(join(f.root, 'dist', file), 'utf8');
+    assert.match(html, /css\/turkluxx.min.css/); assert.match(html, /js\/turkluxx.min.js/);
+    assert.doesNotMatch(html, /css\/site.css|js\/i18n.js/);
+  }
+  assert.match(readFileSync(join(f.root, 'dist/css/turkluxx.min.css'), 'utf8'), /font-weight:600/);
+  assert.match(readFileSync(join(f.root, 'dist/js/turkluxx.min.js'), 'utf8'), /Русский العربية Türkçe/);
+  assert.equal(existsSync(join(f.root, 'dist/css/site.css')), false);
   assert.deepEqual(readdirSync(join(f.root, 'dist')).sort(), ['css', 'img', 'index.html', 'js', 'rengi-antalya.html', 'rengi-istanbul.html']);
   assert.equal(f.run().status, 0);
+});
+
+test('preserves CSS order and prevents page-specific CSS leaking into other pages', t => {
+  const f = fixture(t);
+  f.put('css/istanbul.css', '.control { color: blue; } @keyframes glow { from { opacity: 0; } to { opacity: 1; } }');
+  f.put('rengi-istanbul.html', readFileSync(join(f.root, 'rengi-istanbul.html'), 'utf8').replace('<script', '<link rel="stylesheet" href="css/istanbul.css"><script'));
+  f.put('scripts/public-files.json', JSON.stringify([...f.files, 'css/istanbul.css']));
+  const result = f.run(); assert.equal(result.status, 0, result.stderr);
+  const css = readFileSync(join(f.root, 'dist/css/turkluxx.min.css'), 'utf8');
+  assert.ok(css.indexOf('color:red') < css.indexOf('color:blue'));
+  assert.match(css, /:where\(html:is\(\[data-build-page[\s\S]*\.control/);
+  assert.match(css, /@keyframes glow\{from\{opacity:0\}to\{opacity:1\}\}/);
 });
 
 test('missing required file stops the build and removes stale output', t => {

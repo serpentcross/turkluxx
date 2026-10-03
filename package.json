@@ -8,6 +8,8 @@
     "dev": "wrangler dev --local --ip 127.0.0.1 --port 8787"
   },
   "devDependencies": {
+    "esbuild": "0.28.1",
+    "postcss": "8.5.8",
     "wrangler": "4.142.0"
   },
   "engines": {

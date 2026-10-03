@@ -1,4 +1,6 @@
-import { copyFileSync, existsSync, lstatSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
+import { copyFileSync, existsSync, lstatSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { transform } from 'esbuild';
+import postcss from 'postcss';
 import { dirname, extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -6,6 +8,86 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const limit = 25 * 1024 * 1024;
 const forbidden = /^(?:\..*|node_modules|dist|README(?:\..*)?|AGENTS\.md|package(?:-lock)?\.json|wrangler\..*)$/i;
+
+const read = file => readFileSync(join(root, file), 'utf8');
+const localStyles = html => [...html.matchAll(/<link\b[^>]*href="(css\/[^"]+)"[^>]*>/g)].map(match => match[1]);
+const localScripts = html => [...html.matchAll(/<script\b[^>]*src="(js\/[^"]+)"[^>]*><\/script>/g)].map(match => match[1]);
+
+async function bundle(files) {
+  const pages = files.filter(file => file.endsWith('.html')).map(file => ({
+    file, id: file === 'index.html' ? 'home' : file.replace('rengi-', '').replace('.html', ''),
+    html: read(file), styles: localStyles(read(file)), scripts: localScripts(read(file))
+  }));
+  const shared = ['js/i18n.js', 'js/referral.js', 'js/callback.js', 'js/homepage-navigation.js', 'js/homepage-galleries.js'];
+  const groups = new Map([['js/turkluxx.min.js', shared.filter(file => pages.some(page => page.scripts.includes(file)))]]);
+  const cssOrder = [];
+  // Stable topological order preserves every page's stylesheet sequence.
+  const remaining = new Set(pages.flatMap(page => page.styles));
+  while (remaining.size) {
+    const next = [...remaining].find(file => pages.every(page => {
+      const index = page.styles.indexOf(file);
+      return index < 0 || page.styles.slice(0, index).every(previous => !remaining.has(previous));
+    }));
+    if (!next) throw new Error('Incompatible page CSS order; refusing to alter the cascade');
+    cssOrder.push(next); remaining.delete(next);
+  }
+  for (const page of pages) {
+    for (const file of [...page.styles, ...page.scripts]) if (!files.includes(file)) throw new Error(`Unlisted page dependency: ${file}`);
+    const specific = page.scripts.filter(file => !shared.includes(file));
+    if (specific.length) groups.set(`js/rengi-${page.id}.min.js`, specific);
+    const original = page.scripts.filter(file => file !== 'js/homepage-galleries.js');
+    const reconstructed = [...groups.get('js/turkluxx.min.js').filter(file => file !== 'js/homepage-galleries.js'), ...specific];
+    if (original.join() !== reconstructed.join()) throw new Error(`Incompatible script order: ${page.file}`);
+  }
+  let css = '';
+  for (const file of cssOrder) {
+    const tree = postcss.parse(read(file), { from: file });
+    const owners = pages.filter(page => page.styles.includes(file));
+    if (owners.length !== pages.length) {
+      const attributes = owners.map(page => `[data-build-page="${page.id}"]`).join(',');
+      const guard = `:where(html:is(${attributes}))`;
+      tree.walkRules(rule => {
+        for (let parent = rule.parent; parent; parent = parent.parent) {
+          if (parent.type === 'atrule' && /keyframes$/i.test(parent.name)) return;
+        }
+        rule.selectors = rule.selectors.map(selector => /^(?:html|:root)(?=[\s.#:[>+~]|$)/.test(selector)
+          ? selector.replace(/^(html|:root)/, `$1:where(:is(${attributes}))`)
+          : `${guard} ${selector}`);
+      });
+    }
+    css += tree.toString() + '\n';
+  }
+  const reports = [];
+  function emit(file, content, inputs) {
+    if (Buffer.byteLength(content) > limit) throw new Error(`Generated asset exceeds 25 MiB: ${file}`);
+    mkdirSync(dirname(join(dist, file)), { recursive: true });
+    writeFileSync(join(dist, file), content, 'utf8');
+    reports.push({ file, inputs, originalBytes: inputs.reduce((sum, input) => sum + readFileSync(join(root, input)).length, 0), minifiedBytes: Buffer.byteLength(content) });
+  }
+  // Whitespace-only CSS minification leaves declarations, selector specificity,
+  // rounding expressions and media-query semantics intact.
+  emit('css/turkluxx.min.css', (await transform(css, { loader: 'css', minifyWhitespace: true, charset: 'utf8', legalComments: 'none' })).code, cssOrder);
+  for (const [output, inputs] of groups) {
+    let code = '';
+    for (const file of inputs) {
+      code += (await transform(read(file), { loader: 'js', minify: true, target: 'es2022', charset: 'utf8', legalComments: 'none', sourcefile: file })).code + ';\n';
+    }
+    emit(output, code, inputs);
+  }
+  for (const page of pages) {
+    let firstStyle = true, firstScript = true;
+    let html = page.html.replace(/<link\b[^>]*href="css\/[^\"]+"[^>]*>/g, () => {
+      if (!firstStyle) return ''; firstStyle = false;
+      return '<link rel="stylesheet" href="css/turkluxx.min.css">';
+    }).replace(/<script\b[^>]*src="js\/[^\"]+"[^>]*><\/script>/g, () => {
+      if (!firstScript) return ''; firstScript = false;
+      const specific = `js/rengi-${page.id}.min.js`;
+      return '<script src="js/turkluxx.min.js" defer></script>' + (groups.has(specific) ? `\n<script src="${specific}" defer></script>` : '');
+    }).replace(/<html\b/, `<html data-build-page="${page.id}"`);
+    writeFileSync(join(dist, page.file), html, 'utf8');
+  }
+  console.log(JSON.stringify(reports, null, 2));
+}
 
 // Only this fixed output path may be deleted. Never follow an output symlink/junction.
 function clean() {
@@ -51,10 +133,12 @@ try {
   for (const file of files) {
     const destination = join(dist, file);
     mkdirSync(dirname(destination), { recursive: true });
+    if (/^(?:css|js)\//.test(file) || file.endsWith('.html')) continue;
     try { copyFileSync(join(root, file), destination); }
     catch (error) { throw new Error(`Cannot copy required public file ${file}: ${error.message}`); }
   }
-  console.log(`Built ${files.length} public files in dist/ (unchanged bytes and relative paths).`);
+  await bundle(files);
+  console.log('Built production HTML, minified bundles, and unchanged static assets/locales in dist/.');
   console.log(`Largest asset: ${largest.file} (${(largest.size / 1024 / 1024).toFixed(2)} MiB; limit 25 MiB).`);
 } catch (error) {
   try { clean(); } catch { /* Preserve the original error; never traverse unsafe output. */ }

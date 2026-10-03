@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import worker from '../worker/index.mjs';
 
 const root = resolve(import.meta.dirname, '..');
+const publicRoot = process.argv.includes('--dist') ? resolve(root, 'dist') : root;
 const port = Number(process.env.TURKLUXX_I18N_PORT || 8799);
 const base = `http://127.0.0.1:${port}`;
 const messages = [], payloads = [];
@@ -27,8 +28,8 @@ const server = http.createServer(async (req, res) => {
             res.writeHead(result.status, { 'Content-Type': 'application/json' }); res.end(await result.text()); return;
         }
         const pathname = new URL(req.url, base).pathname;
-        const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
-        if (!file.startsWith(root + sep)) throw Error('outside workspace');
+        const file = resolve(publicRoot, '.' + (pathname === '/' ? '/index.html' : pathname));
+        if (!file.startsWith(publicRoot + sep)) throw Error('outside public root');
         const data = await readFile(file);
         res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.html': 'text/html', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' })[extname(file)] || 'application/octet-stream');
         res.end(data);
