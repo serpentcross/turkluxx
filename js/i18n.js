@@ -14,7 +14,10 @@
         const requested = new URLSearchParams(location.search).get('lang');
         let stored;
         try { stored = localStorage.getItem(storageKey); } catch { /* URL hints still work. */ }
-        language = Object.hasOwn(languages, requested) ? requested : Object.hasOwn(languages, stored) ? stored : 'en';
+        const browserLanguages = [...(navigator.languages || []), navigator.language];
+        const detected = browserLanguages.map(value => typeof value === 'string' ? value.toLowerCase().split(/[-_]/)[0] : '')
+            .find(code => Object.hasOwn(languages, code));
+        language = Object.hasOwn(languages, requested) ? requested : Object.hasOwn(languages, stored) ? stored : detected || 'en';
     } catch { /* English works even when storage is unavailable. */ }
 
     async function catalog(code) {
@@ -258,7 +261,7 @@
             try { localStorage.setItem(storageKey, code); } catch { /* Current page remains translated. */ }
             const url = new URL(location.href);
             // An explicit language hint must agree with subsequent user selection.
-            if (url.searchParams.has('lang')) { url.searchParams.set('lang', code); history.replaceState(null, '', url); }
+            if (url.searchParams.has('lang') && url.searchParams.get('lang') !== code) { url.searchParams.set('lang', code); history.replaceState(null, '', url); }
         }
         document.documentElement.lang = code;
         document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr';

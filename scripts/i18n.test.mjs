@@ -71,7 +71,7 @@ test('Property data stores description keys; catalogs do not duplicate images or
         assert.ok(!Object.keys(catalog).some(key => /(?:imagePath|mapPath|grossArea|netArea|landShare)$/.test(key)));
     }
 });
-function runtime({ search = '', stored = null, blocked = false, remote = {} } = {}) {
+function runtime({ search = '', stored = null, blocked = false, remote = {}, browserLanguages = ['en-US'], browserLanguage = 'en-US' } = {}) {
     class Element { querySelectorAll() { return []; } closest() { return null; } getAttribute() { return null; } }
     const document = { documentElement: new Element(), querySelectorAll: () => [], createTreeWalker: () => ({ nextNode: () => false }) };
     const storage = new Map(stored ? [['turkluxx_language', stored]] : []);
@@ -80,6 +80,7 @@ function runtime({ search = '', stored = null, blocked = false, remote = {} } = 
     const urls = [];
     runInNewContext(source, {
         window, document, location, URL, URLSearchParams, Element,
+        navigator: { languages: browserLanguages, language: browserLanguage },
         NodeFilter: { SHOW_TEXT: 4 }, MutationObserver: class { observe() {} disconnect() {} },
         CustomEvent: class { constructor(type, options) { this.type = type; this.detail = options.detail; } },
         queueMicrotask,
@@ -93,6 +94,32 @@ function runtime({ search = '', stored = null, blocked = false, remote = {} } = 
     });
     return { api: window.TurkLuxxI18n, document, storage, urls };
 }
+
+test('Browser regional languages select all six locales, Arabic RTL, and unsupported languages fall back', async () => {
+    for (const [browserLanguage, expected] of [['en-US', 'en'], ['ru-RU', 'ru'], ['es-MX', 'es'], ['ar-SA', 'ar'], ['tr-TR', 'tr'], ['nl-NL', 'nl'], ['de-DE', 'en']]) {
+        const { api, document, urls } = runtime({ browserLanguages: [browserLanguage], browserLanguage, search: '?ref=VLAD&sub=campaign%20one' });
+        await api.ready; await new Promise(resolve => setImmediate(resolve));
+        assert.equal(api.language, expected);
+        assert.equal(document.documentElement.dir, expected === 'ar' ? 'rtl' : 'ltr');
+        assert.deepEqual(urls, [], 'Automatic detection leaves referral URL unchanged');
+    }
+    assert.equal(runtime({ browserLanguages: ['de-DE', 'tr-TR', 'ru-RU'] }).api.language, 'tr');
+    assert.equal(runtime({ browserLanguages: [], browserLanguage: 'nl-NL' }).api.language, 'nl');
+    assert.equal(runtime({ browserLanguages: ['es-ES'], blocked: true }).api.language, 'es');
+});
+
+test('URL then saved preference take priority over browser; manual selection persists', async () => {
+    assert.equal(runtime({ search: '?lang=ar&ref=VLAD&sub=partner', stored: 'nl', browserLanguages: ['ru-RU'] }).api.language, 'ar');
+    assert.equal(runtime({ stored: 'nl', browserLanguages: ['ru-RU'] }).api.language, 'nl');
+    const { api, storage, urls } = runtime({ browserLanguages: ['ru-RU'], search: '?ref=VLAD&sub=partner' });
+    await api.setLanguage('es');
+    assert.equal(storage.get('turkluxx_language'), 'es');
+    assert.deepEqual(urls, []);
+    assert.equal(runtime({ stored: storage.get('turkluxx_language'), browserLanguages: ['ru-RU'] }).api.language, 'es');
+    const explicit = runtime({ search: '?lang=ar&ref=VLAD&sub=campaign%20one', browserLanguages: ['ru-RU'] });
+    await explicit.api.ready; await new Promise(resolve => setImmediate(resolve));
+    assert.deepEqual(explicit.urls, [], 'Matching explicit language does not reserialize referral parameters');
+});
 test('Missing, empty and invalid translation values fall back to exact English', async () => {
     const { api } = runtime({ remote: { nl: { 'common.name': null, 'common.phone': '', 'common.email': {} } } });
     await api.setLanguage('nl');
