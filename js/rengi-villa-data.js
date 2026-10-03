@@ -19,11 +19,11 @@ const villaData = {
                 "netArea": "256.13 m²",
                 "landShare": "693–706 m²"
             },
-            "description": [
-                "Elegant proportions within a composed private setting.",
-                "Jade features approximately 294 m² of gross and 256 m² of net interior space, with land shares ranging from approximately 693 to 706 m².",
-                "The residences maintain a consistent relationship between their architectural footprint and private grounds, with most of the documented villas emphasizing generous lower gardens.",
-                "Jade offers a refined 4+1 configuration with a clear sense of proportion and privacy."
+            "descriptionKeys": [
+                "istanbul.villas.jade.description1",
+                "istanbul.villas.jade.description2",
+                "istanbul.villas.jade.description3",
+                "istanbul.villas.jade.description4"
             ],
             "floors": [
                 {
@@ -130,11 +130,11 @@ const villaData = {
                 "netArea": "254.13 m²",
                 "landShare": "728–1,344 m²"
             },
-            "description": [
-                "A refined architectural footprint with striking variations in private land.",
-                "Crystal represents the most compact architectural configuration in the development, at approximately 292 m² gross and 254 m² net. ",
-                "Yet its land configurations reveal a notable contrast, ranging from approximately 728 to 1,344 m².",
-                "This creates the potential for remarkably different outdoor experiences within the same architectural collection—from more intimate settings to residences surrounded by substantially larger private grounds. "
+            "descriptionKeys": [
+                "istanbul.villas.crystal.description1",
+                "istanbul.villas.crystal.description2",
+                "istanbul.villas.crystal.description3",
+                "istanbul.villas.crystal.description4"
             ],
             "floors": [
                 {
@@ -246,11 +246,11 @@ const villaData = {
                 "netArea": "303.09 m²",
                 "landShare": "632–873 m²"
             },
-            "description": [
-                "A generous 4+1 residence with room to live outdoors.",
-                "Coral offers approximately 348 m² of gross and 303 m² of net interior space, with individual land shares ranging from approximately 632 to 873 m².",
-                "The residences feature varied garden configurations, including substantial lower gardens and, in some villas, additional upper-level outdoor space.",
-                "Coral brings a generous architectural footprint to the 4+1 collection while maintaining a strong connection to private outdoor living.",
+            "descriptionKeys": [
+                "istanbul.villas.coral.description1",
+                "istanbul.villas.coral.description2",
+                "istanbul.villas.coral.description3",
+                "istanbul.villas.coral.description4"
             ],
             "floors": [
                 {
@@ -388,11 +388,11 @@ const villaData = {
                 "netArea": "348.32 m²",
                 "landShare": "664–1,290 m²"
             },
-            "description": [
-                "Distinctive residences shaped by their individual settings. ",
-                "Ruby offers approximately 411 m² of gross and 348 m² of net interior space, while its individual land shares vary considerably—from approximately 664 m² to 1,290 m².",
-                "This variation gives the collection a particularly diverse outdoor character, with different residences offering different relationships between architecture, gardens and private land.",
-                "Ruby is a collection where the setting becomes an important part of each residence's identity.",
+            "descriptionKeys": [
+                "istanbul.villas.ruby.description1",
+                "istanbul.villas.ruby.description2",
+                "istanbul.villas.ruby.description3",
+                "istanbul.villas.ruby.description4"
             ],
             "floors": [
                 {
@@ -540,11 +540,11 @@ const villaData = {
                 "netArea": "366.12–406.50 m²",
                 "landShare": "828–1,287 m²"
             },
-            "description": [
-                "Refined proportions with a variety of private landscapes.",
-                "Mother of Pearl brings together 5+1 residences of approximately 467 m² gross area, with individual land shares ranging from approximately 828 to 1,287 m². ",
-                "The collection offers particularly varied garden configurations, from generous lower gardens to residences with gardens distributed across both levels.",
-                "Each residence therefore has its own relationship with the surrounding landscape while retaining a consistent architectural identity."
+            "descriptionKeys": [
+                "istanbul.villas.motherOfPearl.description1",
+                "istanbul.villas.motherOfPearl.description2",
+                "istanbul.villas.motherOfPearl.description3",
+                "istanbul.villas.motherOfPearl.description4"
             ],
             "floors": [
                 {
@@ -696,11 +696,11 @@ const villaData = {
                 "netArea": "444.14 m²",
                 "landShare": "985–1,384 m²"
             },
-            "description": [
-                "A generous expression of the 5+1 residence. ",
-                "Sapphire offers approximately 505 m² of gross and 444 m² of net interior space, making it the largest architectural configuration within the 5+1 collection.",
-                "Land shares range from approximately 985 to 1,384 m², with individual residences offering different combinations of lower and upper garden areas.",
-                "The result is a collection where substantial interiors are complemented by equally considered outdoor living."
+            "descriptionKeys": [
+                "istanbul.villas.sapphire.description1",
+                "istanbul.villas.sapphire.description2",
+                "istanbul.villas.sapphire.description3",
+                "istanbul.villas.sapphire.description4"
             ],
             "floors": [
                 {
@@ -851,11 +851,11 @@ const villaData = {
                 "netArea": "368.04 m²",
                 "landShare": "807–1,166 m²"
             },
-            "description": [
-                "Balanced architecture and carefully composed outdoor space.",
-                "The Emerald collection features approximately 430 m² of gross and 368 m² of net interior space, accompanied by individual land shares ranging from approximately 807 to 1,166 m².",
-                "The gardens vary between residences, creating different degrees of openness and connection to the outdoors.",
-                "Emerald offers a balanced 5+1 living experience in which the architecture and its private setting work together as one composition."
+            "descriptionKeys": [
+                "istanbul.villas.emerald.description1",
+                "istanbul.villas.emerald.description2",
+                "istanbul.villas.emerald.description3",
+                "istanbul.villas.emerald.description4"
             ],
             "floors": [
                 {
@@ -994,11 +994,11 @@ const villaData = {
                 "netArea": "369.33 m²",
                 "landShare": "1,022–1,067 m²"
             },
-            "description": [
-                "A measured balance of interior comfort and private grounds.",
-                "Pearl presents approximately 413 m² of gross and 369 m² of net interior space, with land shares ranging from approximately 1,022 to 1,067 m².",
-                "Several residences feature substantial lower gardens, while others introduce additional upper-level outdoor space.",
-                "The collection is defined by its balanced proportions and the close relationship between the residence and its private landscape. "
+            "descriptionKeys": [
+                "istanbul.villas.pearl.description1",
+                "istanbul.villas.pearl.description2",
+                "istanbul.villas.pearl.description3",
+                "istanbul.villas.pearl.description4"
             ],
             "floors": [
                 {
@@ -1122,11 +1122,11 @@ const villaData = {
                 "netArea": "323.25 m²",
                 "landShare": "1,083–1,391 m²"
             },
-            "description": [
-                "A refined 5+1 residence with generous private land.",
-                "Silver offers approximately 368 m² of gross and 323 m² of net interior space, while individual land shares range from approximately 1,083 to 1,391 m².",
-                "This creates an interesting relationship between the villa's considered architectural footprint and the generous private grounds surrounding it.",
-                "Silver is defined by the opportunity to enjoy substantial outdoor space without compromising the comfort and functionality of a sophisticated 5+1 residence."
+            "descriptionKeys": [
+                "istanbul.villas.silver.description1",
+                "istanbul.villas.silver.description2",
+                "istanbul.villas.silver.description3",
+                "istanbul.villas.silver.description4"
             ],
             "floors": [
                 {
@@ -1251,11 +1251,11 @@ const villaData = {
                 "netArea": "473.93 m²",
                 "landShare": "1,201–1,554 m²"
             },
-            "description": [
-                "A Generous architecture, surrounded by exceptional private grounds.",
-                "The Diamond collection pairs approximately 567 m² of gross and 474 m² of net interior space with some of the development's most generous land shares, ranging from approximately 1,201 to 1,554 m².",
-                "The residences also benefit from substantial lower and upper garden areas, creating a layered outdoor setting around the architecture.",
-                "Diamond is a composition of generous living space and expansive private grounds."
+            "descriptionKeys": [
+                "istanbul.villas.diamond.description1",
+                "istanbul.villas.diamond.description2",
+                "istanbul.villas.diamond.description3",
+                "istanbul.villas.diamond.description4"
             ],
             "floors": [
                 {
@@ -1426,11 +1426,11 @@ const villaData = {
                 "netArea": "597.73 m²",
                 "landShare": "1,118–1,503 m²"
             },
-            "description": [
-                "A residence defined by scale and proportion",
-                "The Gold collection presents the largest villa configuration at Rengi Istanbul, with approximately 685 m² of gross and 598 m² of net interior space.",
-                "Individual residences are complemented by private land shares ranging from approximately 1,118 to 1,503 m², with gardens distributed across different levels.",
-                "Gold brings together substantial architecture and generous outdoor space, creating residences designed for an exceptional sense of scale, privacy and continuity between interior and landscape."
+            "descriptionKeys": [
+                "istanbul.villas.gold.description1",
+                "istanbul.villas.gold.description2",
+                "istanbul.villas.gold.description3",
+                "istanbul.villas.gold.description4"
             ],
             "floors": [
                 {

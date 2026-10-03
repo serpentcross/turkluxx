@@ -57,10 +57,10 @@
         screen.id = 'turkluxx-referral-error';
         screen.setAttribute('aria-labelledby', 'turkluxx-referral-error-title');
         screen.innerHTML = `<div class="referral-brand">TurkLuxx</div>
-            <h1 id="turkluxx-referral-error-title" tabindex="-1">Invalid referral link</h1>
-            <p>This referral link is not valid.</p>
-            <p>Please check the link you received or continue to TurkLuxx without referral attribution.</p>
-            <a href="/">CONTINUE TO TURKLUXX</a>`;
+            <h1 id="turkluxx-referral-error-title" data-i18n="referral.title" tabindex="-1">Invalid referral link</h1>
+            <p data-i18n="referral.invalid">This referral link is not valid.</p>
+            <p data-i18n="referral.explanation">Please check the link you received or continue to TurkLuxx without referral attribution.</p>
+            <a href="/" data-i18n="referral.continue">CONTINUE TO TURKLUXX</a>`;
         document.body.classList.add('turkluxx-invalid-referral');
         document.body.append(screen);
         document.title = 'Invalid referral link — TurkLuxx';

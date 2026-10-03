@@ -2465,9 +2465,9 @@
         transform: translateX(-120px);
     }
 
-    /* TurkLuxx — дальше вправо */
+    /* Keep the wordmark inside its grid column instead of overflowing the viewport. */
     .turkluxx-developer-brand {
-        transform: translateX(120px);
+        transform: none;
     }
 }
 

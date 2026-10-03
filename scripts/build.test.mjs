@@ -72,3 +72,15 @@ test('refuses a Wrangler assets directory other than dist', t => {
   assert.equal(result.status, 1);
   assert.match(result.stderr, /assets.directory must be .\/dist/);
 });
+test('Copies the six allowed locale catalogs and rejects other JSON paths', t => {
+  const f = fixture(t);
+  const locales = ['en', 'ru', 'es', 'ar', 'tr', 'nl'].map(code => `locales/${code}.json`);
+  for (const file of locales) f.put(file, '{"common.name":"Name"}');
+  f.put('scripts/public-files.json', JSON.stringify([...f.files, ...locales]));
+  assert.equal(f.run().status, 0);
+  for (const file of locales) assert.deepEqual(readFileSync(join(f.root, 'dist', file)), readFileSync(join(f.root, file)));
+  for (const file of ['locales/secrets.json', 'locales/.git/config.json', 'locales/../private.json']) {
+    f.put('scripts/public-files.json', JSON.stringify([...f.files, file]));
+    assert.equal(f.run().status, 1, file);
+  }
+});

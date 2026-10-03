@@ -28,6 +28,7 @@ try {
   for (const file of files) {
     const parts = file.split('/');
     const allowed = /^(?:index\.html|rengi-istanbul\.html|rengi-antalya\.html)$/.test(file)
+      || (/^locales\/(?:en|ru|es|ar|tr|nl)\.json$/.test(file))
       || (/^(?:css|js|img|assets)\//.test(file) && /^(?:\.css|\.js|\.png|\.jpg|\.jpeg|\.svg|\.webp|\.avif|\.gif|\.ico|\.woff2?)$/i.test(extname(file)));
     if (!allowed || file.includes('\\') || parts.some(part => !part || forbidden.test(part))) {
       throw new Error(`Non-public or unsafe manifest entry: ${file}`);

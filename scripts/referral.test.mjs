@@ -32,7 +32,7 @@ for (const path of ['/', '/rengi-istanbul.html', '/rengi-antalya.html']) {
       assert.equal(result.elements.length, 0);
       assert.equal(result.window.getTurkLuxxReferralAttribution().landingPage, `https://turkluxx.com${path}?ref=${code}`);
     }
-    for (const code of ['SHIT', 'UNKNOWN', 'MUHAMED', '123', '', 'DIRECT']) {
+    for (const code of ['SHIT', 'UNKNOWN', 'MUHHAMED', '123', '', 'DIRECT']) {
       const result = visit(`${path}?ref=${code}`);
       assert.equal(result.storage.size, 0);
       const screen = result.elements.find(element => element.id === 'turkluxx-referral-error');

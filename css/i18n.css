@@ -1,0 +1,268 @@
+/* Scoped adjustments: the original English layout and media remain intact. */
+.turkluxx-sales-language {
+    flex-shrink: 0;
+}
+
+html:not([lang="en"]) .turkluxx-sales-nav a,
+html:not([lang="en"]) .turkluxx-callback-trigger,
+html:not([lang="en"]) .rengi-view-tabs button,
+html:not([lang="en"]) .rengi-variant-option {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+html:not([lang="en"]) .turkluxx-sales-header {
+    gap: 20px;
+}
+
+html:not([lang="en"]) .turkluxx-sales-nav {
+    flex-wrap: wrap;
+}
+
+html:not([lang="en"]) .turkluxx-developer-brand,
+html:not([lang="en"]) .turkluxx-developer-identity {
+    transform: none;
+}
+
+html:not([lang="en"]) .turkluxx-sales-heading,
+html:not([lang="en"]) .turkluxx-sales-heading h1,
+html:not([lang="en"]) .turkluxx-sales-title,
+html:not([lang="en"]) .turkluxx-callback h2 {
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+html:not([lang="en"]) .rengi-villa-specs > div {
+    min-inline-size: 0;
+}
+
+html:not([lang="en"]) .rengi-villa-spec span {
+    white-space: normal;
+    line-height: 1.4;
+}
+
+html:not([lang="en"]) .rengi-view-tabs {
+    flex-wrap: wrap;
+}
+
+html[dir="rtl"] .rengi-philosophy-body,
+html[dir="rtl"] .turkluxx-callback-form,
+html[dir="rtl"] .rengi-floor-card,
+html[dir="rtl"] .antalya-project-facts,
+html[dir="rtl"] .turkluxx-footer {
+    text-align: start;
+}
+
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] a[href^="tel:"],
+html[dir="rtl"] a[href^="mailto:"],
+html[dir="rtl"] .rengi-villa-specs dd,
+html[dir="rtl"] .rengi-floor-card dd,
+html[dir="rtl"] .rengi-villa-lightbox,
+html[dir="rtl"] .rengi-plan-lightbox,
+html[dir="rtl"] .rengi-type-tabs {
+    direction: ltr;
+}
+
+html[dir="rtl"] .rengi-type-tabs button {
+    direction: rtl;
+}
+
+html[dir="rtl"] .turkluxx-callback-close {
+    right: auto;
+    inset-inline-end: 20px;
+}
+
+html[dir="rtl"] .turkluxx-sales-hero,
+html[dir="rtl"] .turkluxx-section-layout,
+html[dir="rtl"] .rengi-villa-panel,
+html[dir="rtl"] .antalya-project-layout {
+    direction: ltr;
+}
+
+html[dir="rtl"] .turkluxx-sales-nav,
+html[dir="rtl"] .turkluxx-sales-heading,
+html[dir="rtl"] .turkluxx-citizenship,
+html[dir="rtl"] .turkluxx-benefits,
+html[dir="rtl"] .turkluxx-section-copy,
+html[dir="rtl"] .rengi-villa-philosophy,
+html[dir="rtl"] .antalya-project-description,
+html[dir="rtl"] .rengi-villa-info,
+html[dir="rtl"] .antalya-project-info {
+    direction: rtl;
+}
+
+html[dir="rtl"] .rengi-villa-philosophy {
+    text-align: start;
+}
+
+html[dir="rtl"] .rengi-villa-spec strong {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .rengi-villa-contact > span[aria-hidden="true"],
+html[dir="rtl"] .turkluxx-reference-cta > span[aria-hidden="true"] {
+    transform: scaleX(-1);
+}
+
+html[lang="ar"] {
+    font-family: 'Manrope', Tahoma, Arial, sans-serif;
+}
+
+@media (max-width: 767px) {
+    html:not([lang="en"]) .turkluxx-callback h2 {
+        font-size: clamp(32px, 8vw, 48px);
+        line-height: 1.15;
+    }
+
+    html:not([lang="en"]) .turkluxx-sales-language {
+        min-inline-size: 0;
+    }
+
+    html:not([lang="en"]) .turkluxx-sales-nav {
+        gap: 12px 16px;
+    }
+
+    html:not([lang="en"]) .rengi-villa-contact {
+        max-inline-size: 100%;
+        white-space: normal;
+    }
+
+    html:not([lang="en"]) .turkluxx-mobile-primary-ctas {
+        min-inline-size: 0;
+    }
+}
+
+/* Visual adapter for the existing i18n selectors; header dimensions stay fixed. */
+.turkluxx-sales-language.is-language-dropdown,
+.turkluxx-language.is-language-dropdown {
+    position: relative;
+    padding: 0;
+}
+
+.is-language-dropdown > select,
+.is-language-dropdown > img,
+.is-language-dropdown > svg {
+    display: none;
+}
+
+.turkluxx-language-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    color: inherit;
+    font: 500 16px 'Manrope', sans-serif;
+    cursor: pointer;
+    direction: ltr;
+}
+
+.turkluxx-language-toggle .turkluxx-language-flag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.turkluxx-language-toggle .turkluxx-language-flag img {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.turkluxx-language-toggle .turkluxx-language-chevron {
+    position: static;
+    width: 12px;
+    flex: 0 0 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.turkluxx-language-toggle:focus-visible,
+.turkluxx-language-option:focus-visible {
+    outline: 2px solid #f3d992;
+    outline-offset: 3px;
+}
+
+.turkluxx-language-menu {
+    position: absolute;
+    inset-inline-end: 0;
+    top: calc(100% + 8px);
+    z-index: 100;
+    box-sizing: border-box;
+    width: 174px;
+    padding: 6px;
+    margin: 0;
+    border: 1px solid #d8b66a80;
+    border-radius: 14px 3px 14px 14px;
+    background: rgb(7 30 52 / 94%);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px #0005;
+    color: #fffdf7;
+    text-shadow: none;
+}
+
+.turkluxx-language-menu[hidden] {
+    display: none;
+}
+
+.turkluxx-language-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: inherit;
+    font: 500 14px/1.3 'Manrope', Tahoma, sans-serif;
+    text-align: start;
+    cursor: pointer;
+}
+
+.turkluxx-language-option:hover {
+    background: #ffffff10;
+}
+
+.turkluxx-language-option > img {
+    width: 20px;
+    height: 14px;
+    flex: 0 0 20px;
+    border: 0;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.turkluxx-language-option[aria-selected="true"] {
+    background: #d8b66a20;
+    color: #f3d992;
+}
+
+.turkluxx-language-option[aria-selected="true"]::after {
+    content: '✓';
+    margin-inline-start: auto;
+}
+
+@media (max-width: 767px) {
+    .turkluxx-language-toggle {
+        font-size: 15px;
+        gap: 6px;
+    }
+
+    .turkluxx-language-toggle .turkluxx-language-flag img {
+        width: 32px;
+        height: 32px;
+    }
+}

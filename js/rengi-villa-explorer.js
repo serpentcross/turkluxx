@@ -27,8 +27,9 @@
     const villaContext = document.querySelector('#callback-villa');
     const callback = document.querySelector('#turkluxx-callback');
     const callbackTitle = callback.querySelector('#turkluxx-callback-title');
-    const defaultCallbackTitle = callbackTitle.textContent;
     const displayName = villa => `${villa.turkishName} (${villa.name})`;
+    const bind = (...args) => window.TurkLuxxI18n.bind(...args);
+    const translated = source => window.TurkLuxxI18n.text(source);
 
     villaCtas.forEach(cta => window.registerTurkLuxxLeadContext(cta, () => {
         const villa = villaData[category][variant];
@@ -40,7 +41,7 @@
     }));
 
     function resetCallbackTitle() {
-        callbackTitle.textContent = defaultCallbackTitle;
+        bind(callbackTitle, 'common.let_s_talk');
         callbackTitle.style.removeProperty('font-size');
         callbackTitle.style.removeProperty('line-height');
         callbackTitle.style.removeProperty('white-space');
@@ -49,13 +50,17 @@
     function fitCallbackTitle() {
         resetCallbackTitle();
         if (!callback.open || !villaContext.value) return;
+        if (window.TurkLuxxI18n?.language !== 'en') {
+            bind(callbackTitle, 'callback.villaTitle', { name: villaContext.value });
+            return;
+        }
         const style = getComputedStyle(callbackTitle);
         const originalSize = parseFloat(style.fontSize);
         // Keep the original heading's line box, so the form and dialog never grow.
         const originalHeight = parseFloat(style.height);
         callbackTitle.style.lineHeight = `${originalHeight}px`;
         callbackTitle.style.whiteSpace = 'nowrap';
-        callbackTitle.textContent = `LET'S TALK ABOUT ${villaContext.value.toUpperCase()} VILLA`;
+        bind(callbackTitle, 'callback.villaTitle', () => ({ name: window.TurkLuxxI18n.language === 'en' ? villaContext.value.toUpperCase() : villaContext.value }));
         let size = originalSize;
         while (callbackTitle.scrollWidth > callbackTitle.clientWidth && size > 1) {
             size -= 0.5;
@@ -73,6 +78,7 @@
         villaContext.value = '';
         resetCallbackTitle();
     });
+    window.addEventListener('turkluxx:language-change', () => { if (callback.open) fitCallbackTitle(); });
     window.addEventListener('resize', () => {
         if (callback.open) fitCallbackTitle();
     });
@@ -89,12 +95,16 @@
         }
         const image = planPreview.querySelector('img');
         image.src = floor.image;
-        image.alt = `${villa.name} ${floor.name || floor.code} plan`;
-        planPreview.setAttribute('aria-label', `View ${villa.name} ${floor.name || floor.code} plan fullscreen`);
+        const planValues = () => ({ name: villa.name, floor: translated(floor.name || floor.code) });
+        bind(image, 'media.plan', planValues, 'alt');
+        bind(planPreview, 'media.planFullscreen', planValues, 'aria-label');
         const header = element('header');
         const heading = element('h4', floor.code);
         if (floor.name) heading.append(element('span', floor.name));
-        const total = element('p', 'Total: ');
+        const total = element('p');
+        const totalLabel = element('span');
+        bind(totalLabel, 'common.total');
+        total.append(totalLabel);
         total.append(element('strong', floor.total));
         header.append(heading, total);
         const rooms = element('dl');
@@ -154,9 +164,10 @@
         if (!images.length) return;
         slideIndex = (next + images.length) % images.length;
         fullImage.src = images[slideIndex];
-        fullImage.alt = mode === 'location' ? `${displayName(villa)} location map`
-            : mode === 'plans' ? `${villa.name} ${villa.floors[slideIndex].name || villa.floors[slideIndex].code} plan`
-            : `${villa.name} villa, view ${slideIndex + 1}`;
+        bind(fullImage, mode === 'location' ? 'media.map' : mode === 'plans' ? 'media.plan' : 'media.villaView', () => ({
+            name: mode === 'location' ? displayName(villa) : villa.name,
+            floor: translated(villa.floors?.[slideIndex]?.name || villa.floors?.[slideIndex]?.code || ''), number: slideIndex + 1
+        }), 'alt');
         if (mode === 'plans') {
             floorIndex = slideIndex;
             renderFloor();
@@ -170,7 +181,7 @@
     function openLightbox(index, thumbnail) {
         origin = thumbnail;
         showSlide(index);
-        dialog.setAttribute('aria-label', `${villaData[category][variant].name} image viewer`);
+        bind(dialog, 'media.viewer', { name: villaData[category][variant].name }, 'aria-label');
         previousOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
         dialog.showModal();
@@ -191,30 +202,31 @@
         if (landSpec) landSpec.textContent = specs.landShare || '—';
 
         options.querySelectorAll('input').forEach(input => { input.checked = input.value === variant; });
-        gallery.setAttribute('aria-label', `${villa.name} images`);
+        bind(gallery, 'media.images', { name: villa.name }, 'aria-label');
         gallery.replaceChildren(...villa.photos.map((src, i) => {
             const button = element('button', undefined, 'rengi-villa-thumbnail');
             button.type = 'button';
-            button.setAttribute('aria-label', `View ${villa.name} image ${i + 1} of ${villa.photos.length} fullscreen`);
+            bind(button, 'media.imageFullscreen', { name: villa.name, number: i + 1, count: villa.photos.length }, 'aria-label');
             button.setAttribute('aria-haspopup', 'dialog');
             const image = element('img');
             image.src = src;
-            image.alt = `${villa.name} villa, view ${i + 1}`;
+            bind(image, 'media.villaView', { name: villa.name, number: i + 1 }, 'alt');
             image.loading = 'lazy';
             image.decoding = 'async';
             button.append(image);
             button.addEventListener('click', () => openLightbox(i, button));
             return button;
         }));
-        viewer.querySelector('.rengi-villa-philosophy').hidden = !villa.description.length;
+        viewer.querySelector('.rengi-villa-philosophy').hidden = !villa.descriptionKeys.length;
         viewer.querySelector('#rengi-philosophy-title').textContent = displayName(villa);
-        villaCtas.forEach(cta => { cta.querySelector('span').textContent = `I want ${villa.name} villa`; });
+        villaCtas.forEach(cta => bind(cta.querySelector('span'), 'villa.cta', { name: villa.name }));
         mapImage.src = villa.map;
-        mapImage.alt = `${displayName(villa)} location map`;
-        mapPreview.setAttribute('aria-label', `View ${displayName(villa)} location map fullscreen`);
+        bind(mapImage, 'media.map', { name: displayName(villa) }, 'alt');
+        bind(mapPreview, 'media.mapFullscreen', { name: displayName(villa) }, 'aria-label');
         viewer.querySelector('.rengi-philosophy-body').replaceChildren(
-            ...villa.description.map((text, index) => {
-                const p = element('p', text);
+            ...villa.descriptionKeys.map((key, index) => {
+                const p = element('p');
+                p.dataset.i18n = key;
 
                 if (index === 0) {
                     p.classList.add('rengi-philosophy-lead');
@@ -244,7 +256,7 @@
         renderFloor();
         viewTabs[1].hidden = !floors.length;
         selectMode(floors.length ? mode : 'photos');
-        if (announce) status.textContent = `${villa.category.replace('+', ' + ')}. ${villa.name}. ${villa.photos.length} images. Specifications updated.`;
+        if (announce) bind(status, 'villa.selected', { category: villa.category.replace('+', ' + '), name: villa.name, count: villa.photos.length });
     }
 
     function selectCategory(next, announce = true) {

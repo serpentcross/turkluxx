@@ -6,8 +6,8 @@ const antalyaProjects = {
     "bluelife": {
         "name": "BlueLife",
         "location": "Lara, Antalya",
-        "description": [
-            "Set on Lara Turizm Caddesi just a few hundred metres from the sea, RengiAntalya BlueLife brings together contemporary residences, commercial spaces and year-round social living in one of Antalya’s most dynamic coastal areas."
+        "descriptionKeys": [
+            "antalya.projects.bluelife.description1"
         ],
         "photos": [],
         "floorPlans": [],
@@ -46,8 +46,8 @@ const antalyaProjects = {
     "premium": {
         "name": "Premium",
         "location": "Döşemealtı, Antalya",
-        "description": [
-            "Designed as a complete residential environment, RengiAntalya Premium combines spacious apartment layouts with extensive landscaping, water features, sport, wellness and everyday amenities. A large proportion of the development is dedicated to nature and shared social spaces."
+        "descriptionKeys": [
+            "antalya.projects.premium.description1"
         ],
         "photos": [],
         "floorPlans": [],
@@ -112,8 +112,8 @@ const antalyaProjects = {
     "greenlife": {
         "name": "GreenLife",
         "location": "Döşemealtı, Antalya",
-        "description": [
-            "RengiAntalya GreenLife combines the clean air of the Taurus Mountains with generous landscaping, extensive pools and functional apartment layouts, creating a calm and social residential environment where life has already begun."
+        "descriptionKeys": [
+            "antalya.projects.greenlife.description1"
         ],
         "photos": [],
         "floorPlans": [],
@@ -179,8 +179,8 @@ const antalyaProjects = {
     "greenpark": {
         "name": "GreenPark",
         "location": "Döşemealtı, Antalya",
-        "description": [
-            "Built around the idea of a contemporary neighbourhood, RengiAntalya GreenPark combines low-rise architecture, generous green space and family-oriented apartments with shared social areas in a calm residential setting."
+        "descriptionKeys": [
+            "antalya.projects.greenpark.description1"
         ],
         "photos": [],
         "floorPlans": [],
@@ -235,8 +235,8 @@ const antalyaProjects = {
     "rengiantalya": {
         "name": "RengiAntalya",
         "location": "Döşemealtı, Antalya",
-        "description": [
-            "Set beside a vast pine forest, RengiAntalya offers a completed residential environment where nature, comfortable apartments and everyday convenience come together. Pools, landscaped social areas and commercial spaces support a relaxed daily lifestyle."
+        "descriptionKeys": [
+            "antalya.projects.rengiantalya.description1"
         ],
         "photos": [],
         "floorPlans": [],

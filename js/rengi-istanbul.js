@@ -31,7 +31,9 @@
         if (lightboxImage.complete && lightboxImage.naturalWidth) fitImage();
     }
     function openMaster() {
-        openPlan(masterPlan.src, document.querySelector('#rengi-master-image').alt, 'Master Plan');
+        openPlan(masterPlan.src, document.querySelector('#rengi-master-image').alt, window.TurkLuxxI18n.t('istanbul.master_plan_186'));
+        window.TurkLuxxI18n.bind(dialog.querySelector('#rengi-lightbox-title'), 'istanbul.master_plan_186');
+        window.TurkLuxxI18n.bind(lightboxImage, 'istanbul.rengi_istanbul_overall_site_plan_from_the', {}, 'alt');
     }
     document.querySelector('.rengi-master-preview').addEventListener('click', openMaster);
     document.querySelector('#rengi-master-fullscreen').addEventListener('click', openMaster);

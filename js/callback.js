@@ -119,12 +119,20 @@
   const validators = [];
   for (const input of form.querySelectorAll('input:not([type="hidden"])')) {
     const validate = () => {
-      input.setCustomValidity(input.value && !input.value.trim() ? 'Please enter your ' + input.name + '.' : '');
+      const missing = !input.value.trim();
+      const invalidEmail = input.type === 'email' && input.validity.typeMismatch;
+      const key = missing ? { name: 'callback.requiredName', phone: 'callback.requiredPhone', email: 'callback.requiredEmail' }[input.name]
+        : invalidEmail ? 'callback.invalidEmail' : null;
+      input.setCustomValidity(key ? window.TurkLuxxI18n.t(key) : '');
     };
     validators.push(validate);
     input.addEventListener('input', () => { validate(); status.textContent = ''; });
     input.addEventListener('change', validate);
+    input.addEventListener('invalid', validate);
   }
+  window.addEventListener('turkluxx:language-change', () => {
+    validators.forEach(validate => validate());
+  });
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (pending) return;
@@ -135,7 +143,7 @@
     pending = true;
     submitButton.disabled = true;
     form.setAttribute('aria-busy', 'true');
-    status.textContent = 'Sending your enquiry...';
+    window.TurkLuxxI18n.bind(status, 'callback.sending');
     try {
       // Preserve the existing local event. This handler alone performs the send.
       form.dispatchEvent(new CustomEvent('turkluxx:lead-ready', { detail: payload, bubbles: true }));
@@ -152,12 +160,12 @@
         throw new Error('Lead request failed');
       }
       if (opening === submittedOpening && dialog.open) {
-        status.textContent = 'Thank you. Your enquiry has been sent. Our team will be in touch.';
+        window.TurkLuxxI18n.bind(status, 'callback.success');
       }
     } catch (error) {
       console.error('[TurkLuxx lead] Request did not complete', { type: error.name });
       if (opening === submittedOpening && dialog.open) {
-        status.textContent = 'We could not confirm your enquiry was sent. Please try again or call +1 213 732 20 02.';
+        window.TurkLuxxI18n.bind(status, 'callback.error');
       }
     } finally {
       pending = false;

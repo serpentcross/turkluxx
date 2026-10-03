@@ -10,7 +10,6 @@
     "img/ist_villas/5_1/silver/map/silver-map.jpeg",
     "img/ist_villas/6_1/gold/map/gold-map.jpeg",
     "img/ist_villas/6_1/diamond/map/diamond-map.jpeg",
-
     "assets/istanbul-family-hero.png",
     "assets/karaarslan-logo.png",
     "assets/turkish-passport.png",
@@ -101,5 +100,13 @@
     "js/rengi-antalya-data.js",
     "js/rengi-antalya.js",
     "rengi-istanbul.html",
-    "assets/rengi/master-plan.jpg"
+    "assets/rengi/master-plan.jpg",
+    "js/i18n.js",
+    "css/i18n.css",
+    "locales/en.json",
+    "locales/ru.json",
+    "locales/es.json",
+    "locales/ar.json",
+    "locales/tr.json",
+    "locales/nl.json"
 ]

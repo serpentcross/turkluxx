@@ -15,6 +15,7 @@
     const dialog = q('.rengi-villa-lightbox');
     const fullImage = dialog.querySelector('img');
     const cta = q('.rengi-villa-contact');
+    const bind = (...args) => window.TurkLuxxI18n.bind(...args);
     let selected = keys[0], apartment = null, mode = 'photos';
     let images = [], slide = 0, origin, previousOverflow, gesture, suppressClick = false;
     const project = () => antalyaProjects[selected];
@@ -30,7 +31,7 @@
     function facts(target, rows) {
         target.replaceChildren(...rows.map(([label, value]) => {
             const row = element('div');
-            row.append(element('dt', label), element('dd', value));
+            row.append(element('dt', label), element('dd', value === '1+1 to 5+1' ? '1+1 – 5+1' : value));
             return row;
         }));
         target.hidden = !rows.length;
@@ -38,7 +39,8 @@
     function showSlide(next) {
         slide = (next + images.length) % images.length;
         fullImage.src = images[slide].src;
-        fullImage.alt = images[slide].alt;
+        const entry = images[slide];
+        bind(fullImage, entry.key, entry.values, 'alt');
         q('.rengi-villa-counter').textContent = `${slide + 1} / ${images.length}`;
         dialog.querySelectorAll('.rengi-villa-previous, .rengi-villa-next').forEach(button => { button.hidden = images.length < 2; });
     }
@@ -46,11 +48,11 @@
         target.replaceChildren(...entries.map((entry, index) => {
             const button = element('button', undefined, 'rengi-villa-thumbnail');
             button.type = 'button';
-            button.setAttribute('aria-label', `View ${entry.alt} fullscreen`);
+            bind(button, 'media.fullscreen', () => ({ name: window.TurkLuxxI18n.t(entry.key, entry.values()) }), 'aria-label');
             button.setAttribute('aria-haspopup', 'dialog');
             const image = element('img');
             image.src = entry.src;
-            image.alt = entry.alt;
+            bind(image, entry.key, entry.values, 'alt');
             image.loading = 'lazy';
             image.decoding = 'async';
             button.append(image);
@@ -59,7 +61,7 @@
                 origin = button;
                 previousOverflow = document.body.style.overflow;
                 showSlide(index);
-                dialog.setAttribute('aria-label', `${project().name} image viewer`);
+                bind(dialog, 'media.viewer', { name: project().name }, 'aria-label');
                 document.body.style.overflow = 'hidden';
                 dialog.showModal();
             });
@@ -74,7 +76,8 @@
         media.hidden = false;
         viewTabs.hidden = false;
         q('.antalya-visual-placeholder').hidden = !!photoSet.length;
-        q('.antalya-visual-placeholder').setAttribute('aria-label', `${data.name}${selectedApartment() ? ` ${selectedApartment().name}` : ''} gallery preview; photographs are not available`);
+        const mediaName = () => data.name + (selectedApartment() ? ` ${window.TurkLuxxI18n.text(selectedApartment().name)}` : '');
+        bind(q('.antalya-visual-placeholder'), 'media.placeholder', () => ({ name: mediaName() }), 'aria-label');
         photos.hidden = !photoSet.length;
         [...viewTabs.children].forEach(tab => {
             tab.hidden = tab.dataset.view === 'plans' && !floors.length;
@@ -84,9 +87,9 @@
         });
         q('#antalya-photos-panel').hidden = mode !== 'photos';
         q('#antalya-plans-panel').hidden = mode !== 'plans';
-        gallery(photos, photoSet.map((src, i) => ({ src, alt: `${data.name}${selectedApartment() ? ` ${selectedApartment().name}` : ''}, view ${i + 1}` })));
+        gallery(photos, photoSet.map((src, i) => ({ src, key: 'media.projectView', values: () => ({ name: mediaName(), number: i + 1 }) })));
         // Plans are explicit { image, name } records, never generated filenames.
-        gallery(plans, floors.map(floor => ({ src: floor.image, alt: `${data.name} ${floor.name}`.trim() })));
+        gallery(plans, floors.map(floor => ({ src: floor.image, key: 'media.plan', values: () => ({ name: data.name, floor: window.TurkLuxxI18n.text(floor.name) }) })));
     }
     function renderProject(announce = true) {
         apartment = project().apartmentTypes.length ? 0 : null;
@@ -103,8 +106,8 @@
         q('.antalya-project-location').hidden = !data.location;
         q('.antalya-project-tagline').textContent = data.tagline || '';
         q('.antalya-project-tagline').hidden = !data.tagline;
-        cta.querySelector('span').textContent = `I want ${data.name}`;
-        q('.rengi-philosophy-body').replaceChildren(...data.description.map(text => element('p', text)));
+        bind(cta.querySelector('span'), 'project.cta', { name: data.name });
+        q('.rengi-philosophy-body').replaceChildren(...data.descriptionKeys.map(key => { const p = element('p'); p.dataset.i18n = key; return p; }));
         facts(q('.antalya-project-facts'), data.projectStats.filter(([label]) => !data.featuredStats || data.featuredStats.includes(label)));
         const amenities = q('.antalya-amenities');
         amenities.hidden = !data.amenities.length;
@@ -125,7 +128,7 @@
             return label;
         }));
         renderMedia();
-        if (announce) q('#antalya-status').textContent = `${data.name} selected.`;
+        if (announce) bind(q('#antalya-status'), 'project.selected', { name: data.name });
     }
     function keyboardTabs(event, buttons) {
         const index = buttons.indexOf(event.currentTarget);
@@ -187,19 +190,22 @@
     const callback = document.querySelector('#turkluxx-callback');
     const title = callback.querySelector('h2');
     const context = document.querySelector('#callback-project');
-    const defaultTitle = title.textContent;
     function resetTitle() {
-        title.textContent = defaultTitle;
+        bind(title, 'common.let_s_talk');
         ['font-size', 'line-height', 'white-space'].forEach(property => title.style.removeProperty(property));
     }
     function fitTitle() {
         resetTitle();
         if (!callback.open || !context.value) return;
+        if (window.TurkLuxxI18n?.language !== 'en') {
+            bind(title, 'callback.projectTitle', { name: context.value });
+            return;
+        }
         const style = getComputedStyle(title);
         let size = parseFloat(style.fontSize);
         title.style.lineHeight = style.height;
         title.style.whiteSpace = 'nowrap';
-        title.textContent = `LET'S TALK ABOUT ${context.value.toUpperCase()}`;
+        bind(title, 'callback.projectTitle', () => ({ name: window.TurkLuxxI18n.language === 'en' ? context.value.toUpperCase() : context.value }));
         while (title.scrollWidth > title.clientWidth && size > 1) {
             size -= .5; title.style.fontSize = `${size}px`;
         }
@@ -208,6 +214,7 @@
         button.addEventListener('click', () => { context.value = button === cta ? project().name : ''; fitTitle(); });
     });
     callback.addEventListener('close', () => { context.value = ''; resetTitle(); });
+    window.addEventListener('turkluxx:language-change', () => { if (callback.open) fitTitle(); });
     window.addEventListener('resize', () => { if (callback.open) fitTitle(); });
     // Later sections intentionally do not exist yet; retain their navigation layout.
     document.querySelectorAll('.turkluxx-sales-nav [aria-disabled="true"]').forEach(link => {
